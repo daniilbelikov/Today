@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "737825645022",
+    "project_id": "today-62290",
+    "storage_bucket": "today-62290.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737825645022:android:0aa9463aad9d6f73d1fd4f",
+        "android_client_info": {
+          "package_name": "dev.belikov.today"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737825645022-9an0ub7pa765bvrskabme8ghji64gj5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR9d_J7HkPaxN4hM-anA-kb44R8McHI2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737825645022-9an0ub7pa765bvrskabme8ghji64gj5r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "737825645022-hh9kt1f4972f63mqueni5lhnau06poe9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.belikov.today"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
