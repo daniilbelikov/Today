@@ -1,5 +1,5 @@
 name: today
-description: A new Flutter project.
+description: Dating app.
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -11,7 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  intl: ^0.17.0
   firebase_core: ^2.15.0
+  adaptive_theme: ^3.2.1
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -22,3 +24,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter_intl:
+  enabled: true

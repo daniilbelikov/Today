@@ -1,6 +1,6 @@
 import 'today_app.dart';
-import 'firebase_manager.dart';
 import 'package:flutter/material.dart';
+import 'managers/firebase_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
