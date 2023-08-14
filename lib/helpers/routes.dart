@@ -1,7 +1,9 @@
 import '../screens/auth_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:today/screens/onboarding_screen.dart';
 
 class TodayRouter {
+  static const String onboarding = '/onboarding';
   static const String authRoute = '/auth';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,6 +11,8 @@ class TodayRouter {
     final args = settings.arguments;
 
     switch (settings.name) {
+      case onboarding:
+        return MaterialPageRoute(builder: (_) => const OnbordingScreen());
       case authRoute:
         return MaterialPageRoute(builder: (_) => const AuthScreen());
       default:

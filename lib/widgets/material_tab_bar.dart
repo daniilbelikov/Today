@@ -11,8 +11,8 @@ class MaterialBottomTabBar extends StatelessWidget {
       body: PageView(
         controller: PageController(),
         onPageChanged: (_) {},
-        children: widgets,
         physics: const NeverScrollableScrollPhysics(),
+        children: widgets,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

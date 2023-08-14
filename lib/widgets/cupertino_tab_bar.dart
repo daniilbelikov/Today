@@ -5,10 +5,10 @@ class CupertinoBottomTabBar extends StatefulWidget {
   const CupertinoBottomTabBar({Key? key}) : super(key: key);
 
   @override
-  _CupertinoPageState createState() => _CupertinoPageState();
+  CupertinoPageState createState() => CupertinoPageState();
 }
 
-class _CupertinoPageState extends State<CupertinoBottomTabBar> {
+class CupertinoPageState extends State<CupertinoBottomTabBar> {
   final List<Widget> widgets = const <Widget>[];
 
   @override

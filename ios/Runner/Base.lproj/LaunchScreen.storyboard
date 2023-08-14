@@ -18,12 +18,36 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="A0K-Ld-SWW">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="U8A-8f-aQx">
+                                <rect key="frame" x="116.66666666666669" y="346" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="3lN-uW-cQI"/>
+                                    <constraint firstAttribute="height" constant="160" id="kt0-zp-sg7"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U8A-8f-aQx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EYb-CG-TRT"/>
+                            <constraint firstItem="U8A-8f-aQx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SE9-hw-2kG"/>
+                            <constraint firstAttribute="bottom" secondItem="A0K-Ld-SWW" secondAttribute="bottom" id="b4o-Gh-zdw"/>
+                            <constraint firstItem="A0K-Ld-SWW" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="iba-fX-ekg"/>
+                            <constraint firstItem="A0K-Ld-SWW" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kqw-gH-8nl"/>
+                            <constraint firstAttribute="trailing" secondItem="A0K-Ld-SWW" secondAttribute="trailing" id="n73-0h-f48"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80.916030534351137" y="264.08450704225356"/>
+            <point key="canvasLocation" x="80.152671755725194" y="264.08450704225356"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="101" height="124"/>
+        <image name="splash" width="390" height="844"/>
+    </resources>
 </document>

@@ -12,9 +12,11 @@ dependencies:
     sdk: flutter
 
   intl: ^0.17.0
+  flutter_svg: ^2.0.5
   firebase_core: ^2.15.0
   adaptive_theme: ^3.2.1
   cupertino_icons: ^1.0.2
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -22,8 +24,46 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
 
+flutter_icons:
+  android: 'launcher_icon'
+  ios: false
+  image_path: 'assets/png/logo.png'
+
 flutter:
   uses-material-design: true
+
+  assets:
+     - assets/png/
+     - assets/svg/
+
+  fonts:
+    - family: MontserratBlack
+      fonts:
+        - asset: fonts/Montserrat-Black.ttf
+    - family: MontserratBold
+      fonts:
+        - asset: fonts/Montserrat-Bold.ttf
+    - family: MontserratExtraBold
+      fonts:
+        - asset: fonts/Montserrat-ExtraBold.ttf
+    - family: MontserratExtraLight
+      fonts:
+        - asset: fonts/Montserrat-ExtraLight.ttf
+    - family: MontserratLight
+      fonts:
+        - asset: fonts/Montserrat-Light.ttf
+    - family: MontserratMedium
+      fonts:
+        - asset: fonts/Montserrat-Medium.ttf
+    - family: MontserratRegular
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
+    - family: MontserratSemiBold
+      fonts:
+        - asset: fonts/Montserrat-SemiBold.ttf
+    - family: MontserratThin
+      fonts:
+        - asset: fonts/Montserrat-Thin.ttf
 
 flutter_intl:
   enabled: true

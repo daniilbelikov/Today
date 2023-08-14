@@ -34,6 +34,14 @@
 	<string>Main</string>
 	<key>UIStatusBarStyle</key>
 	<string></string>
+    <key>NSCameraUsageDescription</key>
+    <string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к камере.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к микрофону.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
