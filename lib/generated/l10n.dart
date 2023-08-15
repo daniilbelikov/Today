@@ -49,6 +49,56 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Всё случится\nСЕГОДНЯ`
+  String get auth_title {
+    return Intl.message(
+      'Всё случится\nСЕГОДНЯ',
+      name: 'auth_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Войти через Google`
+  String get google {
+    return Intl.message(
+      'Войти через Google',
+      name: 'google',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Войти через Apple`
+  String get apple {
+    return Intl.message(
+      'Войти через Apple',
+      name: 'apple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Осуществляя вход, вы соглашаетесь с`
+  String get privacy_title {
+    return Intl.message(
+      'Осуществляя вход, вы соглашаетесь с',
+      name: 'privacy_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Политикой конфиденциальности`
+  String get privacy_subtitle {
+    return Intl.message(
+      'Политикой конфиденциальности',
+      name: 'privacy_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,21 +1,24 @@
 name: today
 description: Dating app.
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
 
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
-
+  
   intl: ^0.17.0
   flutter_svg: ^2.0.5
+  url_launcher: ^6.1.11
   firebase_core: ^2.15.0
   adaptive_theme: ^3.2.1
   cupertino_icons: ^1.0.2
+  flutter_native_splash: ^2.2.16
   flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
@@ -64,6 +67,20 @@ flutter:
     - family: MontserratThin
       fonts:
         - asset: fonts/Montserrat-Thin.ttf
+
+flutter_native_splash:
+  background_image: "assets/png/background.png"
+  image: assets/png/brand.png
+  background_image_dark: "assets/png/background.png"
+  image_dark: assets/png/brand.png
+
+  android_12:
+    image: assets/png/brand.png
+    color: "#FFFFFF"
+    icon_background_color: "#FFFFFF"
+
+  ios: false
+  web: false
 
 flutter_intl:
   enabled: true
