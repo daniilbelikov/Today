@@ -1,13 +1,17 @@
 import 'dart:io';
-import '../generated/l10n.dart';
-import '../helpers/constants.dart';
+import '../bloc/auth_bloc.dart';
+import '../../../generated/l10n.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import '../widgets/sign_in_button.dart';
+import '../../../helpers/constants.dart';
+import '../../../widgets/sign_in_button.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../widgets/activity_indicator.dart';
+import 'package:today/screens/bottom_navigation/presentations/bottom_navigation_widget.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -18,22 +22,54 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(child: Container()),
-            const _AuthHeaderWidget(),
-            Expanded(child: Container()),
-            const _AuthImageWidget(),
-            Expanded(flex: 4, child: Container()),
-            _AuthButtonWidget(
-              iOSAction: () {},
-              androidAction: () {},
-            ),
-            Expanded(child: Container()),
-            const _AuthPrivacyWidget(),
-            Expanded(child: Container()),
-          ],
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is Authenticated) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const BottomNavigationView(),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            return SafeArea(
+              child: Column(
+                children: [
+                  Expanded(child: Container()),
+                  const _AuthHeaderWidget(),
+                  Expanded(child: Container()),
+                  const _AuthImageWidget(),
+                  Expanded(flex: 4, child: Container()),
+                  if (state is Loading)
+                    const SizedBox(
+                      height: 48.0,
+                      child: Center(
+                        child: ActivityIndicatorWidget(),
+                      ),
+                    )
+                  else if (state is UnAuthenticated)
+                    _AuthButtonWidget(
+                      iOSAction: () {
+                        BlocProvider.of<AuthBloc>(context).add(
+                          AppleSignInRequested(),
+                        );
+                      },
+                      androidAction: () {
+                        BlocProvider.of<AuthBloc>(context).add(
+                          GoogleSignInRequested(),
+                        );
+                      },
+                    ),
+                  Expanded(child: Container()),
+                  const _AuthPrivacyWidget(),
+                  Expanded(child: Container()),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

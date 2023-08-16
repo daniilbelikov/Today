@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FeedDetailScreen extends StatefulWidget {
-  const FeedDetailScreen({super.key});
+  const FeedDetailScreen({Key? key}) : super(key: key);
 
   @override
   State<FeedDetailScreen> createState() => _FeedDetailScreenState();

@@ -1,9 +1,9 @@
 import 'today_app.dart';
 import 'package:flutter/material.dart';
-import 'managers/firebase_manager.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseManager().init();
+  await Firebase.initializeApp();
   runApp(const TodayApp());
 }

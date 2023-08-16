@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResponseDetailScreen extends StatefulWidget {
-  const ResponseDetailScreen({super.key});
+  const ResponseDetailScreen({Key? key}) : super(key: key);
 
   @override
   State<ResponseDetailScreen> createState() => _ResponseDetailScreenState();

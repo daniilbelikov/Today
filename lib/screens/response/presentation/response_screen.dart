@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResponseScreen extends StatefulWidget {
-  const ResponseScreen({super.key});
+  const ResponseScreen({Key? key}) : super(key: key);
 
   @override
   State<ResponseScreen> createState() => _ResponseScreenState();
@@ -10,6 +10,8 @@ class ResponseScreen extends StatefulWidget {
 class _ResponseScreenState extends State<ResponseScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      backgroundColor: Colors.green,
+    );
   }
 }

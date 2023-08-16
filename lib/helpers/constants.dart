@@ -16,6 +16,11 @@ class TodayFonts {
   static const thin = 'MontserratThin';
 }
 
+class TodayValues {
+  static const charset =
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+}
+
 class TodayLinks {
   static const privacy = 'https://belikov.dev';
 }
