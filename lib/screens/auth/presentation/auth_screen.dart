@@ -8,7 +8,6 @@ import '../../../widgets/sign_in_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
-import 'package:today/screens/bottom_navigation/presentations/bottom_navigation_widget.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -22,54 +21,19 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is Authenticated) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const BottomNavigationView(),
-              ),
-            );
-          }
-        },
-        child: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            return SafeArea(
-              child: Column(
-                children: [
-                  Expanded(child: Container()),
-                  const _AuthHeaderWidget(),
-                  Expanded(child: Container()),
-                  const _AuthImageWidget(),
-                  Expanded(flex: 4, child: Container()),
-                  if (state is Loading)
-                    const SizedBox(
-                      height: 48.0,
-                      child: Center(
-                        child: ActivityIndicatorWidget(),
-                      ),
-                    )
-                  else if (state is UnAuthenticated)
-                    _AuthButtonWidget(
-                      iOSAction: () {
-                        BlocProvider.of<AuthBloc>(context).add(
-                          AppleSignInRequested(),
-                        );
-                      },
-                      androidAction: () {
-                        BlocProvider.of<AuthBloc>(context).add(
-                          GoogleSignInRequested(),
-                        );
-                      },
-                    ),
-                  Expanded(child: Container()),
-                  const _AuthPrivacyWidget(),
-                  Expanded(child: Container()),
-                ],
-              ),
-            );
-          },
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(child: Container()),
+            const _AuthHeaderWidget(),
+            Expanded(child: Container()),
+            const _AuthImageWidget(),
+            Expanded(flex: 4, child: Container()),
+            const _AuthButtonStackWidget(),
+            Expanded(child: Container()),
+            const _AuthPrivacyWidget(),
+            Expanded(child: Container()),
+          ],
         ),
       ),
     );
@@ -104,8 +68,38 @@ class _AuthImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      height: 250.0,
       child: SvgPicture.asset(TodayAssets.authImage),
+    );
+  }
+}
+
+class _AuthButtonStackWidget extends StatelessWidget {
+  const _AuthButtonStackWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is Loading) {
+          return const SizedBox(
+            height: 48.0,
+            child: Center(
+              child: ActivityIndicatorWidget(),
+            ),
+          );
+        }
+        return _AuthButtonWidget(
+          iOSAction: () => BlocProvider.of<AuthBloc>(context).add(
+            AppleSignInRequested(),
+          ),
+          androidAction: () => BlocProvider.of<AuthBloc>(context).add(
+            GoogleSignInRequested(),
+          ),
+        );
+      },
     );
   }
 }

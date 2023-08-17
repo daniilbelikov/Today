@@ -13,13 +13,6 @@ class CupertinoBottomBar extends StatefulWidget {
 }
 
 class CupertinoPageState extends State<CupertinoBottomBar> {
-  final List<Widget> widgets = const [
-    FeedScreen(),
-    RequestsScreen(),
-    ResponseScreen(),
-    ProfileScreen(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -45,7 +38,12 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
           ],
         ),
         tabBuilder: (BuildContext context, index) {
-          return widgets[index];
+          return const [
+            FeedScreen(),
+            RequestsScreen(),
+            ResponseScreen(),
+            ProfileScreen(),
+          ][index];
         },
       ),
     );

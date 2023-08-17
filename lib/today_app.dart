@@ -35,7 +35,7 @@ class TodayApp extends StatelessWidget {
               ],
               supportedLocales: S.delegate.supportedLocales,
               home: StreamBuilder<User?>(
-                stream: FirebaseAuth.instance.userChanges(),
+                stream: FirebaseAuth.instance.authStateChanges(),
                 builder: (_, snapshot) {
                   return snapshot.hasData
                       ? const BottomNavigationView()

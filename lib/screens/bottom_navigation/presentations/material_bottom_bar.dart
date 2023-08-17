@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../bloc/bottom_navigation_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../feed/presentation/feed_screen.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../request/presentation/requests_screen.dart';
@@ -12,55 +14,50 @@ class MaterialBottomBar extends StatefulWidget {
 }
 
 class _MaterialBottomBarState extends State<MaterialBottomBar> {
-  final List<Widget> widgets = const [
-    FeedScreen(),
-    RequestsScreen(),
-    ResponseScreen(),
-    ProfileScreen(),
-  ];
-
-  PageController controller = PageController();
-  int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: controller,
-        onPageChanged: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        physics: const NeverScrollableScrollPhysics(),
-        children: widgets,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
-        currentIndex: currentIndex,
-        onTap: (index) => controller.jumpToPage(index),
-        items: const [
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(Icons.ac_unit),
+    return BlocConsumer<BottomNavigationBloc, BottomNavigationState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          body: const [
+            FeedScreen(),
+            RequestsScreen(),
+            ResponseScreen(),
+            ProfileScreen(),
+          ].elementAt(state.tabIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.white,
+            currentIndex: state.tabIndex,
+            onTap: (index) {
+              BlocProvider.of<BottomNavigationBloc>(context).add(
+                TabChangeEvent(tabIndex: index),
+              );
+            },
+            items: const [
+              BottomNavigationBarItem(
+                label: '',
+                icon: Icon(Icons.ac_unit),
+              ),
+              BottomNavigationBarItem(
+                label: '',
+                icon: Icon(Icons.alt_route),
+              ),
+              BottomNavigationBarItem(
+                label: '',
+                icon: Icon(Icons.linked_camera),
+              ),
+              BottomNavigationBarItem(
+                label: '',
+                icon: Icon(Icons.account_circle),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(Icons.alt_route),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(Icons.linked_camera),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(Icons.account_circle),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
