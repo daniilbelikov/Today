@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../widgets/active_icon.dart';
 import 'package:today/screens/feed/presentation/feed_screen.dart';
 import 'package:today/screens/profile/presentation/profile_screen.dart';
 import 'package:today/screens/request/presentation/requests_screen.dart';
@@ -19,25 +20,36 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
       child: CupertinoTabScaffold(
         resizeToAvoidBottomInset: false,
         tabBar: CupertinoTabBar(
-          backgroundColor: Colors.white,
-          activeColor: Colors.black,
-          inactiveColor: Colors.grey,
+          backgroundColor: Theme.of(context).cardColor,
+          inactiveColor: Theme.of(context).hintColor.withAlpha(100),
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.ac_unit),
+              activeIcon: ActiveIconWidget(
+                child: Icon(Icons.home),
+              ),
+              icon: Icon(Icons.home),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.alt_route),
+              activeIcon: ActiveIconWidget(
+                child: Icon(Icons.description),
+              ),
+              icon: Icon(Icons.description),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.linked_camera),
+              activeIcon: ActiveIconWidget(
+                child: Icon(Icons.favorite),
+              ),
+              icon: Icon(Icons.favorite),
             ),
             BottomNavigationBarItem(
+              activeIcon: ActiveIconWidget(
+                child: Icon(Icons.account_circle),
+              ),
               icon: Icon(Icons.account_circle),
             ),
           ],
         ),
-        tabBuilder: (BuildContext context, index) {
+        tabBuilder: (_, index) {
           return const [
             FeedScreen(),
             RequestsScreen(),

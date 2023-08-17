@@ -10,8 +10,8 @@ class ResponseScreen extends StatefulWidget {
 class _ResponseScreenState extends State<ResponseScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.green,
+    return Scaffold(
+      backgroundColor: Theme.of(context).splashColor,
     );
   }
 }

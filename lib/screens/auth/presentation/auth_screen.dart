@@ -83,7 +83,7 @@ class _AuthButtonStackWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        if (state is Loading) {
+        if (state is LoadingState) {
           return const SizedBox(
             height: 48.0,
             child: Center(
@@ -93,10 +93,10 @@ class _AuthButtonStackWidget extends StatelessWidget {
         }
         return _AuthButtonWidget(
           iOSAction: () => BlocProvider.of<AuthBloc>(context).add(
-            AppleSignInRequested(),
+            AppleSignInEvent(),
           ),
           androidAction: () => BlocProvider.of<AuthBloc>(context).add(
-            GoogleSignInRequested(),
+            GoogleSignInEvent(),
           ),
         );
       },

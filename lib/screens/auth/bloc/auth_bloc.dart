@@ -11,33 +11,33 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
-  AuthBloc({required this.authRepository}) : super(UnAuthenticated()) {
-    on<GoogleSignInRequested>((event, emit) async {
-      emit(Loading());
+  AuthBloc({required this.authRepository}) : super(UnauthenticatedState()) {
+    on<GoogleSignInEvent>((event, emit) async {
+      emit(LoadingState());
       try {
         final user = await authRepository.signInWithGoogle();
-        emit(Authenticated(user!));
+        emit(AuthenticatedState(user!));
       } catch (error) {
-        emit(AuthError(error.toString()));
-        emit(UnAuthenticated());
+        emit(AuthErrorState(error.toString()));
+        emit(UnauthenticatedState());
       }
     });
 
-    on<AppleSignInRequested>((event, emit) async {
-      emit(Loading());
+    on<AppleSignInEvent>((event, emit) async {
+      emit(LoadingState());
       try {
         final user = await authRepository.signInWithApple();
-        emit(Authenticated(user!));
+        emit(AuthenticatedState(user!));
       } catch (error) {
-        emit(AuthError(error.toString()));
-        emit(UnAuthenticated());
+        emit(AuthErrorState(error.toString()));
+        emit(UnauthenticatedState());
       }
     });
 
-    on<SignOutRequested>((event, emit) async {
-      emit(Loading());
+    on<SignOutEvent>((event, emit) async {
+      emit(LoadingState());
       await authRepository.signOut();
-      emit(UnAuthenticated());
+      emit(UnauthenticatedState());
     });
   }
 }

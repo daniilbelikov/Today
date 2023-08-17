@@ -10,8 +10,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.red,
+    return Scaffold(
+      backgroundColor: Theme.of(context).splashColor,
     );
   }
 }

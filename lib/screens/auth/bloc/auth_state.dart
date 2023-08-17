@@ -3,32 +3,27 @@ part of 'auth_bloc.dart';
 @immutable
 abstract class AuthState extends Equatable {}
 
-class Loading extends AuthState {
+class LoadingState extends AuthState {
   @override
   List<Object?> get props => [];
 }
 
-class UserDataChange extends AuthState {
-  @override
-  List<Object?> get props => [];
-}
-
-class Authenticated extends AuthState {
+class AuthenticatedState extends AuthState {
   final User currentUser;
-  Authenticated(this.currentUser);
+  AuthenticatedState(this.currentUser);
   @override
   List<Object?> get props => [currentUser];
 }
 
-class UnAuthenticated extends AuthState {
+class UnauthenticatedState extends AuthState {
   @override
   List<Object?> get props => [];
 }
 
-class AuthError extends AuthState {
+class AuthErrorState extends AuthState {
   final String error;
 
-  AuthError(this.error);
+  AuthErrorState(this.error);
   @override
   List<Object?> get props => [error];
 }

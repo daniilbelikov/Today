@@ -13,14 +13,14 @@ class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Theme.of(context).splashColor,
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           return Center(
             child: TextButton(
               onPressed: () {
                 BlocProvider.of<AuthBloc>(context).add(
-                  SignOutRequested(),
+                  SignOutEvent(),
                 );
               },
               child: const Text(

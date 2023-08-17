@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../widgets/active_icon.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../feed/presentation/feed_screen.dart';
@@ -28,10 +29,11 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
           ].elementAt(state.tabIndex),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.grey,
-            backgroundColor: Colors.white,
+            unselectedItemColor: Theme.of(context).splashColor.withAlpha(100),
+            backgroundColor: Theme.of(context).cardColor,
             currentIndex: state.tabIndex,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             onTap: (index) {
               BlocProvider.of<BottomNavigationBloc>(context).add(
                 TabChangeEvent(tabIndex: index),
@@ -40,18 +42,30 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
             items: const [
               BottomNavigationBarItem(
                 label: '',
-                icon: Icon(Icons.ac_unit),
+                activeIcon: ActiveIconWidget(
+                  child: Icon(Icons.home),
+                ),
+                icon: Icon(Icons.home),
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: Icon(Icons.alt_route),
+                activeIcon: ActiveIconWidget(
+                  child: Icon(Icons.description),
+                ),
+                icon: Icon(Icons.description),
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: Icon(Icons.linked_camera),
+                activeIcon: ActiveIconWidget(
+                  child: Icon(Icons.favorite),
+                ),
+                icon: Icon(Icons.favorite),
               ),
               BottomNavigationBarItem(
                 label: '',
+                activeIcon: ActiveIconWidget(
+                  child: Icon(Icons.account_circle),
+                ),
                 icon: Icon(Icons.account_circle),
               ),
             ],

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class TodayAssets {
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
@@ -19,6 +21,11 @@ class TodayFonts {
 class TodayValues {
   static const charset =
       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+}
+
+class TodayColors {
+  static const green = Color(0xff5FFBD6);
+  static const purple = Color(0xffB063F6);
 }
 
 class TodayLinks {
