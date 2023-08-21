@@ -3,6 +3,7 @@ import '../../../widgets/active_icon.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../feed/presentation/feed_screen.dart';
+import 'package:today/helpers/today_bottom_icons.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../request/presentation/requests_screen.dart';
 import '../../response/presentation/response_screen.dart';
@@ -29,7 +30,7 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
           ].elementAt(state.tabIndex),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Theme.of(context).splashColor.withAlpha(100),
+            unselectedItemColor: Theme.of(context).hintColor.withAlpha(100),
             backgroundColor: Theme.of(context).cardColor,
             currentIndex: state.tabIndex,
             showSelectedLabels: false,
@@ -43,30 +44,54 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
               BottomNavigationBarItem(
                 label: '',
                 activeIcon: ActiveIconWidget(
-                  child: Icon(Icons.home),
+                  child: Icon(
+                    TodayBottomIcons.home,
+                    size: 25.0,
+                  ),
                 ),
-                icon: Icon(Icons.home),
+                icon: Icon(
+                  TodayBottomIcons.home,
+                  size: 25.0,
+                ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 activeIcon: ActiveIconWidget(
-                  child: Icon(Icons.description),
+                  child: Icon(
+                    TodayBottomIcons.list,
+                    size: 23.0,
+                  ),
                 ),
-                icon: Icon(Icons.description),
+                icon: Icon(
+                  TodayBottomIcons.list,
+                  size: 23.0,
+                ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 activeIcon: ActiveIconWidget(
-                  child: Icon(Icons.favorite),
+                  child: Icon(
+                    TodayBottomIcons.heart,
+                    size: 25.0,
+                  ),
                 ),
-                icon: Icon(Icons.favorite),
+                icon: Icon(
+                  TodayBottomIcons.heart,
+                  size: 25.0,
+                ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 activeIcon: ActiveIconWidget(
-                  child: Icon(Icons.account_circle),
+                  child: Icon(
+                    TodayBottomIcons.user,
+                    size: 25.0,
+                  ),
                 ),
-                icon: Icon(Icons.account_circle),
+                icon: Icon(
+                  TodayBottomIcons.user,
+                  size: 25.0,
+                ),
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../widgets/active_icon.dart';
+import '../../../helpers/today_bottom_icons.dart';
 import 'package:today/screens/feed/presentation/feed_screen.dart';
 import 'package:today/screens/profile/presentation/profile_screen.dart';
 import 'package:today/screens/request/presentation/requests_screen.dart';
@@ -25,27 +26,51 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
           items: const [
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
-                child: Icon(Icons.home),
+                child: Icon(
+                  TodayBottomIcons.home,
+                  size: 25.0,
+                ),
               ),
-              icon: Icon(Icons.home),
+              icon: Icon(
+                TodayBottomIcons.home,
+                size: 25.0,
+              ),
             ),
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
-                child: Icon(Icons.description),
+                child: Icon(
+                  TodayBottomIcons.list,
+                  size: 23.0,
+                ),
               ),
-              icon: Icon(Icons.description),
+              icon: Icon(
+                TodayBottomIcons.list,
+                size: 23.0,
+              ),
             ),
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
-                child: Icon(Icons.favorite),
+                child: Icon(
+                  TodayBottomIcons.heart,
+                  size: 25.0,
+                ),
               ),
-              icon: Icon(Icons.favorite),
+              icon: Icon(
+                TodayBottomIcons.heart,
+                size: 25.0,
+              ),
             ),
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
-                child: Icon(Icons.account_circle),
+                child: Icon(
+                  TodayBottomIcons.user,
+                  size: 25.0,
+                ),
               ),
-              icon: Icon(Icons.account_circle),
+              icon: Icon(
+                TodayBottomIcons.user,
+                size: 25.0,
+              ),
             ),
           ],
         ),

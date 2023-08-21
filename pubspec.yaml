@@ -44,6 +44,7 @@ flutter:
   assets:
      - assets/png/
      - assets/svg/
+     - fonts/
 
   fonts:
     - family: MontserratBlack
@@ -73,6 +74,9 @@ flutter:
     - family: MontserratThin
       fonts:
         - asset: fonts/Montserrat-Thin.ttf
+    - family: TodayBottomIcons
+      fonts:
+        - asset: fonts/icons/TodayBottomIcons.ttf
 
 flutter_native_splash:
   background_image: "assets/png/background.png"
