@@ -77,6 +77,9 @@ flutter:
     - family: TodayBottomIcons
       fonts:
         - asset: fonts/icons/TodayBottomIcons.ttf
+    - family: BottomIcons
+      fonts:
+        - asset: fonts/icons/BottomIcons.ttf
 
 flutter_native_splash:
   background_image: "assets/png/background.png"

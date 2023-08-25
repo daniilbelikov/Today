@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../helpers/bottom_icons.dart';
 import '../../../widgets/active_icon.dart';
 import '../../../helpers/today_bottom_icons.dart';
 import 'package:today/screens/feed/presentation/feed_screen.dart';
@@ -27,49 +28,37 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
                 child: Icon(
-                  TodayBottomIcons.home,
-                  size: 25.0,
+                  BottomIcons.home,
+                  size: 26.0,
                 ),
               ),
               icon: Icon(
-                TodayBottomIcons.home,
-                size: 25.0,
+                BottomIcons.home,
+                size: 26.0,
               ),
             ),
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
                 child: Icon(
-                  TodayBottomIcons.list,
-                  size: 23.0,
+                  BottomIcons.layers,
+                  size: 27.0,
                 ),
               ),
               icon: Icon(
-                TodayBottomIcons.list,
-                size: 23.0,
+                BottomIcons.layers,
+                size: 27.0,
               ),
             ),
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
                 child: Icon(
-                  TodayBottomIcons.heart,
-                  size: 25.0,
+                  BottomIcons.account,
+                  size: 27.0,
                 ),
               ),
               icon: Icon(
-                TodayBottomIcons.heart,
-                size: 25.0,
-              ),
-            ),
-            BottomNavigationBarItem(
-              activeIcon: ActiveIconWidget(
-                child: Icon(
-                  TodayBottomIcons.user,
-                  size: 25.0,
-                ),
-              ),
-              icon: Icon(
-                TodayBottomIcons.user,
-                size: 25.0,
+                BottomIcons.account,
+                size: 27.0,
               ),
             ),
           ],
@@ -78,7 +67,6 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
           return const [
             FeedScreen(),
             RequestsScreen(),
-            ResponseScreen(),
             ProfileScreen(),
           ][index];
         },
