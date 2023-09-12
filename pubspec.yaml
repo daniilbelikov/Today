@@ -74,12 +74,9 @@ flutter:
     - family: MontserratThin
       fonts:
         - asset: fonts/Montserrat-Thin.ttf
-    - family: TodayBottomIcons
+    - family: TabIcons
       fonts:
-        - asset: fonts/icons/TodayBottomIcons.ttf
-    - family: BottomIcons
-      fonts:
-        - asset: fonts/icons/BottomIcons.ttf
+        - asset: fonts/icons/TabIcons.ttf
 
 flutter_native_splash:
   background_image: "assets/png/background.png"

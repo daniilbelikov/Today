@@ -5,14 +5,14 @@ import 'package:flutter/services.dart';
 import '../../../helpers/constants.dart';
 import '../../../widgets/flexible_space_bar.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class ReactionsScreen extends StatefulWidget {
+  const ReactionsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ReactionsScreen> createState() => _ReactionsScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ReactionsScreenState extends State<ReactionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             automaticallyImplyLeading: false,
             flexibleSpace: BackgroundFlexibleSpaceBar(
               title: Text(
-                S.of(context).profile,
+                S.of(context).response,
                 style: TextStyle(
                   color: Theme.of(context).shadowColor,
                   fontFamily: TodayFonts.bold,

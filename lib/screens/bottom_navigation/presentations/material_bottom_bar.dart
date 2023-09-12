@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../helpers/bottom_icons.dart';
+import '../../../helpers/tab_icons.dart';
 import '../../../widgets/active_icon.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../feed/presentation/feed_screen.dart';
-import 'package:today/helpers/today_bottom_icons.dart';
+import '../../events/presentation/events_screen.dart';
 import '../../profile/presentation/profile_screen.dart';
-import '../../request/presentation/requests_screen.dart';
+import '../../reactions/presentation/reactions_screen.dart';
 
 class MaterialBottomBar extends StatefulWidget {
   const MaterialBottomBar({Key? key}) : super(key: key);
@@ -22,15 +21,17 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           body: const [
-            FeedScreen(),
-            RequestsScreen(),
+            EventsScreen(),
+            ReactionsScreen(),
             ProfileScreen(),
           ].elementAt(state.tabIndex),
           bottomNavigationBar: BottomNavigationBar(
+            elevation: 0.0,
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: Theme.of(context).hintColor.withAlpha(100),
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             currentIndex: state.tabIndex,
             showSelectedLabels: false,
             showUnselectedLabels: false,
@@ -44,25 +45,12 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
                 label: '',
                 activeIcon: ActiveIconWidget(
                   child: Icon(
-                    BottomIcons.home,
-                    size: 23.0,
-                  ),
-                ),
-                icon: Icon(
-                  BottomIcons.home,
-                  size: 23.0,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: '',
-                activeIcon: ActiveIconWidget(
-                  child: Icon(
-                    BottomIcons.layers,
+                    TabIcons.flame,
                     size: 24.0,
                   ),
                 ),
                 icon: Icon(
-                  BottomIcons.layers,
+                  TabIcons.flame,
                   size: 24.0,
                 ),
               ),
@@ -70,12 +58,25 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
                 label: '',
                 activeIcon: ActiveIconWidget(
                   child: Icon(
-                    BottomIcons.account,
+                    TabIcons.heart,
                     size: 24.0,
                   ),
                 ),
                 icon: Icon(
-                  BottomIcons.account,
+                  TabIcons.heart,
+                  size: 24.0,
+                ),
+              ),
+              BottomNavigationBarItem(
+                label: '',
+                activeIcon: ActiveIconWidget(
+                  child: Icon(
+                    TabIcons.star,
+                    size: 24.0,
+                  ),
+                ),
+                icon: Icon(
+                  TabIcons.star,
                   size: 24.0,
                 ),
               ),

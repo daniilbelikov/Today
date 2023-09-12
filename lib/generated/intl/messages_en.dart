@@ -25,10 +25,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
         "auth_title":
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
+        "events": MessageLookupByLibrary.simpleMessage("События"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
         "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
             "Политикой конфиденциальности"),
         "privacy_title": MessageLookupByLibrary.simpleMessage(
-            "Осуществляя вход, вы соглашаетесь с")
+            "Осуществляя вход, вы соглашаетесь с"),
+        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "response": MessageLookupByLibrary.simpleMessage("Реакции")
       };
 }

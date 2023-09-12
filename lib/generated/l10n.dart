@@ -99,6 +99,36 @@ class S {
       args: [],
     );
   }
+
+  /// `События`
+  String get events {
+    return Intl.message(
+      'События',
+      name: 'events',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Реакции`
+  String get response {
+    return Intl.message(
+      'Реакции',
+      name: 'response',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Профиль`
+  String get profile {
+    return Intl.message(
+      'Профиль',
+      name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
