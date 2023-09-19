@@ -18,16 +18,35 @@ class TodayFonts {
   static const thin = 'MontserratThin';
 }
 
-class TodayValues {
-  static const charset =
-      '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
-}
-
 class TodayColors {
   static const green = Color(0xff5FFBD6);
   static const purple = Color(0xffB063F6);
 }
 
+class TodayValues {
+  static const charset =
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+}
+
 class TodayLinks {
   static const privacy = 'https://belikov.dev';
+}
+
+class TodayKeys {
+  static const events = 'events';
+}
+
+class TodayDecorations {
+  static final shadow = BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey[300]!,
+        blurRadius: 6.0,
+        spreadRadius: 2.0,
+        offset: const Offset(0.0, 0.0),
+      ),
+    ],
+    borderRadius: BorderRadius.circular(20.0),
+    color: Colors.white,
+  );
 }

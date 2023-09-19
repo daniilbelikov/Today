@@ -9,13 +9,13 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository authRepository;
+  final AuthRepository repository;
 
-  AuthBloc({required this.authRepository}) : super(UnauthenticatedState()) {
+  AuthBloc({required this.repository}) : super(UnauthenticatedState()) {
     on<GoogleSignInEvent>((event, emit) async {
       emit(LoadingState());
       try {
-        final user = await authRepository.signInWithGoogle();
+        final user = await repository.signInWithGoogle();
         emit(AuthenticatedState(user!));
       } catch (error) {
         emit(AuthErrorState(error.toString()));
@@ -26,7 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AppleSignInEvent>((event, emit) async {
       emit(LoadingState());
       try {
-        final user = await authRepository.signInWithApple();
+        final user = await repository.signInWithApple();
         emit(AuthenticatedState(user!));
       } catch (error) {
         emit(AuthErrorState(error.toString()));
@@ -36,7 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<SignOutEvent>((event, emit) async {
       emit(LoadingState());
-      await authRepository.signOut();
+      await repository.signOut();
       emit(UnauthenticatedState());
     });
   }

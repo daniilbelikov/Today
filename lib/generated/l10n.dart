@@ -129,6 +129,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Создать`
+  String get create {
+    return Intl.message(
+      'Создать',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Редактировать`
+  String get edit {
+    return Intl.message(
+      'Редактировать',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отклики`
+  String get responses {
+    return Intl.message(
+      'Отклики',
+      name: 'responses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Предложения`
+  String get offers {
+    return Intl.message(
+      'Предложения',
+      name: 'offers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Варианты в `
+  String get variants {
+    return Intl.message(
+      'Варианты в ',
+      name: 'variants',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -137,6 +187,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ru'),
     ];
   }
 
