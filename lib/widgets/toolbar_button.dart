@@ -15,10 +15,9 @@ class ToolbarButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 30.0,
+    return SizedBox(
+      height: 32.0,
       width: width,
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

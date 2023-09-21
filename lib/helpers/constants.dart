@@ -47,10 +47,10 @@ class TodayDecorations {
   static final shadow = BoxDecoration(
     boxShadow: [
       BoxShadow(
-        color: Colors.grey[300]!,
-        blurRadius: 6.0,
-        spreadRadius: 2.0,
+        color: const Color(0xffE0E0E0).withAlpha(150),
         offset: const Offset(0.0, 0.0),
+        spreadRadius: 2.0,
+        blurRadius: 6.0,
       ),
     ],
     borderRadius: BorderRadius.circular(20.0),

@@ -1,11 +1,10 @@
 import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../data/reactions_provider.dart';
 import '../../../helpers/constants.dart';
-import '../../../widgets/flexible_space_bar.dart';
+import '../../../widgets/today_app_bar.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class ReactionsScreen extends StatefulWidget {
@@ -20,47 +19,20 @@ class _ReactionsScreenState extends State<ReactionsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: NestedScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        headerSliverBuilder: (_, __) => [
-          SliverAppBar(
-            forceElevated: true,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarBrightness: Brightness.light,
+      body: SafeArea(
+        child: Column(
+          children: [
+            TodayAppBar(
+              title: S.of(context).response,
+              hasAction: false,
+              onPressed: null,
+              buttonTitle: '',
             ),
-            snap: false,
-            pinned: true,
-            elevation: 0.0,
-            centerTitle: false,
-            expandedHeight: 86.0,
-            collapsedHeight: 86.0,
-            automaticallyImplyLeading: false,
-            flexibleSpace: BackgroundFlexibleSpaceBar(
-              collapseMode: CollapseMode.none,
-              title: Text(
-                S.of(context).response,
-                style: TextStyle(
-                  color: Theme.of(context).shadowColor,
-                  fontFamily: TodayFonts.bold,
-                  fontSize: 28.0,
-                ),
-              ),
-              centerTitle: false,
-              titlePadding: EdgeInsets.only(
-                left: Platform.isAndroid ? 16.0 : 20.0,
-                bottom: 8.0,
-              ),
-              background: ClipRect(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                ),
-              ),
+            const Expanded(
+              child: _ReactionsBodyWidget(),
             ),
-          )
-        ],
-        body: const _ReactionsBodyWidget(),
+          ],
+        ),
       ),
     );
   }

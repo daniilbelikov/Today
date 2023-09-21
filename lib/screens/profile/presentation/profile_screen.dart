@@ -1,13 +1,9 @@
-import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../auth/bloc/auth_bloc.dart';
-import '../../../helpers/constants.dart';
 import '../../../utils/route_wrapper.dart';
-import '../../../widgets/toolbar_button.dart';
+import '../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../widgets/flexible_space_bar.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -22,71 +18,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: NestedScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        headerSliverBuilder: (_, __) => [
-          SliverAppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarBrightness: Brightness.light,
-            ),
-            snap: false,
-            pinned: true,
-            elevation: 0.0,
-            centerTitle: false,
-            expandedHeight: 86.0,
-            collapsedHeight: 86.0,
-            automaticallyImplyLeading: false,
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(
-                  right: Platform.isAndroid ? 16.0 : 20.0,
-                ),
-                child: ToolbarButton(
-                  width: 144.0,
-                  title: S.of(context).edit,
-                  onPressed: () => RouteWraper().push(
-                    context,
-                    const EditProfileScreen(),
-                  ),
-                ),
-              ),
-            ],
-            flexibleSpace: BackgroundFlexibleSpaceBar(
-              title: Text(
-                S.of(context).profile,
-                style: TextStyle(
-                  color: Theme.of(context).shadowColor,
-                  fontFamily: TodayFonts.bold,
-                  fontSize: 28.0,
-                ),
-              ),
-              centerTitle: false,
-              titlePadding: EdgeInsets.only(
-                left: Platform.isAndroid ? 16.0 : 20.0,
-                bottom: 8.0,
-              ),
-              background: ClipRect(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            TodayAppBar(
+              hasAction: true,
+              buttonWidth: 144.0,
+              title: S.of(context).profile,
+              buttonTitle: S.of(context).edit,
+              onPressed: () => RouteWraper().push(
+                context,
+                const EditProfileScreen(),
               ),
             ),
-          )
-        ],
-        body: Center(
-          child: TextButton(
-            onPressed: () {
-              BlocProvider.of<AuthBloc>(context).add(
-                SignOutEvent(),
-              );
-            },
-            child: const Text(
-              'Выйти',
-              style: TextStyle(
-                color: Colors.black,
-              ),
+            const Expanded(
+              child: _ProfileBodyWidget(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileBodyWidget extends StatelessWidget {
+  const _ProfileBodyWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Center(
+        child: TextButton(
+          onPressed: () {
+            BlocProvider.of<AuthBloc>(context).add(
+              SignOutEvent(),
+            );
+          },
+          child: const Text(
+            'Выйти',
+            style: TextStyle(
+              color: Colors.black,
             ),
           ),
         ),
