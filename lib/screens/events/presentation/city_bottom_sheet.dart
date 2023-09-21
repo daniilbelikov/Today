@@ -1,7 +1,10 @@
 import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
+import 'package:provider/provider.dart';
 import 'package:today/helpers/constants.dart';
+import '../data/provider/events_provider.dart';
 import '../../../widgets/gradient_button.dart';
 import 'package:today/utils/route_wrapper.dart';
 
@@ -13,11 +16,9 @@ class CityBottomSheet extends StatefulWidget {
 }
 
 class _CityBottomSheetState extends State<CityBottomSheet> {
-  String selectedValue = 'Тольятти';
-  List<String> values = ['Тольятти', 'Самара'];
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventsProvider>(context);
     final mediaQueryData = MediaQuery.of(context);
     final bottom = mediaQueryData.padding.bottom;
     final bottomValue = bottom + 20.0;
@@ -48,7 +49,7 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
                       height: 4.0,
                       width: 52.0,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).hintColor,
+                        color: Theme.of(context).hintColor.withAlpha(100),
                         borderRadius: BorderRadius.circular(2.0),
                       ),
                     ),
@@ -69,18 +70,18 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
                     bottom: 24.0,
                   ),
                   child: _RadioRowsWidget(
-                    onChanged: (newValue) {
-                      setState(() {
-                        selectedValue = newValue as String;
-                      });
-                    },
-                    selectedValue: selectedValue,
-                    values: values,
+                    onChanged: (newValue) =>
+                        provider.setSelectedValue(newValue as String),
+                    selectedValue: provider.getSelectedValue,
+                    values: provider.getValues,
                   ),
                 ),
                 GradientButton(
                   title: S.of(context).done,
-                  onPressed: () => RouteWraper().pop(context),
+                  onPressed: () => RouteWraper().pop(
+                    context,
+                    result: provider.getSelectedValue,
+                  ),
                 ),
                 SizedBox(
                   height: bottomValue,
@@ -111,10 +112,12 @@ class _RadioRowsWidget extends StatelessWidget {
     return SizedBox(
       height: 100.0,
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         children: values
             .map(
               (value) => SizedBox(
-                height: 50,
+                height: 50.0,
                 child: RadioListTile(
                   activeColor: Theme.of(context).shadowColor,
                   contentPadding: const EdgeInsets.all(0.0),

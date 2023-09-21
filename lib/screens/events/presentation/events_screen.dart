@@ -5,8 +5,10 @@ import '../../../generated/l10n.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
 import '../data/models/event_model.dart';
+import '../data/provider/events_provider.dart';
 import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
@@ -39,6 +41,7 @@ class _EventsScreenState extends State<EventsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventsProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -102,7 +105,7 @@ class _EventsScreenState extends State<EventsScreen> {
                 return _EventsWidget(
                   events: state.events,
                   controller: _controller,
-                  userCity: 'Тольятти',
+                  userCity: provider.getRightCity(),
                 );
               }
               return const Center(
@@ -128,29 +131,15 @@ class _EventsWidget extends StatelessWidget {
   final List<EventModel> events;
   final String userCity;
 
-  bool _onSwipe(
-    int previousIndex,
-    int? currentIndex,
-    CardSwiperDirection direction,
-  ) {
-    return true;
-  }
-
-  bool _onUndo(
-    int? previousIndex,
-    int currentIndex,
-    CardSwiperDirection direction,
-  ) {
-    return true;
-  }
-
   void showCityBottomSheet(BuildContext context) {
-    showModalBottomSheet<int>(
+    showModalBottomSheet<String?>(
       builder: (_) => const CityBottomSheet(),
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       context: context,
-    ).then((cityID) {});
+    ).then((city) {
+      if (city == null) return;
+    });
   }
 
   @override
@@ -161,10 +150,8 @@ class _EventsWidget extends StatelessWidget {
         children: [
           Expanded(
             child: CardSwiper(
-              isLoop: true,
+              isLoop: false,
               controller: controller,
-              onSwipe: _onSwipe,
-              onUndo: _onUndo,
               allowedSwipeDirection: AllowedSwipeDirection.symmetric(
                 horizontal: true,
                 vertical: false,
@@ -176,6 +163,7 @@ class _EventsWidget extends StatelessWidget {
                 top: 0.0,
               ),
               cardsCount: events.length,
+              onEnd: () {},
               cardBuilder: (context, index, x, y) {
                 return _EventWidget(
                   name: events[index].user.name,

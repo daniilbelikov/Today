@@ -199,6 +199,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Создание`
+  String get create_event {
+    return Intl.message(
+      'Создание',
+      name: 'create_event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Редактирование`
+  String get edit_profile {
+    return Intl.message(
+      'Редактирование',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -24,7 +24,7 @@ class RouteWraper {
     );
   }
 
-  void pop(BuildContext context, {bool? result}) {
+  void pop(BuildContext context, {dynamic result}) {
     result == null ? Navigator.pop(context) : Navigator.pop(context, result);
   }
 }

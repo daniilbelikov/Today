@@ -32,6 +32,13 @@ class TodayLinks {
   static const privacy = 'https://belikov.dev';
 }
 
+class TodayData {
+  static const selectedValue = 'Тольятти';
+  static const values = ['Тольятти', 'Самара'];
+  static const samaraOld = 'Самара';
+  static const samaraNew = 'Самаре';
+}
+
 class TodayKeys {
   static const events = 'events';
 }

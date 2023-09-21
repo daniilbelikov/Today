@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               );
             },
             child: const Text(
-              'Signout',
+              'Выйти',
               style: TextStyle(
                 color: Colors.black,
               ),

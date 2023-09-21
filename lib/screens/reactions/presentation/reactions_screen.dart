@@ -2,9 +2,11 @@ import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import '../data/reactions_provider.dart';
 import '../../../helpers/constants.dart';
 import '../../../widgets/flexible_space_bar.dart';
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class ReactionsScreen extends StatefulWidget {
   const ReactionsScreen({Key? key}) : super(key: key);
@@ -58,34 +60,70 @@ class _ReactionsScreenState extends State<ReactionsScreen> {
             ),
           )
         ],
-        body: Padding(
+        body: const _ReactionsBodyWidget(),
+      ),
+    );
+  }
+}
+
+class _ReactionsBodyWidget extends StatelessWidget {
+  const _ReactionsBodyWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<ReactionsProvider>(context);
+    return Column(
+      children: [
+        Padding(
           padding: EdgeInsets.symmetric(
             horizontal: Platform.isAndroid ? 16.0 : 20.0,
-            vertical: 8.0,
+            vertical: 20.0,
           ),
-          child: ContainedTabBarView(
-            tabs: [
-              _TabContainer(title: S.of(context).responses),
-              _TabContainer(title: S.of(context).offers),
-            ],
-            tabBarProperties: TabBarProperties(
-              indicatorColor: Theme.of(context).shadowColor,
-              height: 56.0,
+          child: CustomSlidingSegmentedControl<int>(
+            initialValue: 0,
+            isStretch: true,
+            children: {
+              0: Text(
+                S.of(context).responses,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).cardColor,
+                  fontSize: 16.0,
+                  fontFamily: TodayFonts.semiBold,
+                ),
+              ),
+              1: Text(
+                S.of(context).offers,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).cardColor,
+                  fontSize: 16.0,
+                  fontFamily: TodayFonts.semiBold,
+                ),
+              ),
+            },
+            innerPadding: const EdgeInsets.all(2.0),
+            decoration: BoxDecoration(
+              color: Theme.of(context).hintColor.withAlpha(100),
+              borderRadius: BorderRadius.circular(14.0),
             ),
-            views: const [
-              _LeftViewWidget(),
-              _RightViewWidget(),
-            ],
-            onChange: (index) {},
+            thumbDecoration: BoxDecoration(
+              color: Theme.of(context).shadowColor,
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            onValueChanged: (index) => provider.changeIndex(index),
           ),
         ),
-      ),
+        provider.getIndex == 0
+            ? const _ResponsesWidget()
+            : const _OffersWidget(),
+      ],
     );
   }
 }
 
-class _LeftViewWidget extends StatelessWidget {
-  const _LeftViewWidget({Key? key}) : super(key: key);
+class _ResponsesWidget extends StatelessWidget {
+  const _ResponsesWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -95,39 +133,13 @@ class _LeftViewWidget extends StatelessWidget {
   }
 }
 
-class _RightViewWidget extends StatelessWidget {
-  const _RightViewWidget({Key? key}) : super(key: key);
+class _OffersWidget extends StatelessWidget {
+  const _OffersWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
-    );
-  }
-}
-
-class _TabContainer extends StatelessWidget {
-  const _TabContainer({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 56.0,
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Theme.of(context).shadowColor,
-            fontSize: 16.0,
-            fontFamily: TodayFonts.semiBold,
-          ),
-        ),
-      ),
     );
   }
 }

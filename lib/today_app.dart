@@ -1,12 +1,16 @@
 import 'generated/l10n.dart';
 import 'helpers/themes.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
+import 'package:provider/provider.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
 import 'screens/events/bloc/events_bloc.dart';
 import 'screens/auth/data/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'screens/reactions/data/reactions_provider.dart';
+import 'screens/events/data/provider/events_provider.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
@@ -44,21 +48,31 @@ class TodayApp extends StatelessWidget {
                 ),
               ),
             ],
-            child: MaterialApp(
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
+            child: MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (_) => EventsProvider(),
+                ),
+                ChangeNotifierProvider(
+                  create: (_) => ReactionsProvider(),
+                ),
               ],
-              supportedLocales: S.delegate.supportedLocales,
-              home: StreamBuilder<User?>(
-                stream: FirebaseAuth.instance.authStateChanges(),
-                builder: (_, snapshot) {
-                  return snapshot.hasData
-                      ? const BottomNavigationView()
-                      : const AuthScreen();
-                },
+              child: MaterialApp(
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                home: StreamBuilder<User?>(
+                  stream: FirebaseAuth.instance.authStateChanges(),
+                  builder: (_, snapshot) {
+                    return snapshot.hasData
+                        ? const BottomNavigationView()
+                        : const AuthScreen();
+                  },
+                ),
               ),
             ),
           ),
