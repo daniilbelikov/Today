@@ -15,12 +15,12 @@ class EventAdded extends EventsState {}
 class EventsLoading extends EventsState {}
 
 class EventsLoaded extends EventsState {
-  final List<ProductModel> data;
+  final List<EventModel> events;
 
-  EventsLoaded(this.data);
+  EventsLoaded(this.events);
 
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [events];
 }
 
 class EventError extends EventsState {

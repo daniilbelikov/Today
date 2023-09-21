@@ -16,8 +16,8 @@ class EventsRepository {
     }
   }
 
-  Future<List<ProductModel>> getEvents() async {
-    List<ProductModel> events = [];
+  Future<List<EventModel>> getEvents() async {
+    List<EventModel> events = [];
 
     try {
       final snapshot = await _reference.get();
@@ -25,7 +25,7 @@ class EventsRepository {
       //     await _reference.orderBy('created', descending: true).get();
 
       for (var event in snapshot.docs) {
-        events.add(ProductModel.fromJson(event.data()));
+        events.add(EventModel.fromJson(event.data()));
       }
 
       return events;

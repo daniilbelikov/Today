@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../auth/bloc/auth_bloc.dart';
 import '../../../helpers/constants.dart';
+import '../../../utils/route_wrapper.dart';
 import '../../../widgets/toolbar_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/flexible_space_bar.dart';
+import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -40,9 +42,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   right: Platform.isAndroid ? 16.0 : 20.0,
                 ),
                 child: ToolbarButton(
-                  title: S.of(context).edit,
-                  onPressed: () {},
                   width: 144.0,
+                  title: S.of(context).edit,
+                  onPressed: () => RouteWraper().push(
+                    context,
+                    const EditProfileScreen(),
+                  ),
                 ),
               ),
             ],

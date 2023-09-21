@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'city_bottom_sheet.dart';
 import '../bloc/events_bloc.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/gestures.dart';
@@ -6,10 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../helpers/constants.dart';
 import '../data/models/event_model.dart';
+import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
 import '../../../widgets/flexible_space_bar.dart';
 import 'package:today/widgets/toolbar_button.dart';
+import 'package:today/screens/create_event/create_event.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 class EventsScreen extends StatefulWidget {
@@ -60,9 +63,12 @@ class _EventsScreenState extends State<EventsScreen> {
                     right: Platform.isAndroid ? 16.0 : 20.0,
                   ),
                   child: ToolbarButton(
-                    title: S.of(context).create,
-                    onPressed: () {},
                     width: 90.0,
+                    title: S.of(context).create,
+                    onPressed: () => RouteWraper().push(
+                      context,
+                      const CreateEventScreen(),
+                    ),
                   ),
                 ),
               ],
@@ -94,7 +100,7 @@ class _EventsScreenState extends State<EventsScreen> {
             builder: (context, state) {
               if (state is EventsLoaded) {
                 return _EventsWidget(
-                  events: state.data,
+                  events: state.events,
                   controller: _controller,
                   userCity: 'Тольятти',
                 );
@@ -119,7 +125,7 @@ class _EventsWidget extends StatelessWidget {
   }) : super(key: key);
 
   final CardSwiperController controller;
-  final List<ProductModel> events;
+  final List<EventModel> events;
   final String userCity;
 
   bool _onSwipe(
@@ -136,6 +142,15 @@ class _EventsWidget extends StatelessWidget {
     CardSwiperDirection direction,
   ) {
     return true;
+  }
+
+  void showCityBottomSheet(BuildContext context) {
+    showModalBottomSheet<int>(
+      builder: (_) => const CityBottomSheet(),
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+    ).then((cityID) {});
   }
 
   @override
@@ -163,8 +178,8 @@ class _EventsWidget extends StatelessWidget {
               cardsCount: events.length,
               cardBuilder: (context, index, x, y) {
                 return _EventWidget(
-                  name: events[index].name,
-                  price: events[index].price,
+                  name: events[index].user.name,
+                  price: events[index].user.age,
                 );
               },
             ),
@@ -190,7 +205,8 @@ class _EventsWidget extends StatelessWidget {
                       fontFamily: TodayFonts.semiBold,
                       fontSize: 16.0,
                     ),
-                    recognizer: TapGestureRecognizer()..onTap = () {},
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () => showCityBottomSheet(context),
                   ),
                 ],
               ),

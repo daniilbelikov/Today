@@ -25,7 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
         "auth_title":
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
+        "chooseCity": MessageLookupByLibrary.simpleMessage("Выберите город"),
         "create": MessageLookupByLibrary.simpleMessage("Создать"),
+        "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../utils/tab_icons.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../helpers/tab_icons.dart';
 import '../../../widgets/active_icon.dart';
 import 'package:today/screens/events/presentation/events_screen.dart';
 import 'package:today/screens/profile/presentation/profile_screen.dart';

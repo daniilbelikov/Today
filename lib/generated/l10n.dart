@@ -179,6 +179,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Выберите город`
+  String get chooseCity {
+    return Intl.message(
+      'Выберите город',
+      name: 'chooseCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Готово`
+  String get done {
+    return Intl.message(
+      'Готово',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
