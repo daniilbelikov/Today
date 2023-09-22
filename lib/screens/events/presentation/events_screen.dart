@@ -137,7 +137,6 @@ class _EventCardsWidget extends StatelessWidget {
                 bottom: 30.0,
                 top: 0.0,
               ),
-              onEnd: () {},
               cardBuilder: (context, index, x, y) {
                 return _EventCardWidget(
                   event: events[index],

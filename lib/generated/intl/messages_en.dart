@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "activity": MessageLookupByLibrary.simpleMessage("Активность"),
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
         "auth_title":
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
@@ -32,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
         "events": MessageLookupByLibrary.simpleMessage("События"),
+        "exit": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
         "offers": MessageLookupByLibrary.simpleMessage("Предложения"),
         "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
@@ -39,7 +41,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacy_title": MessageLookupByLibrary.simpleMessage(
             "Осуществляя вход, вы соглашаетесь с"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
-        "response": MessageLookupByLibrary.simpleMessage("Реакции"),
         "responses": MessageLookupByLibrary.simpleMessage("Отклики"),
         "variants": MessageLookupByLibrary.simpleMessage("Варианты в ")
       };

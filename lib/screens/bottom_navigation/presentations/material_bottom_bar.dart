@@ -5,7 +5,7 @@ import '../bloc/bottom_navigation_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../events/presentation/events_screen.dart';
 import '../../profile/presentation/profile_screen.dart';
-import '../../reactions/presentation/reactions_screen.dart';
+import '../../activity/presentation/activity_screen.dart';
 
 class MaterialBottomBar extends StatefulWidget {
   const MaterialBottomBar({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
           resizeToAvoidBottomInset: false,
           body: const [
             EventsScreen(),
-            ReactionsScreen(),
+            ActivityScreen(),
             ProfileScreen(),
           ].elementAt(state.tabIndex),
           bottomNavigationBar: BottomNavigationBar(

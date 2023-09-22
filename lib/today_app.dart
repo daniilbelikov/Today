@@ -8,11 +8,13 @@ import 'screens/events/bloc/events_bloc.dart';
 import 'screens/auth/data/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'screens/activity/bloc/activity_bloc.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'screens/reactions/data/reactions_provider.dart';
 import 'screens/events/data/provider/events_provider.dart';
+import 'screens/activity/data/provider/activity_provider.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'screens/activity/data/repository/activity_repository.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
 import 'screens/bottom_navigation/presentations/bottom_navigation_widget.dart';
 
@@ -34,6 +36,9 @@ class TodayApp extends StatelessWidget {
             RepositoryProvider(
               create: (context) => EventsRepository(),
             ),
+            RepositoryProvider(
+              create: (context) => ActivityRepository(),
+            ),
           ],
           child: MultiBlocProvider(
             providers: [
@@ -47,6 +52,12 @@ class TodayApp extends StatelessWidget {
                   repository: RepositoryProvider.of<EventsRepository>(context),
                 ),
               ),
+              BlocProvider(
+                create: (context) => ActivityBloc(
+                  repository:
+                      RepositoryProvider.of<ActivityRepository>(context),
+                ),
+              ),
             ],
             child: MultiProvider(
               providers: [
@@ -54,7 +65,7 @@ class TodayApp extends StatelessWidget {
                   create: (_) => EventsProvider(),
                 ),
                 ChangeNotifierProvider(
-                  create: (_) => ReactionsProvider(),
+                  create: (_) => ActivityProvider(),
                 ),
               ],
               child: MaterialApp(

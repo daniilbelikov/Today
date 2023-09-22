@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../widgets/active_icon.dart';
 import 'package:today/screens/events/presentation/events_screen.dart';
 import 'package:today/screens/profile/presentation/profile_screen.dart';
-import 'package:today/screens/reactions/presentation/reactions_screen.dart';
+import 'package:today/screens/activity/presentation/activity_screen.dart';
 
 class CupertinoBottomBar extends StatefulWidget {
   const CupertinoBottomBar({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
         tabBuilder: (_, index) {
           return const [
             EventsScreen(),
-            ReactionsScreen(),
+            ActivityScreen(),
             ProfileScreen(),
           ][index];
         },

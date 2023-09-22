@@ -4,7 +4,7 @@ import '../../../generated/l10n.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import '../../../helpers/constants.dart';
-import '../../../widgets/sign_in_button.dart';
+import '../../../widgets/black_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
@@ -119,18 +119,20 @@ class _AuthButtonWidget extends StatelessWidget {
     return Platform.isIOS
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: SignInButton(
+            child: BlackButton(
               onPressed: iOSAction,
               text: S.of(context).apple,
               icon: TodayAssets.apple,
+              hasIcon: true,
             ),
           )
         : Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: SignInButton(
+            child: BlackButton(
               onPressed: androidAction,
               text: S.of(context).google,
               icon: TodayAssets.google,
+              hasIcon: true,
             ),
           );
   }

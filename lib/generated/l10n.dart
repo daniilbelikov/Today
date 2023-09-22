@@ -110,11 +110,11 @@ class S {
     );
   }
 
-  /// `Реакции`
-  String get response {
+  /// `Активность`
+  String get activity {
     return Intl.message(
-      'Реакции',
-      name: 'response',
+      'Активность',
+      name: 'activity',
       desc: '',
       args: [],
     );
@@ -215,6 +215,16 @@ class S {
     return Intl.message(
       'Редактирование',
       name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйти из аккаунта`
+  String get exit {
+    return Intl.message(
+      'Выйти из аккаунта',
+      name: 'exit',
       desc: '',
       args: [],
     );

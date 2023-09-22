@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class ReactionsProvider with ChangeNotifier {
+class ActivityProvider with ChangeNotifier {
   int index = 0;
 
   int get getIndex => index;

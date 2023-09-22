@@ -30,7 +30,6 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     */
     on<GetEvents>((event, emit) async {
       emit(EventsLoading());
-      await Future.delayed(const Duration(seconds: 1));
 
       try {
         final data = await repository.getEvents();

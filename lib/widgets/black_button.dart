@@ -2,15 +2,17 @@ import '../helpers/constants.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 
-class SignInButton extends StatelessWidget {
-  const SignInButton({
+class BlackButton extends StatelessWidget {
+  const BlackButton({
     Key? key,
     required this.onPressed,
+    required this.hasIcon,
     required this.text,
     required this.icon,
   }) : super(key: key);
 
   final Function()? onPressed;
+  final bool hasIcon;
   final String text;
   final String icon;
 
@@ -30,14 +32,16 @@ class SignInButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              icon,
-              height: 25.0,
-              width: 25.0,
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
+            if (hasIcon)
+              SvgPicture.asset(
+                icon,
+                height: 25.0,
+                width: 25.0,
+              ),
+            if (hasIcon)
+              const SizedBox(
+                width: 10.0,
+              ),
             Text(
               text,
               style: TextStyle(
