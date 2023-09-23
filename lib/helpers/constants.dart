@@ -41,6 +41,7 @@ class TodayData {
 
 class TodayKeys {
   static const events = 'events';
+  static const users = 'users';
 }
 
 class TodayDecorations {

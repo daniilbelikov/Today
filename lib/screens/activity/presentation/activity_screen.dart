@@ -6,6 +6,7 @@ import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
+import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/provider/activity_provider.dart';
@@ -88,9 +89,13 @@ class _ReactionsBodyWidget extends StatelessWidget {
                       controller: controller,
                       events: state.events,
                     );
+            } else if (state is EventError) {
+              return const ErrorView();
             }
-            return const Center(
-              child: ActivityIndicatorWidget(),
+            return const Expanded(
+              child: Center(
+                child: ActivityIndicatorWidget(),
+              ),
             );
           },
         )
@@ -137,7 +142,10 @@ class _SliderWidget extends StatelessWidget {
         color: Theme.of(context).shadowColor,
         borderRadius: BorderRadius.circular(12.0),
       ),
-      onValueChanged: (index) => provider.changeIndex(index),
+      onValueChanged: (index) {
+        BlocProvider.of<ActivityBloc>(context).add(GetEvents());
+        provider.changeIndex(index);
+      },
     );
   }
 }

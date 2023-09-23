@@ -16,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(LoadingState());
       try {
         final user = await repository.signInWithGoogle();
-        emit(AuthenticatedState(user!));
+        if (user != null) emit(AuthenticatedState(user));
       } catch (error) {
         emit(AuthErrorState(error.toString()));
         emit(UnauthenticatedState());
@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(LoadingState());
       try {
         final user = await repository.signInWithApple();
-        emit(AuthenticatedState(user!));
+        if (user != null) emit(AuthenticatedState(user));
       } catch (error) {
         emit(AuthErrorState(error.toString()));
         emit(UnauthenticatedState());

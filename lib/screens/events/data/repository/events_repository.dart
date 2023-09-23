@@ -3,14 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:today/screens/events/data/models/event_model.dart';
 
 class EventsRepository {
-  final _reference = FirebaseFirestore.instance.collection(TodayKeys.events);
+  final _eventsRef = FirebaseFirestore.instance.collection(TodayKeys.events);
 
   Future<void> createEvent({
     required String name,
     required String price,
   }) async {
     try {
-      await _reference.add({'name': name, 'price': price});
+      await _eventsRef.add({'name': name, 'price': price});
     } catch (error) {
       throw Exception(error.toString());
     }
@@ -20,14 +20,13 @@ class EventsRepository {
     List<EventModel> events = [];
 
     try {
-      final snapshot = await _reference.get();
-      // final snapshot =
-      //     await _reference.orderBy('created', descending: true).get();
+      final snapshot = await _eventsRef.get();
 
-      for (var event in snapshot.docs) {
-        events.add(EventModel.fromJson(event.data()));
+      for (var doc in snapshot.docs) {
+        final data = doc.data();
+        final event = EventModel.fromJson(data);
+        events.add(event);
       }
-
       return events;
     } catch (error) {
       throw Exception(error.toString());

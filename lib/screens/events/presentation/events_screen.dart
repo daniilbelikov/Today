@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
 import '../data/models/event_model.dart';
+import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
 import '../data/provider/events_provider.dart';
 import 'package:today/utils/route_wrapper.dart';
@@ -84,6 +85,8 @@ class _EventsBodyWidget extends StatelessWidget {
             controller: controller,
             userCity: provider.getRightCity(),
           );
+        } else if (state is EventError) {
+          return const ErrorView();
         }
         return const Center(
           child: ActivityIndicatorWidget(),

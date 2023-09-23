@@ -13,6 +13,4 @@ class CreateEvent extends EventsEvent {
   CreateEvent(this.name, this.price);
 }
 */
-class GetEvents extends EventsEvent {
-  GetEvents();
-}
+class GetEvents extends EventsEvent {}

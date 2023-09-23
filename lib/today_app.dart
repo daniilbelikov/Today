@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
 import 'screens/events/bloc/events_bloc.dart';
+import 'screens/profile/bloc/profile_bloc.dart';
 import 'screens/auth/data/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +13,7 @@ import 'screens/activity/bloc/activity_bloc.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'screens/events/data/provider/events_provider.dart';
 import 'screens/activity/data/provider/activity_provider.dart';
+import 'screens/profile/data/repository/profile_repository.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/activity/data/repository/activity_repository.dart';
@@ -39,6 +41,9 @@ class TodayApp extends StatelessWidget {
             RepositoryProvider(
               create: (context) => ActivityRepository(),
             ),
+            RepositoryProvider(
+              create: (context) => ProfileRepository(),
+            ),
           ],
           child: MultiBlocProvider(
             providers: [
@@ -56,6 +61,11 @@ class TodayApp extends StatelessWidget {
                 create: (context) => ActivityBloc(
                   repository:
                       RepositoryProvider.of<ActivityRepository>(context),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => ProfileBloc(
+                  repository: RepositoryProvider.of<ProfileRepository>(context),
                 ),
               ),
             ],

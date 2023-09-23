@@ -5,10 +5,12 @@ import 'package:crypto/crypto.dart';
 import '../../../helpers/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AuthRepository {
-  final _firebaseAuth = FirebaseAuth.instance;
+  final _usersRef = FirebaseFirestore.instance.collection(TodayKeys.users);
+  final _fireAuth = FirebaseAuth.instance;
 
   Future<User?> signInWithGoogle() async {
     try {
@@ -19,10 +21,12 @@ class AuthRepository {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      final userCredential = await _firebaseAuth.signInWithCredential(
+      final userCredential = await _fireAuth.signInWithCredential(
         credential,
       );
       final user = userCredential.user;
+
+      addUserInFirestore(user);
       return user;
     } catch (error) {
       throw Exception(error.toString());
@@ -48,9 +52,30 @@ class AuthRepository {
       );
 
       final userCredential =
-          await _firebaseAuth.signInWithCredential(oauthCredential);
+          await _fireAuth.signInWithCredential(oauthCredential);
       final user = userCredential.user;
+
+      addUserInFirestore(user);
       return user;
+    } catch (error) {
+      throw Exception(error.toString());
+    }
+  }
+
+  Future<void> addUserInFirestore(User? user) async {
+    final uid = user?.uid ?? '';
+
+    try {
+      await _usersRef.doc(uid).set({
+        'id': uid,
+        'age': '',
+        'name': '',
+        'work': '',
+        'avatar': '',
+        'about': '',
+        'vk': '',
+        'telegram': '',
+      });
     } catch (error) {
       throw Exception(error.toString());
     }
@@ -58,7 +83,7 @@ class AuthRepository {
 
   Future<void> signOut() async {
     try {
-      await _firebaseAuth.signOut();
+      await _fireAuth.signOut();
     } catch (error) {
       throw Exception(error);
     }

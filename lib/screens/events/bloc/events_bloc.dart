@@ -32,8 +32,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       emit(EventsLoading());
 
       try {
-        final data = await repository.getEvents();
-        emit(EventsLoaded(data));
+        final events = await repository.getEvents();
+        emit(EventsLoaded(events));
       } catch (error) {
         emit(EventError(error.toString()));
       }

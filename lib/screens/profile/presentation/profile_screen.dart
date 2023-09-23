@@ -1,12 +1,15 @@
 import 'dart:io';
+import '../bloc/profile_bloc.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../auth/bloc/auth_bloc.dart';
+import '../../../widgets/error_view.dart';
 import '../../../utils/route_wrapper.dart';
 import '../../../widgets/black_button.dart';
 import '../../../widgets/today_app_bar.dart';
 import 'package:today/helpers/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../widgets/activity_indicator.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -17,6 +20,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ProfileBloc>(context).add(GetProfile());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +93,28 @@ class _UserDataWidget extends StatelessWidget {
       height: 300.0,
       width: double.infinity,
       decoration: TodayDecorations.shadow,
+      child: BlocBuilder<ProfileBloc, ProfileState>(
+        builder: (context, state) {
+          if (state is ProfileLoaded) {
+            return const _UserStackWidget();
+          } else if (state is ProfileError) {
+            return const ErrorView();
+          }
+          return const Center(
+            child: ActivityIndicatorWidget(),
+          );
+        },
+      ),
     );
+  }
+}
+
+class _UserStackWidget extends StatelessWidget {
+  const _UserStackWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 
