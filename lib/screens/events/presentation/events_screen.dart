@@ -12,8 +12,8 @@ import '../data/provider/events_provider.dart';
 import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
-import 'package:today/screens/create_event/create_event.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:today/screens/create_event/presentation/create_event_screen.dart';
 
 class EventsScreen extends StatefulWidget {
   const EventsScreen({Key? key}) : super(key: key);
