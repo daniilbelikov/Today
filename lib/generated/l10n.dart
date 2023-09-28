@@ -229,6 +229,136 @@ class S {
       args: [],
     );
   }
+
+  /// `Отправить`
+  String get send {
+    return Intl.message(
+      'Отправить',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Город события*`
+  String get create_city {
+    return Intl.message(
+      'Город события*',
+      name: 'create_city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Тольятти или Самара`
+  String get create_city_hint {
+    return Intl.message(
+      'Тольятти или Самара',
+      name: 'create_city_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Тип события*`
+  String get create_type {
+    return Intl.message(
+      'Тип события*',
+      name: 'create_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Свидание, прогулка или кино?`
+  String get create_type_hint {
+    return Intl.message(
+      'Свидание, прогулка или кино?',
+      name: 'create_type_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Количество участников*`
+  String get create_members {
+    return Intl.message(
+      'Количество участников*',
+      name: 'create_members',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `от 1 до 10`
+  String get create_members_hint {
+    return Intl.message(
+      'от 1 до 10',
+      name: 'create_members_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Описание события*`
+  String get create_desc {
+    return Intl.message(
+      'Описание события*',
+      name: 'create_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Расскажите о событии. Запрещено указывать контакты.`
+  String get create_desc_value {
+    return Intl.message(
+      'Расскажите о событии. Запрещено указывать контакты.',
+      name: 'create_desc_value',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отмена`
+  String get cancel {
+    return Intl.message(
+      'Отмена',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите город`
+  String get choose_city {
+    return Intl.message(
+      'Выберите город',
+      name: 'choose_city',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите тип события`
+  String get choose_type {
+    return Intl.message(
+      'Выберите тип события',
+      name: 'choose_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите количество участников`
+  String get choose_count {
+    return Intl.message(
+      'Выберите количество участников',
+      name: 'choose_count',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

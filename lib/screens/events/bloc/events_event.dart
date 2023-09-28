@@ -5,12 +5,13 @@ abstract class EventsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-/*
 class CreateEvent extends EventsEvent {
-  final String name;
-  final String price;
+  final EventModel model;
 
-  CreateEvent(this.name, this.price);
+  CreateEvent(this.model);
+
+  @override
+  List<Object> get props => [model];
 }
-*/
+
 class GetEvents extends EventsEvent {}

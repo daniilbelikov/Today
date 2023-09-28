@@ -5,18 +5,31 @@ import 'package:today/screens/events/data/models/event_model.dart';
 class EventsRepository {
   final _eventsRef = FirebaseFirestore.instance.collection(TodayKeys.events);
 
-  Future<void> createEvent({
-    required String name,
-    required String price,
-  }) async {
+  Future<void> createEvent(EventModel model) async {
     try {
-      await _eventsRef.add({'name': name, 'price': price});
+      await _eventsRef.add({
+        'city': model.city,
+        'created': model.created,
+        'description': model.description,
+        'event_type': model.eventType,
+        'max_count': model.maxCount,
+        'user': {
+          'about': model.user.about,
+          'age': model.user.age,
+          'avatar': model.user.avatar,
+          'id': model.user.id,
+          'name': model.user.name,
+          'work': model.user.work,
+          'telegram': model.user.telegram,
+          'vk': model.user.vk,
+        },
+      });
     } catch (error) {
       throw Exception(error.toString());
     }
   }
 
-  Future<List<EventModel>> getEvents() async {
+  Future<List<EventModel>> getAllEvents() async {
     List<EventModel> events = [];
 
     try {

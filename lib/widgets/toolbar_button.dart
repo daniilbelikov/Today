@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class ToolbarButton extends StatelessWidget {
   const ToolbarButton({
     Key? key,
-    required this.width,
     required this.onPressed,
+    required this.width,
     required this.title,
   }) : super(key: key);
 
@@ -21,6 +21,7 @@ class ToolbarButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          elevation: 0.0,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.0),

@@ -137,9 +137,8 @@ class _UserExitWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlackButton(
-      icon: '',
       hasIcon: false,
-      text: S.of(context).exit,
+      title: S.of(context).exit,
       onPressed: () => BlocProvider.of<AuthBloc>(context).add(SignOutEvent()),
     );
   }

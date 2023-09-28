@@ -7,10 +7,10 @@ class TodayAppBar extends StatelessWidget {
   const TodayAppBar({
     Key? key,
     this.onPressed,
-    required this.title,
-    required this.hasAction,
-    required this.buttonTitle,
     this.buttonWidth = 0.0,
+    required this.buttonTitle,
+    required this.hasAction,
+    required this.title,
   }) : super(key: key);
 
   final void Function()? onPressed;
@@ -31,41 +31,41 @@ class TodayAppBar extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 12.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                hasAction
-                    ? ToolbarButton(
-                        width: buttonWidth,
-                        title: buttonTitle,
-                        onPressed: onPressed,
-                      )
-                    : const SizedBox(
-                        height: 30.0,
-                      ),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  hasAction
+                      ? ToolbarButton(
+                          width: buttonWidth,
+                          title: buttonTitle,
+                          onPressed: onPressed,
+                        )
+                      : const SizedBox(
+                          height: 30.0,
+                        ),
+                ],
+              ),
             ),
             Expanded(
               child: Container(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Theme.of(context).shadowColor,
-                    fontFamily: TodayFonts.bold,
-                    fontSize: 28.0,
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 8.0,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: Theme.of(context).shadowColor,
+                      fontFamily: TodayFonts.bold,
+                      fontSize: 28.0,
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),

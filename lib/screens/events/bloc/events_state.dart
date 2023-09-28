@@ -6,11 +6,9 @@ abstract class EventsState extends Equatable {
   List<Object> get props => [];
 }
 
-/*
 class EventAdding extends EventsState {}
 
 class EventAdded extends EventsState {}
-*/
 
 class EventsLoading extends EventsState {}
 

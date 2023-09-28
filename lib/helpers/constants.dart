@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_picker/picker.dart';
 
 class TodayAssets {
   static const authImage = 'assets/svg/auth.svg';
@@ -24,6 +25,7 @@ class TodayColors {
 }
 
 class TodayValues {
+  static const dayPattern = 'dd/MM/yyyy';
   static const charset =
       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
 }
@@ -37,6 +39,32 @@ class TodayData {
   static const values = ['Тольятти', 'Самара'];
   static const samaraOld = 'Самара';
   static const samaraNew = 'Самаре';
+
+  static final cities = [
+    PickerItem(value: 'Тольятти'),
+    PickerItem(value: 'Самара'),
+  ];
+
+  static final types = [
+    PickerItem(value: 'Свидание'),
+    PickerItem(value: 'Вечеринка'),
+    PickerItem(value: 'Прогулка'),
+    PickerItem(value: 'Занятие спортом'),
+    PickerItem(value: 'Поход в кино'),
+  ];
+
+  static final numbers = [
+    PickerItem(value: '1'),
+    PickerItem(value: '2'),
+    PickerItem(value: '3'),
+    PickerItem(value: '4'),
+    PickerItem(value: '5'),
+    PickerItem(value: '6'),
+    PickerItem(value: '7'),
+    PickerItem(value: '8'),
+    PickerItem(value: '9'),
+    PickerItem(value: '10'),
+  ];
 }
 
 class TodayKeys {

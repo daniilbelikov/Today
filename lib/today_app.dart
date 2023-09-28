@@ -17,6 +17,7 @@ import 'screens/profile/data/repository/profile_repository.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'screens/activity/data/repository/activity_repository.dart';
+import 'screens/create_event/data/provider/create_event_provider.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
 import 'screens/bottom_navigation/presentations/bottom_navigation_widget.dart';
 
@@ -71,6 +72,9 @@ class TodayApp extends StatelessWidget {
             ],
             child: MultiProvider(
               providers: [
+                ChangeNotifierProvider(
+                  create: (_) => CreateEventProvider(),
+                ),
                 ChangeNotifierProvider(
                   create: (_) => EventsProvider(),
                 ),

@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import '../../events/data/models/user_model.dart';
 import '../data/repository/profile_repository.dart';
-
 part 'profile_event.dart';
 part 'profile_state.dart';
 

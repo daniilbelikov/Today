@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import '../data/auth_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 part 'auth_event.dart';
 part 'auth_state.dart';
 
@@ -14,6 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.repository}) : super(UnauthenticatedState()) {
     on<GoogleSignInEvent>((event, emit) async {
       emit(LoadingState());
+
       try {
         final user = await repository.signInWithGoogle();
         if (user != null) emit(AuthenticatedState(user));
@@ -25,6 +25,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AppleSignInEvent>((event, emit) async {
       emit(LoadingState());
+
       try {
         final user = await repository.signInWithApple();
         if (user != null) emit(AuthenticatedState(user));

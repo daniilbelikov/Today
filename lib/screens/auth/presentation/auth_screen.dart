@@ -124,7 +124,7 @@ class _AuthButtonWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: BlackButton(
               onPressed: iOSAction,
-              text: S.of(context).apple,
+              title: S.of(context).apple,
               icon: TodayAssets.apple,
               hasIcon: true,
             ),
@@ -133,7 +133,7 @@ class _AuthButtonWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: BlackButton(
               onPressed: androidAction,
-              text: S.of(context).google,
+              title: S.of(context).google,
               icon: TodayAssets.google,
               hasIcon: true,
             ),
@@ -155,14 +155,14 @@ class _AuthPrivacyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          S.of(context).privacy_title,
-          style: const TextStyle(
-            fontFamily: TodayFonts.regular,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 4.0),
+          child: Text(
+            S.of(context).privacy_title,
+            style: const TextStyle(
+              fontFamily: TodayFonts.regular,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 4.0,
         ),
         InkWell(
           onTap: () => _launchInBrowser(),

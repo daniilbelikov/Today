@@ -7,13 +7,15 @@ class BlackButton extends StatelessWidget {
     Key? key,
     required this.onPressed,
     required this.hasIcon,
-    required this.text,
-    required this.icon,
+    required this.title,
+    this.isActive = true,
+    this.icon = '',
   }) : super(key: key);
 
   final Function()? onPressed;
+  final bool isActive;
   final bool hasIcon;
-  final String text;
+  final String title;
   final String icon;
 
   @override
@@ -22,8 +24,10 @@ class BlackButton extends StatelessWidget {
       height: 48.0,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isActive ? onPressed : null,
         style: ElevatedButton.styleFrom(
+          elevation: 0.0,
+          disabledBackgroundColor: Theme.of(context).hintColor.withAlpha(100),
           backgroundColor: Theme.of(context).shadowColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -33,17 +37,16 @@ class BlackButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (hasIcon)
-              SvgPicture.asset(
-                icon,
-                height: 25.0,
-                width: 25.0,
-              ),
-            if (hasIcon)
-              const SizedBox(
-                width: 10.0,
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: SvgPicture.asset(
+                  icon,
+                  height: 25.0,
+                  width: 25.0,
+                ),
               ),
             Text(
-              text,
+              title,
               style: TextStyle(
                 color: Theme.of(context).cardColor,
                 fontFamily: TodayFonts.medium,
