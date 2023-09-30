@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
-import '../../events/data/models/event_model.dart';
+import '../../../models/common/event_model.dart';
 import '../data/repository/activity_repository.dart';
 
 part 'activity_event.dart';
@@ -12,7 +12,7 @@ class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
   final ActivityRepository repository;
 
   ActivityBloc({required this.repository}) : super(EventsLoading()) {
-    on<GetEvents>((event, emit) async {
+    on<GetActivityEvents>((event, emit) async {
       emit(EventsLoading());
 
       try {

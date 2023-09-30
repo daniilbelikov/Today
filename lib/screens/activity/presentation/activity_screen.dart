@@ -10,8 +10,8 @@ import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/provider/activity_provider.dart';
+import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
-import '../../events/data/models/event_model.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class ActivityScreen extends StatefulWidget {
@@ -23,12 +23,6 @@ class ActivityScreen extends StatefulWidget {
 
 class _ActivityScreenState extends State<ActivityScreen> {
   final ScrollController _controller = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<ActivityBloc>(context).add(GetEvents());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +137,7 @@ class _SliderWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       onValueChanged: (index) {
-        BlocProvider.of<ActivityBloc>(context).add(GetEvents());
+        BlocProvider.of<ActivityBloc>(context).add(GetActivityEvents());
         provider.changeIndex(index);
       },
     );

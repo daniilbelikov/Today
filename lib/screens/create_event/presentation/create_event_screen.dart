@@ -2,13 +2,13 @@ import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/black_button.dart';
 import '../../../widgets/error_view.dart';
+import '../../../widgets/black_button.dart';
 import 'package:today/helpers/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
 import 'package:today/widgets/textfield_row.dart';
-import '../../events/data/models/event_model.dart';
 import '../data/provider/create_event_provider.dart';
 import 'package:today/screens/events/bloc/events_bloc.dart';
 
@@ -24,6 +24,15 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   TextEditingController _cityController = TextEditingController();
   TextEditingController _typeController = TextEditingController();
   TextEditingController _countController = TextEditingController();
+
+  @override
+  void dispose() {
+    _cityController.dispose();
+    _typeController.dispose();
+    _countController.dispose();
+    _descController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,17 +132,26 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                   ),
                   child: _SaveButtonWidget(
                     onPressed: () {
+                      final user = provider.getUserModel();
                       final event = EventModel(
                         eventType: int.tryParse(_typeController.text) ?? 0,
                         maxCount: int.tryParse(_countController.text) ?? 0,
                         description: _descController.text,
                         city: _cityController.text,
                         created: provider.getCurrentDate(),
-                        user: provider.getUserModel(),
+                        user: user,
                       );
-                      BlocProvider.of<EventsBloc>(context).add(
-                        CreateEvent(event),
-                      );
+
+                      switch (user.isEmpty) {
+                        case true:
+                          provider.showErrorAlert(context);
+                          break;
+                        case false:
+                          BlocProvider.of<EventsBloc>(context).add(
+                            CreateEvent(event),
+                          );
+                          break;
+                      }
                     },
                   ),
                 ),

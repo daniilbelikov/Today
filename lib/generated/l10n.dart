@@ -359,6 +359,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Закрыть`
+  String get close {
+    return Intl.message(
+      'Закрыть',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ошибка`
+  String get error {
+    return Intl.message(
+      'Ошибка',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Заполните профиль, прежде чем создавать события.`
+  String get error_profile {
+    return Intl.message(
+      'Заполните профиль, прежде чем создавать события.',
+      name: 'error_profile',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

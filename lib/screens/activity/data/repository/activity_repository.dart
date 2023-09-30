@@ -1,6 +1,6 @@
 import '../../../../helpers/constants.dart';
+import '../../../../models/common/event_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../events/data/models/event_model.dart';
 
 class ActivityRepository {
   final _eventsRef = FirebaseFirestore.instance.collection(TodayKeys.events);

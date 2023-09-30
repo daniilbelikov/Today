@@ -5,12 +5,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
-import '../data/models/event_model.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
 import '../data/provider/events_provider.dart';
 import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:today/screens/create_event/presentation/create_event_screen.dart';
@@ -24,12 +24,6 @@ class EventsScreen extends StatefulWidget {
 
 class _EventsScreenState extends State<EventsScreen> {
   final CardSwiperController _controller = CardSwiperController();
-
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<EventsBloc>(context).add(GetEvents());
-  }
 
   @override
   void dispose() {

@@ -7,6 +7,7 @@ class UserModel {
   final String about;
   final String vk;
   final String telegram;
+  final bool isEmpty;
 
   UserModel({
     required this.id,
@@ -17,6 +18,7 @@ class UserModel {
     required this.about,
     required this.vk,
     required this.telegram,
+    required this.isEmpty,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class UserModel {
       about: json['about'],
       vk: json['vk'],
       telegram: json['telegram'],
+      isEmpty: json['isEmpty'],
     );
   }
 }

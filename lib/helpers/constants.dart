@@ -5,6 +5,7 @@ class TodayAssets {
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
   static const apple = 'assets/svg/apple.svg';
+  static const error = 'assets/svg/error.svg';
 }
 
 class TodayFonts {
@@ -68,8 +69,13 @@ class TodayData {
 }
 
 class TodayKeys {
+  static const localUser = 'localUser';
   static const events = 'events';
   static const users = 'users';
+  static const user = 'user';
+  static const city = 'city';
+  static const type = 'type';
+  static const count = 'count';
 }
 
 class TodayDecorations {

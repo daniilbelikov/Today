@@ -75,6 +75,7 @@ class AuthRepository {
         'about': '',
         'vk': '',
         'telegram': '',
+        'isEmpty': true,
       });
     } catch (error) {
       throw Exception(error.toString());

@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Выберите количество участников"),
         "choose_type":
             MessageLookupByLibrary.simpleMessage("Выберите тип события"),
+        "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
         "create": MessageLookupByLibrary.simpleMessage("Создать"),
         "create_city": MessageLookupByLibrary.simpleMessage("Город события*"),
         "create_city_hint":
@@ -52,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
+        "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
+        "error_profile": MessageLookupByLibrary.simpleMessage(
+            "Заполните профиль, прежде чем создавать события."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),

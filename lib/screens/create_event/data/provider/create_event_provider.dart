@@ -1,9 +1,12 @@
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
+import 'package:today/widgets/common_alert.dart';
+import '../../../../models/common/user_model.dart';
 import 'package:flutter_picker/flutter_picker.dart';
-import '../../../events/data/models/user_model.dart';
+import 'package:today/models/hive/local_user_model.dart';
 
 class CreateEventProvider with ChangeNotifier {
   String city = '';
@@ -27,15 +30,29 @@ class CreateEventProvider with ChangeNotifier {
   }
 
   UserModel getUserModel() {
+    final box = Hive.box(TodayKeys.user);
+    final user = box.get(TodayKeys.localUser) as LocalUserModel;
     return UserModel(
-      about: '',
-      age: '',
-      avatar: '',
-      id: '',
-      name: '',
-      telegram: '',
-      vk: '',
-      work: '',
+      about: user.about,
+      age: user.age,
+      avatar: user.avatar,
+      id: user.id,
+      name: user.name,
+      telegram: user.telegram,
+      vk: user.vk,
+      work: user.work,
+      isEmpty: user.isEmpty,
+    );
+  }
+
+  void showErrorAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => CommonAlert(
+        imagePath: TodayAssets.error,
+        alertText: S.of(context).error,
+        alertTitle: S.of(context).error_profile,
+      ),
     );
   }
 
@@ -45,7 +62,8 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.cities,
       title: S.of(context).choose_city,
-      onConfirm: (Picker picker, List value) => _saveValue('city', picker),
+      onConfirm: (Picker picker, List value) =>
+          _saveValue(TodayKeys.city, picker),
     ).showDialog(context);
   }
 
@@ -55,7 +73,8 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.types,
       title: S.of(context).choose_type,
-      onConfirm: (Picker picker, List value) => _saveValue('type', picker),
+      onConfirm: (Picker picker, List value) =>
+          _saveValue(TodayKeys.type, picker),
     ).showDialog(context);
   }
 
@@ -65,19 +84,20 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.numbers,
       title: S.of(context).choose_count,
-      onConfirm: (Picker picker, List value) => _saveValue('count', picker),
+      onConfirm: (Picker picker, List value) =>
+          _saveValue(TodayKeys.count, picker),
     ).showDialog(context);
   }
 
   void _saveValue(String value, Picker picker) {
     switch (value) {
-      case 'city':
+      case TodayKeys.city:
         city = picker.getSelectedValues().first;
         break;
-      case 'type':
+      case TodayKeys.type:
         type = picker.getSelectedValues().first;
         break;
-      case 'count':
+      case TodayKeys.count:
         count = picker.getSelectedValues().first;
         break;
       default:
