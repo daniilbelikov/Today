@@ -2,13 +2,13 @@ import '../helpers/constants.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 
-class BlackButton extends StatelessWidget {
-  const BlackButton({
+class BlackButtonWidget extends StatelessWidget {
+  const BlackButtonWidget({
     Key? key,
     required this.onPressed,
-    required this.hasIcon,
     required this.title,
     this.isActive = true,
+    this.hasIcon = false,
     this.icon = '',
   }) : super(key: key);
 

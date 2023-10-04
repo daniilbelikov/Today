@@ -3,14 +3,14 @@ import 'toolbar_button.dart';
 import '../helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-class TodayAppBar extends StatelessWidget {
-  const TodayAppBar({
+class TodayAppBarWidget extends StatelessWidget {
+  const TodayAppBarWidget({
     Key? key,
-    this.onPressed,
-    this.buttonWidth = 0.0,
     required this.buttonTitle,
     required this.hasAction,
     required this.title,
+    this.buttonWidth = 0.0,
+    this.onPressed,
   }) : super(key: key);
 
   final void Function()? onPressed;
@@ -37,7 +37,7 @@ class TodayAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   hasAction
-                      ? ToolbarButton(
+                      ? ToolbarButtonWidget(
                           width: buttonWidth,
                           title: buttonTitle,
                           onPressed: onPressed,

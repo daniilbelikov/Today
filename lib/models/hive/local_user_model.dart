@@ -42,4 +42,18 @@ class LocalUserModel extends HiveObject {
     required this.telegram,
     required this.isEmpty,
   });
+
+  factory LocalUserModel.fromJson(Map<String, dynamic> json) {
+    return LocalUserModel(
+      id: json['id'],
+      age: json['age'],
+      name: json['name'],
+      work: json['work'],
+      avatar: json['avatar'],
+      about: json['about'],
+      vk: json['vk'],
+      telegram: json['telegram'],
+      isEmpty: json['isEmpty'],
+    );
+  }
 }

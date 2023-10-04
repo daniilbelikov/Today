@@ -1,4 +1,4 @@
-import 'user_model.dart';
+import '../hive/local_user_model.dart';
 
 class EventModel {
   final String description;
@@ -6,7 +6,7 @@ class EventModel {
   final String created;
   final int eventType;
   final int maxCount;
-  final UserModel user;
+  final LocalUserModel user;
 
   EventModel({
     required this.description,
@@ -24,7 +24,7 @@ class EventModel {
       created: json['created'],
       eventType: json['event_type'],
       maxCount: json['max_count'],
-      user: UserModel.fromJson(json['user']),
+      user: LocalUserModel.fromJson(json['user']),
     );
   }
 }

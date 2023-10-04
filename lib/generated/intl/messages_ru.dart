@@ -22,10 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about_hint": MessageLookupByLibrary.simpleMessage(
+            "Пример: Фитнес-тренер из Тольятти, который любит активный образ жизни и общение с интересными людьми. Верю в то, что можно быть в форме и без вредных привычек. Если ты также ценишь спорт и здоровый образ жизни, давай познакомимся!"),
+        "about_title": MessageLookupByLibrary.simpleMessage("О себе*"),
         "activity": MessageLookupByLibrary.simpleMessage("Активность"),
+        "age_hint": MessageLookupByLibrary.simpleMessage("Пример: 23"),
+        "age_title": MessageLookupByLibrary.simpleMessage("Возраст*"),
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
         "auth_title":
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
+        "avatar_title":
+            MessageLookupByLibrary.simpleMessage("Ваша фотография*"),
+        "camera": MessageLookupByLibrary.simpleMessage("Камера"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "chooseCity": MessageLookupByLibrary.simpleMessage("Выберите город"),
         "choose_city": MessageLookupByLibrary.simpleMessage("Выберите город"),
@@ -37,19 +45,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "create": MessageLookupByLibrary.simpleMessage("Создать"),
         "create_city": MessageLookupByLibrary.simpleMessage("Город события*"),
         "create_city_hint":
-            MessageLookupByLibrary.simpleMessage("Тольятти или Самара"),
+            MessageLookupByLibrary.simpleMessage("Пример: Самара"),
         "create_desc":
             MessageLookupByLibrary.simpleMessage("Описание события*"),
         "create_desc_value": MessageLookupByLibrary.simpleMessage(
-            "Расскажите о событии. Запрещено указывать контакты."),
+            "Пример: Приглашаю сегодня прогуляться в Парке."),
         "create_event": MessageLookupByLibrary.simpleMessage("Создание"),
+        "create_event_success": MessageLookupByLibrary.simpleMessage(
+            "Поздравляем, ваше событие опубликовано."),
         "create_members":
             MessageLookupByLibrary.simpleMessage("Количество участников*"),
         "create_members_hint":
-            MessageLookupByLibrary.simpleMessage("от 1 до 10"),
+            MessageLookupByLibrary.simpleMessage("Пример: 4"),
         "create_type": MessageLookupByLibrary.simpleMessage("Тип события*"),
-        "create_type_hint": MessageLookupByLibrary.simpleMessage(
-            "Свидание, прогулка или кино?"),
+        "create_type_hint":
+            MessageLookupByLibrary.simpleMessage("Пример: Прогулка"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
@@ -58,7 +68,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Заполните профиль, прежде чем создавать события."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Галерея"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
+        "name_hint": MessageLookupByLibrary.simpleMessage("Пример: Василий"),
+        "name_title": MessageLookupByLibrary.simpleMessage("Имя*"),
         "offers": MessageLookupByLibrary.simpleMessage("Предложения"),
         "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
             "Политикой конфиденциальности"),
@@ -66,7 +79,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Осуществляя вход, вы соглашаетесь с"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "responses": MessageLookupByLibrary.simpleMessage("Отклики"),
+        "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
-        "variants": MessageLookupByLibrary.simpleMessage("Варианты в ")
+        "success": MessageLookupByLibrary.simpleMessage("Успешно"),
+        "telegram_hint": MessageLookupByLibrary.simpleMessage(
+            "Пример: https://t.me/daniilbelikov"),
+        "telegram_title":
+            MessageLookupByLibrary.simpleMessage("Ссылка на Telegram*"),
+        "variants": MessageLookupByLibrary.simpleMessage("Варианты в "),
+        "vk_hint": MessageLookupByLibrary.simpleMessage(
+            "Пример: https://vk.com/dsbelikov"),
+        "vk_title": MessageLookupByLibrary.simpleMessage("Ссылка на VK*"),
+        "work_hint":
+            MessageLookupByLibrary.simpleMessage("Пример: Фитнес-тренер"),
+        "work_title":
+            MessageLookupByLibrary.simpleMessage("Профессия или род занятий*")
       };
 }

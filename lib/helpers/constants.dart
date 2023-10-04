@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/picker.dart';
 
 class TodayAssets {
+  static const success = 'assets/svg/success.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
+  static const camera = 'assets/svg/camera.svg';
   static const apple = 'assets/svg/apple.svg';
   static const error = 'assets/svg/error.svg';
 }

@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
+import 'package:today/utils/route_wrapper.dart';
 import 'package:today/widgets/common_alert.dart';
-import '../../../../models/common/user_model.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:today/models/hive/local_user_model.dart';
 
@@ -29,10 +29,10 @@ class CreateEventProvider with ChangeNotifier {
     return DateFormat(TodayValues.dayPattern).format(date);
   }
 
-  UserModel getUserModel() {
+  LocalUserModel getUserModel() {
     final box = Hive.box(TodayKeys.user);
     final user = box.get(TodayKeys.localUser) as LocalUserModel;
-    return UserModel(
+    return LocalUserModel(
       about: user.about,
       age: user.age,
       avatar: user.avatar,
@@ -45,13 +45,22 @@ class CreateEventProvider with ChangeNotifier {
     );
   }
 
+  Future showSuccessAlert(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (_) => CommonAlertWidget(
+        title: S.of(context).success,
+        text: S.of(context).create_event_success,
+      ),
+    ).whenComplete(() => RouteWraper().pop(context));
+  }
+
   void showErrorAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => CommonAlert(
-        imagePath: TodayAssets.error,
-        alertText: S.of(context).error,
-        alertTitle: S.of(context).error_profile,
+      builder: (_) => CommonAlertWidget(
+        title: S.of(context).error,
+        text: S.of(context).error_profile,
       ),
     );
   }

@@ -92,7 +92,7 @@ class _AuthButtonStackWidget extends StatelessWidget {
             ),
           );
         } else if (state is AuthErrorState) {
-          return const ErrorView();
+          return const ErrorViewWidget();
         }
         return _AuthButtonWidget(
           iOSAction: () => BlocProvider.of<AuthBloc>(context).add(
@@ -122,7 +122,7 @@ class _AuthButtonWidget extends StatelessWidget {
     return Platform.isIOS
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: BlackButton(
+            child: BlackButtonWidget(
               onPressed: iOSAction,
               title: S.of(context).apple,
               icon: TodayAssets.apple,
@@ -131,7 +131,7 @@ class _AuthButtonWidget extends StatelessWidget {
           )
         : Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: BlackButton(
+            child: BlackButtonWidget(
               onPressed: androidAction,
               title: S.of(context).google,
               icon: TodayAssets.google,

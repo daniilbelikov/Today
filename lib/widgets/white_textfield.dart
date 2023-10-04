@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:today/helpers/constants.dart';
 
-class WhiteTextField extends StatelessWidget {
-  const WhiteTextField({
+class WhiteTextFieldWidget extends StatelessWidget {
+  const WhiteTextFieldWidget({
     Key? key,
     required this.keyboardType,
     required this.controller,

@@ -1,5 +1,6 @@
 import 'city_bottom_sheet.dart';
 import '../bloc/events_bloc.dart';
+import 'profile_bottom_sheet.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,12 @@ class _EventsScreenState extends State<EventsScreen> {
   final CardSwiperController _controller = CardSwiperController();
 
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<EventsBloc>(context).add(GetEvents());
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -38,20 +45,16 @@ class _EventsScreenState extends State<EventsScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            TodayAppBar(
+            TodayAppBarWidget(
               hasAction: true,
               buttonWidth: 90.0,
               title: S.of(context).events,
               buttonTitle: S.of(context).create,
-              onPressed: () => RouteWraper().push(
-                context,
-                const CreateEventScreen(),
-              ),
+              onPressed: () =>
+                  RouteWraper().push(context, const CreateEventScreen()),
             ),
-            Expanded(
-              child: _EventsBodyWidget(
-                controller: _controller,
-              ),
+            _EventsBodyWidget(
+              controller: _controller,
             ),
           ],
         ),
@@ -71,21 +74,23 @@ class _EventsBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventsProvider>(context);
-    return BlocBuilder<EventsBloc, EventsState>(
-      builder: (context, state) {
-        if (state is EventsLoaded) {
-          return _EventCardsWidget(
-            events: state.events,
-            controller: controller,
-            userCity: provider.getRightCity(),
+    return Expanded(
+      child: BlocBuilder<EventsBloc, EventsState>(
+        builder: (context, state) {
+          if (state is EventsLoaded) {
+            return _EventCardsWidget(
+              events: state.events,
+              controller: controller,
+              userCity: provider.getRightCity(),
+            );
+          } else if (state is EventError) {
+            return const ErrorViewWidget();
+          }
+          return const Center(
+            child: ActivityIndicatorWidget(),
           );
-        } else if (state is EventError) {
-          return const ErrorView();
-        }
-        return const Center(
-          child: ActivityIndicatorWidget(),
-        );
-      },
+        },
+      ),
     );
   }
 }
@@ -106,7 +111,6 @@ class _EventCardsWidget extends StatelessWidget {
     showModalBottomSheet<String?>(
       builder: (_) => const CityBottomSheet(),
       backgroundColor: Colors.transparent,
-      isScrollControlled: true,
       context: context,
     ).then((city) {
       if (city == null) return;
@@ -183,15 +187,26 @@ class _EventCardWidget extends StatelessWidget {
 
   final EventModel event;
 
+  void showResponseBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      builder: (_) => const ProfileBottomSheet(),
+      backgroundColor: Colors.transparent,
+      context: context,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: TodayDecorations.shadow,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: const [],
+    return InkWell(
+      onTap: () => showResponseBottomSheet(context),
+      child: Container(
+        width: double.infinity,
+        decoration: TodayDecorations.shadow,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            children: const [],
+          ),
         ),
       ),
     );

@@ -20,6 +20,7 @@ import 'screens/activity/data/repository/activity_repository.dart';
 import 'screens/create_event/data/provider/create_event_provider.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
 import 'screens/bottom_navigation/presentations/bottom_navigation_widget.dart';
+import 'package:today/screens/edit_profile/data/provider/edit_profile_provider.dart';
 
 class TodayApp extends StatelessWidget {
   const TodayApp({Key? key}) : super(key: key);
@@ -80,6 +81,9 @@ class TodayApp extends StatelessWidget {
                 ),
                 ChangeNotifierProvider(
                   create: (_) => ActivityProvider(),
+                ),
+                ChangeNotifierProvider(
+                  create: (_) => EditProfileProvider(),
                 ),
               ],
               child: MaterialApp(

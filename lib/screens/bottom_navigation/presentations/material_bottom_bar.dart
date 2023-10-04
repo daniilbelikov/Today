@@ -35,11 +35,8 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
             currentIndex: state.tabIndex,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            onTap: (index) {
-              BlocProvider.of<BottomNavigationBloc>(context).add(
-                TabChangeEvent(tabIndex: index),
-              );
-            },
+            onTap: (index) => BlocProvider.of<BottomNavigationBloc>(context)
+                .add(TabChangeEvent(tabIndex: index)),
             items: const [
               BottomNavigationBarItem(
                 label: '',

@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            TodayAppBar(
+            TodayAppBarWidget(
               hasAction: true,
               buttonWidth: 144.0,
               title: S.of(context).profile,
@@ -37,9 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const EditProfileScreen(),
               ),
             ),
-            const Expanded(
-              child: _ProfileBodyWidget(),
-            ),
+            const _ProfileBodyWidget(),
           ],
         ),
       ),
@@ -52,26 +50,28 @@ class _ProfileBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: Platform.isAndroid ? 16.0 : 20.0,
-        ),
-        child: Column(
-          children: const [
-            Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: _UserDataWidget(),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
-              child: _UserActionWidget(),
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 20.0),
-              child: _UserExitWidget(),
-            ),
-          ],
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Platform.isAndroid ? 16.0 : 20.0,
+          ),
+          child: Column(
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(top: 20.0),
+                child: _UserDataWidget(),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
+                child: _UserActionWidget(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0),
+                child: _UserExitWidget(),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -92,7 +92,7 @@ class _UserDataWidget extends StatelessWidget {
           if (state is ProfileLoaded) {
             return const _UserStackWidget();
           } else if (state is ProfileError) {
-            return const ErrorView();
+            return const ErrorViewWidget();
           }
           return const Center(
             child: ActivityIndicatorWidget(),
@@ -130,8 +130,7 @@ class _UserExitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlackButton(
-      hasIcon: false,
+    return BlackButtonWidget(
       title: S.of(context).exit,
       onPressed: () => BlocProvider.of<AuthBloc>(context).add(SignOutEvent()),
     );

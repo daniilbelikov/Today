@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class RouteWraper {
-  void push(
+  Future push(
     BuildContext context,
     Widget toWidget,
-  ) {
+  ) async {
     Navigator.push(
       context,
       MaterialPageRoute(

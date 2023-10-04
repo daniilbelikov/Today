@@ -2,9 +2,7 @@ import 'dart:io';
 import 'material_bottom_bar.dart';
 import 'cupertino_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import '../../events/bloc/events_bloc.dart';
 import '../../profile/bloc/profile_bloc.dart';
-import '../../activity/bloc/activity_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:today/screens/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 
@@ -19,8 +17,6 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<EventsBloc>(context).add(GetEvents());
-    BlocProvider.of<ActivityBloc>(context).add(GetActivityEvents());
     BlocProvider.of<ProfileBloc>(context).add(GetProfile());
   }
 

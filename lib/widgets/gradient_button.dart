@@ -1,8 +1,8 @@
 import '../helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-class GradientButton extends StatelessWidget {
-  const GradientButton({
+class GradientButtonWidget extends StatelessWidget {
+  const GradientButtonWidget({
     Key? key,
     required this.onPressed,
     required this.title,

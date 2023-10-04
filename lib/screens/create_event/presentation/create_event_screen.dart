@@ -58,104 +58,109 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           ),
         ),
       ),
-      body: Scrollbar(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Platform.isAndroid ? 16.0 : 20.0,
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextFieldRow(
-                    readOnly: true,
-                    controller: _cityController,
-                    title: S.of(context).create_city,
-                    hintText: S.of(context).create_city_hint,
-                    onTap: () {
-                      provider.showCityPicker(context).whenComplete(() {
-                        _cityController = TextEditingController(
-                          text: provider.getCity,
-                        );
-                      });
-                    },
-                  ),
+      body: BlocListener<EventsBloc, EventsState>(
+        listener: (appContext, state) {
+          if (state is EventAdded) provider.showSuccessAlert(appContext);
+        },
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Scrollbar(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Platform.isAndroid ? 16.0 : 20.0,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextFieldRow(
-                    readOnly: true,
-                    controller: _typeController,
-                    title: S.of(context).create_type,
-                    hintText: S.of(context).create_type_hint,
-                    onTap: () {
-                      provider.showTypePicker(context).whenComplete(() {
-                        _typeController = TextEditingController(
-                          text: provider.getType,
-                        );
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextFieldRow(
-                    readOnly: true,
-                    controller: _countController,
-                    title: S.of(context).create_members,
-                    hintText: S.of(context).create_members_hint,
-                    onTap: () {
-                      provider.showCountPicker(context).whenComplete(() {
-                        _countController = TextEditingController(
-                          text: provider.getCount,
-                        );
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: TextFieldRow(
-                    onChanged: (text) => provider.updateDescText(text),
-                    maxLines: 9,
-                    maxLength: 300,
-                    title: S.of(context).create_desc,
-                    hintText: S.of(context).create_desc_value,
-                    controller: _descController,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 30.0,
-                    bottom: bottomValue,
-                  ),
-                  child: _SaveButtonWidget(
-                    onPressed: () {
-                      final user = provider.getUserModel();
-                      final event = EventModel(
-                        eventType: int.tryParse(_typeController.text) ?? 0,
-                        maxCount: int.tryParse(_countController.text) ?? 0,
-                        description: _descController.text,
-                        city: _cityController.text,
-                        created: provider.getCurrentDate(),
-                        user: user,
-                      );
-
-                      switch (user.isEmpty) {
-                        case true:
-                          provider.showErrorAlert(context);
-                          break;
-                        case false:
-                          BlocProvider.of<EventsBloc>(context).add(
-                            CreateEvent(event),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFieldRowWidget(
+                        readOnly: true,
+                        controller: _cityController,
+                        title: S.of(context).create_city,
+                        hintText: S.of(context).create_city_hint,
+                        onTap: () {
+                          provider.showCityPicker(context).whenComplete(() {
+                            _cityController = TextEditingController(
+                              text: provider.getCity,
+                            );
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFieldRowWidget(
+                        readOnly: true,
+                        controller: _typeController,
+                        title: S.of(context).create_type,
+                        hintText: S.of(context).create_type_hint,
+                        onTap: () {
+                          provider.showTypePicker(context).whenComplete(() {
+                            _typeController = TextEditingController(
+                              text: provider.getType,
+                            );
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFieldRowWidget(
+                        readOnly: true,
+                        controller: _countController,
+                        title: S.of(context).create_members,
+                        hintText: S.of(context).create_members_hint,
+                        onTap: () {
+                          provider.showCountPicker(context).whenComplete(() {
+                            _countController = TextEditingController(
+                              text: provider.getCount,
+                            );
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0),
+                      child: TextFieldRowWidget(
+                        onChanged: (text) => provider.updateDescText(text),
+                        maxLines: 9,
+                        maxLength: 300,
+                        title: S.of(context).create_desc,
+                        hintText: S.of(context).create_desc_value,
+                        controller: _descController,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 30.0,
+                        bottom: bottomValue,
+                      ),
+                      child: _SaveButtonWidget(
+                        onPressed: () {
+                          final user = provider.getUserModel();
+                          final event = EventModel(
+                            eventType: int.tryParse(_typeController.text) ?? 0,
+                            maxCount: int.tryParse(_countController.text) ?? 0,
+                            description: _descController.text,
+                            city: _cityController.text,
+                            created: provider.getCurrentDate(),
+                            user: user,
                           );
-                          break;
-                      }
-                    },
-                  ),
+
+                          if (user.isEmpty) {
+                            provider.showErrorAlert(context);
+                          } else {
+                            BlocProvider.of<EventsBloc>(context).add(
+                              CreateEvent(event),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -189,13 +194,12 @@ class _SaveButtonWidget extends StatelessWidget {
             ),
           );
         } else if (state is EventError) {
-          return const ErrorView();
+          return const ErrorViewWidget();
         }
-        return BlackButton(
+        return BlackButtonWidget(
           isActive: hasCity && hasType && hasCount && hasDesc,
           title: S.of(context).send,
           onPressed: onPressed,
-          hasIcon: false,
         );
       },
     );

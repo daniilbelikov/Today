@@ -15,7 +15,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       emit(EventAdding());
 
       try {
-        await repository.createEvent(event.model);
+        await repository.createEvent(event.event);
         emit(EventAdded());
       } catch (error) {
         emit(EventError(error.toString()));

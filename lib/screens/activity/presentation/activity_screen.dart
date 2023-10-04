@@ -25,22 +25,26 @@ class _ActivityScreenState extends State<ActivityScreen> {
   final ScrollController _controller = ScrollController();
 
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ActivityBloc>(context).add(GetActivityEvents());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
-            TodayAppBar(
+            TodayAppBarWidget(
               title: S.of(context).activity,
               hasAction: false,
               onPressed: null,
               buttonTitle: '',
             ),
-            Expanded(
-              child: _ReactionsBodyWidget(
-                controller: _controller,
-              ),
+            _ReactionsBodyWidget(
+              controller: _controller,
             ),
           ],
         ),
@@ -60,40 +64,42 @@ class _ReactionsBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ActivityProvider>(context);
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: Platform.isAndroid ? 16.0 : 20.0,
-            right: Platform.isAndroid ? 16.0 : 20.0,
-            bottom: 10.0,
-            top: 20.0,
+    return Expanded(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: Platform.isAndroid ? 16.0 : 20.0,
+              right: Platform.isAndroid ? 16.0 : 20.0,
+              bottom: 10.0,
+              top: 20.0,
+            ),
+            child: const _SliderWidget(),
           ),
-          child: const _SliderWidget(),
-        ),
-        BlocBuilder<ActivityBloc, ActivityState>(
-          builder: (context, state) {
-            if (state is EventsLoaded) {
-              return provider.getIndex == 0
-                  ? _ResponsesWidget(
-                      controller: controller,
-                      events: state.events,
-                    )
-                  : _OffersWidget(
-                      controller: controller,
-                      events: state.events,
-                    );
-            } else if (state is EventError) {
-              return const ErrorView();
-            }
-            return const Expanded(
-              child: Center(
-                child: ActivityIndicatorWidget(),
-              ),
-            );
-          },
-        )
-      ],
+          BlocBuilder<ActivityBloc, ActivityState>(
+            builder: (context, state) {
+              if (state is EventsLoaded) {
+                return provider.getIndex == 0
+                    ? _ResponsesWidget(
+                        controller: controller,
+                        events: state.events,
+                      )
+                    : _OffersWidget(
+                        controller: controller,
+                        events: state.events,
+                      );
+              } else if (state is EventError) {
+                return const ErrorViewWidget();
+              }
+              return const Expanded(
+                child: Center(
+                  child: ActivityIndicatorWidget(),
+                ),
+              );
+            },
+          )
+        ],
+      ),
     );
   }
 }
@@ -223,7 +229,6 @@ class _ResponseCardWidget extends StatelessWidget {
     showModalBottomSheet(
       builder: (_) => const ResponseBottomSheet(),
       backgroundColor: Colors.transparent,
-      isScrollControlled: true,
       context: context,
     );
   }
@@ -248,7 +253,6 @@ class _OffersCardWidget extends StatelessWidget {
     showModalBottomSheet<String?>(
       builder: (_) => const OfferBottomSheet(),
       backgroundColor: Colors.transparent,
-      isScrollControlled: true,
       context: context,
     );
   }

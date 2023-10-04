@@ -2,18 +2,18 @@ import 'white_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:today/helpers/constants.dart';
 
-class TextFieldRow extends StatelessWidget {
-  const TextFieldRow({
+class TextFieldRowWidget extends StatelessWidget {
+  const TextFieldRowWidget({
     Key? key,
-    required this.title,
-    required this.hintText,
     required this.controller,
-    this.maxLines = 1,
-    this.validator,
+    required this.hintText,
+    required this.title,
     this.readOnly = false,
+    this.maxLines = 1,
     this.maxLength,
-    this.onTap,
+    this.validator,
     this.onChanged,
+    this.onTap,
   }) : super(key: key);
 
   final String? Function(String?)? validator;
@@ -21,10 +21,10 @@ class TextFieldRow extends StatelessWidget {
   final Function(String)? onChanged;
   final void Function()? onTap;
   final String hintText;
+  final int? maxLength;
+  final bool readOnly;
   final String title;
   final int maxLines;
-  final bool readOnly;
-  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class TextFieldRow extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
-          child: WhiteTextField(
+          child: WhiteTextFieldWidget(
             controller: controller,
             readOnly: readOnly,
             onTap: onTap,

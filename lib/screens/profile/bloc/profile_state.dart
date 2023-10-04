@@ -8,8 +8,12 @@ abstract class ProfileState extends Equatable {
 
 class ProfileLoading extends ProfileState {}
 
+class ProfileUpdating extends ProfileState {}
+
+class ProfileUpdated extends ProfileState {}
+
 class ProfileLoaded extends ProfileState {
-  final UserModel user;
+  final LocalUserModel user;
 
   ProfileLoaded(this.user);
 

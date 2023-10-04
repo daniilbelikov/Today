@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Тольятти или Самара`
+  /// `Пример: Самара`
   String get create_city_hint {
     return Intl.message(
-      'Тольятти или Самара',
+      'Пример: Самара',
       name: 'create_city_hint',
       desc: '',
       args: [],
@@ -270,10 +270,10 @@ class S {
     );
   }
 
-  /// `Свидание, прогулка или кино?`
+  /// `Пример: Прогулка`
   String get create_type_hint {
     return Intl.message(
-      'Свидание, прогулка или кино?',
+      'Пример: Прогулка',
       name: 'create_type_hint',
       desc: '',
       args: [],
@@ -290,10 +290,10 @@ class S {
     );
   }
 
-  /// `от 1 до 10`
+  /// `Пример: 4`
   String get create_members_hint {
     return Intl.message(
-      'от 1 до 10',
+      'Пример: 4',
       name: 'create_members_hint',
       desc: '',
       args: [],
@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Расскажите о событии. Запрещено указывать контакты.`
+  /// `Пример: Приглашаю сегодня прогуляться в Парке.`
   String get create_desc_value {
     return Intl.message(
-      'Расскажите о событии. Запрещено указывать контакты.',
+      'Пример: Приглашаю сегодня прогуляться в Парке.',
       name: 'create_desc_value',
       desc: '',
       args: [],
@@ -380,11 +380,191 @@ class S {
     );
   }
 
+  /// `Успешно`
+  String get success {
+    return Intl.message(
+      'Успешно',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Заполните профиль, прежде чем создавать события.`
   String get error_profile {
     return Intl.message(
       'Заполните профиль, прежде чем создавать события.',
       name: 'error_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Поздравляем, ваше событие опубликовано.`
+  String get create_event_success {
+    return Intl.message(
+      'Поздравляем, ваше событие опубликовано.',
+      name: 'create_event_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Возраст*`
+  String get age_title {
+    return Intl.message(
+      'Возраст*',
+      name: 'age_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Имя*`
+  String get name_title {
+    return Intl.message(
+      'Имя*',
+      name: 'name_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Профессия или род занятий*`
+  String get work_title {
+    return Intl.message(
+      'Профессия или род занятий*',
+      name: 'work_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `О себе*`
+  String get about_title {
+    return Intl.message(
+      'О себе*',
+      name: 'about_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ссылка на VK*`
+  String get vk_title {
+    return Intl.message(
+      'Ссылка на VK*',
+      name: 'vk_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ссылка на Telegram*`
+  String get telegram_title {
+    return Intl.message(
+      'Ссылка на Telegram*',
+      name: 'telegram_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваша фотография*`
+  String get avatar_title {
+    return Intl.message(
+      'Ваша фотография*',
+      name: 'avatar_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message(
+      'Сохранить',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: https://vk.com/dsbelikov`
+  String get vk_hint {
+    return Intl.message(
+      'Пример: https://vk.com/dsbelikov',
+      name: 'vk_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: https://t.me/daniilbelikov`
+  String get telegram_hint {
+    return Intl.message(
+      'Пример: https://t.me/daniilbelikov',
+      name: 'telegram_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: Василий`
+  String get name_hint {
+    return Intl.message(
+      'Пример: Василий',
+      name: 'name_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: 23`
+  String get age_hint {
+    return Intl.message(
+      'Пример: 23',
+      name: 'age_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: Фитнес-тренер`
+  String get work_hint {
+    return Intl.message(
+      'Пример: Фитнес-тренер',
+      name: 'work_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пример: Фитнес-тренер из Тольятти, который любит активный образ жизни и общение с интересными людьми. Верю в то, что можно быть в форме и без вредных привычек. Если ты также ценишь спорт и здоровый образ жизни, давай познакомимся!`
+  String get about_hint {
+    return Intl.message(
+      'Пример: Фитнес-тренер из Тольятти, который любит активный образ жизни и общение с интересными людьми. Верю в то, что можно быть в форме и без вредных привычек. Если ты также ценишь спорт и здоровый образ жизни, давай познакомимся!',
+      name: 'about_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Камера`
+  String get camera {
+    return Intl.message(
+      'Камера',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Галерея`
+  String get gallery {
+    return Intl.message(
+      'Галерея',
+      name: 'gallery',
       desc: '',
       args: [],
     );

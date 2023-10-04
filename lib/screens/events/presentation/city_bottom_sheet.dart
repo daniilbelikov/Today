@@ -76,7 +76,7 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
                     values: provider.getValues,
                   ),
                 ),
-                GradientButton(
+                GradientButtonWidget(
                   title: S.of(context).done,
                   onPressed: () => RouteWraper().pop(
                     context,
@@ -129,7 +129,7 @@ class _RadioRowsWidget extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: TodayFonts.medium,
                       color: Theme.of(context).shadowColor,
-                      fontSize: 16.0,
+                      fontSize: 18.0,
                     ),
                   ),
                 ),

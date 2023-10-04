@@ -1,8 +1,8 @@
 import '../helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-class ToolbarButton extends StatelessWidget {
-  const ToolbarButton({
+class ToolbarButtonWidget extends StatelessWidget {
+  const ToolbarButtonWidget({
     Key? key,
     required this.onPressed,
     required this.width,
