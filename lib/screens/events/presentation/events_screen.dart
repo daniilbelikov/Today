@@ -130,6 +130,7 @@ class _EventCardsWidget extends StatelessWidget {
     showModalBottomSheet<String?>(
       builder: (_) => const CityBottomSheet(),
       backgroundColor: Colors.transparent,
+      isScrollControlled: true,
       context: context,
     ).then((city) {
       if (city == null) return;

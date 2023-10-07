@@ -18,7 +18,7 @@ class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
       emit(EventsLoading());
 
       try {
-        final events = await _repository.getEvents();
+        final events = await _repository.getEvents(event.isMineEvents);
         emit(EventsLoaded(events));
       } catch (error) {
         emit(EventError(error.toString()));

@@ -132,11 +132,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: TextFieldRowWidget(
+                        readOnly: true,
                         controller: _ageController,
                         title: S.of(context).age_title,
                         hintText: S.of(context).age_hint,
-                        keyboardType: TextInputType.number,
-                        onChanged: (text) => provider.changeAge(text),
+                        onTap: () {
+                          provider.showAgePicker(context).whenComplete(() {
+                            _ageController = TextEditingController(
+                              text: provider.getAge,
+                            );
+                          });
+                        },
                       ),
                     ),
                     Padding(

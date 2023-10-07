@@ -24,10 +24,16 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
   final ScrollController _controller = ScrollController();
 
+  void _requestEvents() {
+    BlocProvider.of<ActivityBloc>(context).add(
+      GetActivityEvents(false),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<ActivityBloc>(context).add(GetActivityEvents());
+    _requestEvents();
   }
 
   @override
@@ -143,7 +149,10 @@ class _SliderWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       onValueChanged: (index) {
-        BlocProvider.of<ActivityBloc>(context).add(GetActivityEvents());
+        final isMineEvents = index == 1 ? true : false;
+        BlocProvider.of<ActivityBloc>(context).add(
+          GetActivityEvents(isMineEvents),
+        );
         provider.changeIndex(index);
       },
     );

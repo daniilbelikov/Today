@@ -56,18 +56,15 @@ class TodayData {
     PickerItem(value: 'Поход в кино'),
   ];
 
-  static final numbers = [
-    PickerItem(value: '1'),
-    PickerItem(value: '2'),
-    PickerItem(value: '3'),
-    PickerItem(value: '4'),
-    PickerItem(value: '5'),
-    PickerItem(value: '6'),
-    PickerItem(value: '7'),
-    PickerItem(value: '8'),
-    PickerItem(value: '9'),
-    PickerItem(value: '10'),
-  ];
+  static final numbers = List.generate(
+    10,
+    (index) => PickerItem(value: (1 + index).toString()),
+  );
+
+  static final ages = List.generate(
+    52,
+    (index) => PickerItem(value: (14 + index).toString()),
+  );
 }
 
 class TodayKeys {

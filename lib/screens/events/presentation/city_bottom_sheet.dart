@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:today/helpers/constants.dart';
 import '../data/provider/events_provider.dart';
-import '../../../widgets/gradient_button.dart';
 import 'package:today/utils/route_wrapper.dart';
+import 'package:today/widgets/black_button.dart';
 
 class CityBottomSheet extends StatefulWidget {
   const CityBottomSheet({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
                     values: provider.getValues,
                   ),
                 ),
-                GradientButtonWidget(
+                BlackButtonWidget(
                   title: S.of(context).done,
                   onPressed: () => RouteWraper().pop(
                     context,

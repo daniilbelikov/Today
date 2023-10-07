@@ -144,21 +144,19 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         onPressed: () {
                           final user = provider.getUserModel();
                           final event = EventModel(
-                            eventType: int.tryParse(_typeController.text) ?? 0,
-                            maxCount: int.tryParse(_countController.text) ?? 0,
                             description: _descController.text,
                             city: _cityController.text,
                             created: provider.getCurrentDate(),
+                            creatorId: user.id,
+                            eventType: int.tryParse(_typeController.text) ?? 0,
+                            maxCount: int.tryParse(_countController.text) ?? 0,
                             user: user,
                           );
 
-                          if (user.isEmpty) {
-                            provider.showErrorAlert(context);
-                          } else {
-                            BlocProvider.of<EventsBloc>(context).add(
-                              CreateEvent(event),
-                            );
-                          }
+                          user.isEmpty
+                              ? provider.showErrorAlert(context)
+                              : BlocProvider.of<EventsBloc>(context)
+                                  .add(CreateEvent(event));
                         },
                       ),
                     ),

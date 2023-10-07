@@ -6,6 +6,7 @@ import '../../../../helpers/constants.dart';
 import '../../../../utils/route_wrapper.dart';
 import '../../../../widgets/common_alert.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 import '../../../../models/hive/local_user_model.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -132,6 +133,69 @@ class EditProfileProvider with ChangeNotifier {
       vk: user.vk,
       work: user.work,
       isEmpty: user.isEmpty,
+    );
+  }
+
+  Future<List<int>?> showAgePicker(BuildContext context) {
+    return _generatePicker(
+      height: 200.0,
+      context: context,
+      data: TodayData.ages,
+      title: S.of(context).choose_count,
+      onConfirm: (Picker picker, List value) => _saveValue(picker),
+    ).showDialog(context);
+  }
+
+  void _saveValue(Picker picker) {
+    age = picker.getSelectedValues().first;
+    notifyListeners();
+  }
+
+  Picker _generatePicker({
+    required String title,
+    required double height,
+    required BuildContext context,
+    required List<PickerItem<String>>? data,
+    required Function(Picker, List<int>)? onConfirm,
+  }) {
+    return Picker(
+      height: height,
+      looping: false,
+      itemExtent: 38.0,
+      hideHeader: true,
+      onConfirm: onConfirm,
+      textAlign: TextAlign.center,
+      confirmText: S.of(context).done,
+      cancelText: S.of(context).cancel,
+      adapter: PickerDataAdapter<String>(data: data),
+      cancelTextStyle: TextStyle(
+        color: Theme.of(context).shadowColor,
+        fontFamily: TodayFonts.medium,
+        fontSize: 16.0,
+      ),
+      confirmTextStyle: TextStyle(
+        color: Theme.of(context).shadowColor,
+        fontFamily: TodayFonts.medium,
+        fontSize: 16.0,
+      ),
+      textStyle: TextStyle(
+        color: Theme.of(context).shadowColor,
+        fontFamily: TodayFonts.medium,
+        fontSize: 18.0,
+      ),
+      selectedTextStyle: TextStyle(
+        color: Theme.of(context).shadowColor,
+        fontFamily: TodayFonts.medium,
+        fontSize: 20.0,
+      ),
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontFamily: TodayFonts.semiBold,
+          fontSize: 20.0,
+        ),
+      ),
     );
   }
 }
