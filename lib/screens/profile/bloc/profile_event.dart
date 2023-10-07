@@ -5,12 +5,13 @@ abstract class ProfileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetProfile extends ProfileEvent {}
+class GetProfileEvent extends ProfileEvent {}
 
-class UpdateProfile extends ProfileEvent {
+class UpdateProfileEvent extends ProfileEvent {
   final LocalUserModel user;
+  final String oldImage;
 
-  UpdateProfile(this.user);
+  UpdateProfileEvent(this.user, this.oldImage);
 
   @override
   List<Object> get props => [user];

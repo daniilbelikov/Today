@@ -71,13 +71,15 @@ class TodayData {
 }
 
 class TodayKeys {
+  static const storage = 'firebasestorage';
   static const localUser = 'localUser';
+  static const avatars = 'avatars';
   static const events = 'events';
+  static const count = 'count';
   static const users = 'users';
   static const user = 'user';
   static const city = 'city';
   static const type = 'type';
-  static const count = 'count';
 }
 
 class TodayDecorations {

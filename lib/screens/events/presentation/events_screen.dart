@@ -24,18 +24,26 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  final CardSwiperController _controller = CardSwiperController();
+  final CardSwiperController _swiperController = CardSwiperController();
 
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<EventsBloc>(context).add(GetEvents());
+    _requestAllEvents();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _disposeSwiperController();
+  }
+
+  void _requestAllEvents() {
+    BlocProvider.of<EventsBloc>(context).add(GetEvents());
+  }
+
+  void _disposeSwiperController() {
+    _swiperController.dispose();
   }
 
   @override
@@ -54,7 +62,7 @@ class _EventsScreenState extends State<EventsScreen> {
                   RouteWraper().push(context, const CreateEventScreen()),
             ),
             _EventsBodyWidget(
-              controller: _controller,
+              controller: _swiperController,
             ),
           ],
         ),

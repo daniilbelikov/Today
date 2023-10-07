@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
+        "edit_profile_success":
+            MessageLookupByLibrary.simpleMessage("Ваш профиль обновлен."),
         "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),

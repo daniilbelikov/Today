@@ -8,14 +8,16 @@ part 'events_event.dart';
 part 'events_state.dart';
 
 class EventsBloc extends Bloc<EventsEvent, EventsState> {
-  final EventsRepository repository;
+  final EventsRepository _repository;
 
-  EventsBloc({required this.repository}) : super(EventsLoading()) {
+  EventsBloc({required EventsRepository repository})
+      : _repository = repository,
+        super(EventsLoading()) {
     on<CreateEvent>((event, emit) async {
       emit(EventAdding());
 
       try {
-        await repository.createEvent(event.event);
+        await _repository.createEvent(event.event);
         emit(EventAdded());
       } catch (error) {
         emit(EventError(error.toString()));
@@ -26,7 +28,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       emit(EventsLoading());
 
       try {
-        final events = await repository.getAllEvents();
+        final events = await _repository.getAllEvents();
         emit(EventsLoaded(events));
       } catch (error) {
         emit(EventError(error.toString()));

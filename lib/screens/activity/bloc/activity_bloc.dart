@@ -9,14 +9,16 @@ part 'activity_event.dart';
 part 'activity_state.dart';
 
 class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
-  final ActivityRepository repository;
+  final ActivityRepository _repository;
 
-  ActivityBloc({required this.repository}) : super(EventsLoading()) {
+  ActivityBloc({required ActivityRepository repository})
+      : _repository = repository,
+        super(EventsLoading()) {
     on<GetActivityEvents>((event, emit) async {
       emit(EventsLoading());
 
       try {
-        final events = await repository.getEvents();
+        final events = await _repository.getEvents();
         emit(EventsLoaded(events));
       } catch (error) {
         emit(EventError(error.toString()));

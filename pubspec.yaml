@@ -30,6 +30,7 @@ dependencies:
   adaptive_theme: ^3.2.1
   cloud_firestore: ^4.8.4
   cupertino_icons: ^1.0.2
+  firebase_storage: ^11.2.8
   sign_in_with_apple: ^5.0.0
   flutter_card_swiper: ^6.0.0
   flutter_native_splash: ^2.2.16

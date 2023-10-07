@@ -17,7 +17,7 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<ProfileBloc>(context).add(GetProfile());
+    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
   }
 
   @override

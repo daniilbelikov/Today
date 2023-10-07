@@ -2,6 +2,7 @@ import 'dart:io';
 import '../bloc/profile_bloc.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../auth/bloc/auth_bloc.dart';
 import '../../../widgets/error_view.dart';
 import '../../../utils/route_wrapper.dart';
@@ -10,6 +11,7 @@ import '../../../widgets/today_app_bar.dart';
 import 'package:today/helpers/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
+import '../../edit_profile/data/provider/edit_profile_provider.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -22,6 +24,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EditProfileProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -34,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               buttonTitle: S.of(context).edit,
               onPressed: () => RouteWraper().push(
                 context,
-                const EditProfileScreen(),
+                EditProfileScreen(user: provider.getUserModel()),
               ),
             ),
             const _ProfileBodyWidget(),

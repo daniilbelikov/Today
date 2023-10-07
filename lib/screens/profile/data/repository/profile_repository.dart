@@ -1,12 +1,15 @@
+import 'dart:io';
 import 'package:hive/hive.dart';
 import 'package:today/helpers/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:today/models/hive/local_user_model.dart';
 
 class ProfileRepository {
   final _usersRef = FirebaseFirestore.instance.collection(TodayKeys.users);
   final _currentUser = FirebaseAuth.instance.currentUser;
+  final storage = FirebaseStorage.instance;
 
   Future<LocalUserModel> getProfile() async {
     try {
@@ -20,6 +23,24 @@ class ProfileRepository {
     } catch (error) {
       throw Exception(error.toString());
     }
+  }
+
+  Future<void> uploadImageInStorage(
+    String path,
+    String oldImage,
+    LocalUserModel user,
+  ) async {
+    final file = File(path);
+    final name = DateTime.now().microsecondsSinceEpoch.toString();
+    final reference = storage.ref().child(TodayKeys.avatars).child(name);
+    final snapshot = await reference.putFile(file);
+
+    await snapshot.ref.getDownloadURL().then((url) async {
+      final newUser = user;
+      newUser.avatar = url;
+      if (oldImage.isNotEmpty) await _deleteOldImage(oldImage);
+      await updateProfile(newUser);
+    });
   }
 
   Future<void> updateProfile(LocalUserModel user) async {
@@ -41,6 +62,10 @@ class ProfileRepository {
     } catch (error) {
       throw Exception(error.toString());
     }
+  }
+
+  Future<void> _deleteOldImage(String oldImage) async {
+    await storage.refFromURL(oldImage).delete();
   }
 
   void _saveInHive(LocalUserModel user) {

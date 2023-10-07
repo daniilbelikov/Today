@@ -2,31 +2,41 @@ import 'package:bloc/bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import '../../../helpers/constants.dart';
 import '../../../models/hive/local_user_model.dart';
 import '../data/repository/profile_repository.dart';
 part 'profile_event.dart';
 part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final ProfileRepository repository;
+  final ProfileRepository _repository;
 
-  ProfileBloc({required this.repository}) : super(ProfileLoading()) {
-    on<GetProfile>((event, emit) async {
+  ProfileBloc({required ProfileRepository repository})
+      : _repository = repository,
+        super(ProfileLoading()) {
+    on<GetProfileEvent>((event, emit) async {
       emit(ProfileLoading());
 
       try {
-        final user = await repository.getProfile();
+        final user = await _repository.getProfile();
         emit(ProfileLoaded(user));
       } catch (error) {
         emit(ProfileError(error.toString()));
       }
     });
 
-    on<UpdateProfile>((event, emit) async {
+    on<UpdateProfileEvent>((event, emit) async {
       emit(ProfileUpdating());
 
       try {
-        await repository.updateProfile(event.user);
+        final oldImage = event.oldImage;
+        final path = event.user.avatar;
+        final user = event.user;
+
+        path.contains(TodayKeys.storage)
+            ? await _repository.updateProfile(user)
+            : await _repository.uploadImageInStorage(path, oldImage, user);
+
         emit(ProfileUpdated());
       } catch (error) {
         emit(ProfileError(error.toString()));

@@ -7,7 +7,7 @@ class ImageRowWidget extends StatelessWidget {
   const ImageRowWidget({
     Key? key,
     required this.deleteAction,
-    required this.avatarImage,
+    required this.imageLink,
     required this.imageFile,
     required this.title,
     required this.onTap,
@@ -15,7 +15,7 @@ class ImageRowWidget extends StatelessWidget {
 
   final void Function()? deleteAction;
   final void Function()? onTap;
-  final String? avatarImage;
+  final String imageLink;
   final File? imageFile;
   final String title;
 
@@ -42,7 +42,7 @@ class ImageRowWidget extends StatelessWidget {
           children: [
             AvatarEditWidget(
               deleteAction: deleteAction,
-              avatarImage: avatarImage,
+              imageLink: imageLink,
               imageFile: imageFile,
               onTap: onTap,
             ),

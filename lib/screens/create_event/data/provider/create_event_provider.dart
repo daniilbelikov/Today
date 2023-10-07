@@ -24,6 +24,13 @@ class CreateEventProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool getActiveStatus() {
+    return city.isNotEmpty &&
+        type.isNotEmpty &&
+        count.isNotEmpty &&
+        desc.isNotEmpty;
+  }
+
   String getCurrentDate() {
     final date = DateTime.now();
     return DateFormat(TodayValues.dayPattern).format(date);
@@ -45,7 +52,7 @@ class CreateEventProvider with ChangeNotifier {
     );
   }
 
-  Future showSuccessAlert(BuildContext context) async {
+  Future<void> showSuccessAlert(BuildContext context) async {
     showDialog(
       context: context,
       builder: (_) => CommonAlertWidget(

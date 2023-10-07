@@ -20,18 +20,22 @@ class CreateEventScreen extends StatefulWidget {
 }
 
 class _CreateEventScreenState extends State<CreateEventScreen> {
-  final TextEditingController _descController = TextEditingController();
   TextEditingController _cityController = TextEditingController();
   TextEditingController _typeController = TextEditingController();
   TextEditingController _countController = TextEditingController();
+  final TextEditingController _descController = TextEditingController();
 
   @override
   void dispose() {
+    super.dispose();
+    _disposeTextEditingControllers();
+  }
+
+  void _disposeTextEditingControllers() {
     _cityController.dispose();
     _typeController.dispose();
     _countController.dispose();
     _descController.dispose();
-    super.dispose();
   }
 
   @override
@@ -180,10 +184,6 @@ class _SaveButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CreateEventProvider>(context);
-    final hasCity = provider.getCity.isNotEmpty;
-    final hasType = provider.getType.isNotEmpty;
-    final hasCount = provider.getCount.isNotEmpty;
-    final hasDesc = provider.getDesc.isNotEmpty;
     return BlocBuilder<EventsBloc, EventsState>(
       builder: (context, state) {
         if (state is EventAdding) {
@@ -197,7 +197,7 @@ class _SaveButtonWidget extends StatelessWidget {
           return const ErrorViewWidget();
         }
         return BlackButtonWidget(
-          isActive: hasCity && hasType && hasCount && hasDesc,
+          isActive: provider.getActiveStatus(),
           title: S.of(context).send,
           onPressed: onPressed,
         );

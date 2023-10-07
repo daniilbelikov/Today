@@ -569,6 +569,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Ваш профиль обновлен.`
+  String get edit_profile_success {
+    return Intl.message(
+      'Ваш профиль обновлен.',
+      name: 'edit_profile_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
