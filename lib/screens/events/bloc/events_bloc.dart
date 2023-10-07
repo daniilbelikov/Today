@@ -24,11 +24,11 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       }
     });
 
-    on<GetEvents>((event, emit) async {
+    on<GetCityEvents>((event, emit) async {
       emit(EventsLoading());
 
       try {
-        final events = await _repository.getAllEvents();
+        final events = await _repository.getCityEvents(event.city);
         emit(EventsLoaded(events));
       } catch (error) {
         emit(EventError(error.toString()));

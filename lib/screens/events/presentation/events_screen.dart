@@ -9,7 +9,6 @@ import '../../../helpers/constants.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
 import '../data/provider/events_provider.dart';
-import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
@@ -26,6 +25,26 @@ class EventsScreen extends StatefulWidget {
 class _EventsScreenState extends State<EventsScreen> {
   final CardSwiperController _swiperController = CardSwiperController();
 
+  void _requestAllEvents({String city = TodayData.selectedValue}) {
+    BlocProvider.of<EventsBloc>(context).add(
+      GetCityEvents(city),
+    );
+  }
+
+  void _disposeSwiperController() {
+    _swiperController.dispose();
+  }
+
+  void _pushAndReturn(EventsProvider provider) async {
+    await Navigator.push<bool?>(
+      context,
+      MaterialPageRoute(builder: (_) => const CreateEventScreen()),
+    ).then((value) {
+      if (value == null) return;
+      _requestAllEvents(city: provider.getSelectedValue);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -38,16 +57,9 @@ class _EventsScreenState extends State<EventsScreen> {
     _disposeSwiperController();
   }
 
-  void _requestAllEvents() {
-    BlocProvider.of<EventsBloc>(context).add(GetEvents());
-  }
-
-  void _disposeSwiperController() {
-    _swiperController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventsProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -58,8 +70,7 @@ class _EventsScreenState extends State<EventsScreen> {
               buttonWidth: 90.0,
               title: S.of(context).events,
               buttonTitle: S.of(context).create,
-              onPressed: () =>
-                  RouteWraper().push(context, const CreateEventScreen()),
+              onPressed: () => _pushAndReturn(provider),
             ),
             _EventsBodyWidget(
               controller: _swiperController,
@@ -115,13 +126,16 @@ class _EventCardsWidget extends StatelessWidget {
   final List<EventModel> events;
   final String userCity;
 
-  void showCityBottomSheet(BuildContext context) {
+  void _showCityBottomSheet(BuildContext context) {
     showModalBottomSheet<String?>(
       builder: (_) => const CityBottomSheet(),
       backgroundColor: Colors.transparent,
       context: context,
     ).then((city) {
       if (city == null) return;
+      BlocProvider.of<EventsBloc>(context).add(
+        GetCityEvents(city),
+      );
     });
   }
 
@@ -175,7 +189,7 @@ class _EventCardsWidget extends StatelessWidget {
                       fontSize: 18.0,
                     ),
                     recognizer: TapGestureRecognizer()
-                      ..onTap = () => showCityBottomSheet(context),
+                      ..onTap = () => _showCityBottomSheet(context),
                   ),
                 ],
               ),

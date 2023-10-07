@@ -135,6 +135,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         controller: _ageController,
                         title: S.of(context).age_title,
                         hintText: S.of(context).age_hint,
+                        keyboardType: TextInputType.number,
                         onChanged: (text) => provider.changeAge(text),
                       ),
                     ),
@@ -190,7 +191,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        top: 30.0,
+                        top: 20.0,
                         bottom: bottomValue,
                       ),
                       child: _EditProfileButtonWidget(

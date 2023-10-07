@@ -90,7 +90,7 @@ class EditProfileProvider with ChangeNotifier {
         title: S.of(context).success,
         text: S.of(context).edit_profile_success,
       ),
-    ).whenComplete(() => RouteWraper().pop(context));
+    ).whenComplete(() => RouteWraper().pop(context, result: true));
   }
 
   Future<void> pickingImage(bool camera) async {

@@ -14,4 +14,11 @@ class CreateEvent extends EventsEvent {
   List<Object> get props => [event];
 }
 
-class GetEvents extends EventsEvent {}
+class GetCityEvents extends EventsEvent {
+  final String city;
+
+  GetCityEvents(this.city);
+
+  @override
+  List<Object> get props => [city];
+}

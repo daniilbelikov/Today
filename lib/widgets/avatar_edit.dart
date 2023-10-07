@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:today/helpers/constants.dart';
 
+import 'activity_indicator.dart';
+
 class AvatarEditWidget extends StatelessWidget {
   const AvatarEditWidget({
     Key? key,
@@ -76,15 +78,25 @@ class _DowloadedImageContainer extends StatelessWidget {
           height: 140.0,
           width: double.infinity,
           fit: BoxFit.cover,
+          loadingBuilder: (_, child, progress) =>
+              progress == null ? child : const ActivityIndicatorWidget(),
         ),
         Positioned(
           top: -5.0,
           right: -5.0,
           child: IconButton(
             onPressed: deleteAction,
-            icon: Icon(
-              Icons.close,
-              color: Theme.of(context).cardColor,
+            icon: Container(
+              width: 30.0,
+              height: 30.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).hintColor.withAlpha(100),
+              ),
+              child: Icon(
+                Icons.close,
+                color: Theme.of(context).cardColor,
+              ),
             ),
           ),
         ),
@@ -107,24 +119,28 @@ class _PickingImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // ClipRRect(
-        //   borderRadius: BorderRadius.circular(20.0),
-        //   child:
         Image.file(
           imageFile ?? File(''),
           height: 140.0,
           width: double.infinity,
           fit: BoxFit.cover,
         ),
-        //),
         Positioned(
           top: -5.0,
           right: -5.0,
           child: IconButton(
             onPressed: deleteAction,
-            icon: Icon(
-              Icons.close,
-              color: Theme.of(context).cardColor,
+            icon: Container(
+              width: 30.0,
+              height: 30.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).hintColor.withAlpha(100),
+              ),
+              child: Icon(
+                Icons.close,
+                color: Theme.of(context).cardColor,
+              ),
             ),
           ),
         ),

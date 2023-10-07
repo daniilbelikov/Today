@@ -8,6 +8,7 @@ class TextFieldRowWidget extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.title,
+    this.keyboardType = TextInputType.text,
     this.readOnly = false,
     this.maxLines = 1,
     this.maxLength,
@@ -19,6 +20,7 @@ class TextFieldRowWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final Function(String)? onChanged;
+  final TextInputType keyboardType;
   final void Function()? onTap;
   final String hintText;
   final int? maxLength;
@@ -50,7 +52,7 @@ class TextFieldRowWidget extends StatelessWidget {
             readOnly: readOnly,
             onTap: onTap,
             maxLines: maxLines,
-            keyboardType: TextInputType.text,
+            keyboardType: keyboardType,
             textInput: TextInputAction.done,
             hintText: hintText,
             validator: validator,

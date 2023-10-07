@@ -14,10 +14,14 @@ class BottomNavigationView extends StatefulWidget {
 }
 
 class _BottomNavigationViewState extends State<BottomNavigationView> {
+  void _requestProfile() {
+    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
+  }
+
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
+    _requestProfile();
   }
 
   @override

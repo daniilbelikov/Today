@@ -30,11 +30,11 @@ class EventsRepository {
     }
   }
 
-  Future<List<EventModel>> getAllEvents() async {
+  Future<List<EventModel>> getCityEvents(String city) async {
     List<EventModel> events = [];
 
     try {
-      final snapshot = await _eventsRef.get();
+      final snapshot = await _eventsRef.where('city', isEqualTo: city).get();
       for (var doc in snapshot.docs) {
         final data = doc.data();
         final event = EventModel.fromJson(data);

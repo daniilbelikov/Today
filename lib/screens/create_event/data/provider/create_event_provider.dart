@@ -59,7 +59,7 @@ class CreateEventProvider with ChangeNotifier {
         title: S.of(context).success,
         text: S.of(context).create_event_success,
       ),
-    ).whenComplete(() => RouteWraper().pop(context));
+    ).whenComplete(() => RouteWraper().pop(context, result: true));
   }
 
   void showErrorAlert(BuildContext context) {
