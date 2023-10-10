@@ -335,10 +335,10 @@ class _EventCardWidget extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: TodayDecorations.shadow,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
+        child: const Padding(
+          padding: EdgeInsets.all(12.0),
           child: Column(
-            children: const [],
+            children: [],
           ),
         ),
       ),
