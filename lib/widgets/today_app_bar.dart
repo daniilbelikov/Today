@@ -48,9 +48,7 @@ class TodayAppBarWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(),
-            ),
+            Expanded(child: Container()),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Row(

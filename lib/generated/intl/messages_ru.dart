@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Пример: Фитнес-тренер из Тольятти, который любит активный образ жизни и общение с интересными людьми. Верю в то, что можно быть в форме и без вредных привычек. Если ты также ценишь спорт и здоровый образ жизни, давай познакомимся!"),
         "about_title": MessageLookupByLibrary.simpleMessage("О себе*"),
         "activity": MessageLookupByLibrary.simpleMessage("Активность"),
+        "again": MessageLookupByLibrary.simpleMessage("Начать заново"),
         "age_hint": MessageLookupByLibrary.simpleMessage("Пример: 23"),
         "age_title": MessageLookupByLibrary.simpleMessage("Возраст*"),
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
@@ -33,9 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
         "avatar_title":
             MessageLookupByLibrary.simpleMessage("Ваша фотография*"),
+        "button_super": MessageLookupByLibrary.simpleMessage("Супер!"),
         "camera": MessageLookupByLibrary.simpleMessage("Камера"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
+        "change_city": MessageLookupByLibrary.simpleMessage("Сменить город"),
         "chooseCity": MessageLookupByLibrary.simpleMessage("Выберите город"),
+        "choose_age":
+            MessageLookupByLibrary.simpleMessage("Выберите ваш возраст"),
         "choose_city": MessageLookupByLibrary.simpleMessage("Выберите город"),
         "choose_count": MessageLookupByLibrary.simpleMessage(
             "Выберите количество участников"),
@@ -57,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Количество участников*"),
         "create_members_hint":
             MessageLookupByLibrary.simpleMessage("Пример: 4"),
+        "create_new_event":
+            MessageLookupByLibrary.simpleMessage("Создать событие"),
         "create_type": MessageLookupByLibrary.simpleMessage("Тип события*"),
         "create_type_hint":
             MessageLookupByLibrary.simpleMessage("Пример: Прогулка"),
@@ -65,11 +72,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
         "edit_profile_success":
             MessageLookupByLibrary.simpleMessage("Ваш профиль обновлен."),
-        "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
+        "empty_hint": MessageLookupByLibrary.simpleMessage(
+            "Кажется, в вашем городе пока нет событий. Может создадим собственное?"),
+        "end_text": MessageLookupByLibrary.simpleMessage(
+            "Видимо, это все события на сегодня. Предлагаем пройтись по событиям ещё раз или создать собственное."),
+        "error": MessageLookupByLibrary.simpleMessage("Предупреждение"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
+        "forward": MessageLookupByLibrary.simpleMessage("Вперёд!"),
         "gallery": MessageLookupByLibrary.simpleMessage("Галерея"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
         "name_hint": MessageLookupByLibrary.simpleMessage("Пример: Василий"),

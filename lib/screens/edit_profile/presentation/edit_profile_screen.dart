@@ -197,7 +197,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        top: 20.0,
+                        top: 30.0,
                         bottom: bottomValue,
                       ),
                       child: _EditProfileButtonWidget(

@@ -1,3 +1,4 @@
+import 'end_alert.dart';
 import 'city_bottom_sheet.dart';
 import '../bloc/events_bloc.dart';
 import 'profile_bottom_sheet.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/today_app_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../data/provider/events_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/common/event_model.dart';
@@ -25,7 +27,7 @@ class EventsScreen extends StatefulWidget {
 class _EventsScreenState extends State<EventsScreen> {
   final CardSwiperController _swiperController = CardSwiperController();
 
-  void _requestAllEvents({String city = TodayData.selectedValue}) {
+  void _requestAllEvents({String city = TodayData.selectedCity}) {
     BlocProvider.of<EventsBloc>(context).add(
       GetCityEvents(city),
     );
@@ -41,7 +43,7 @@ class _EventsScreenState extends State<EventsScreen> {
       MaterialPageRoute(builder: (_) => const CreateEventScreen()),
     ).then((value) {
       if (value == null) return;
-      _requestAllEvents(city: provider.getSelectedValue);
+      _requestAllEvents(city: provider.getSelectedCity);
     });
   }
 
@@ -97,11 +99,15 @@ class _EventsBodyWidget extends StatelessWidget {
       child: BlocBuilder<EventsBloc, EventsState>(
         builder: (context, state) {
           if (state is EventsLoaded) {
-            return _EventCardsWidget(
-              events: state.events,
-              controller: controller,
-              userCity: provider.getRightCity(),
-            );
+            return state.events.isEmpty
+                ? _EmptyViewWidget(
+                    userCity: provider.getRightCity(),
+                  )
+                : _EventCardsWidget(
+                    events: state.events,
+                    controller: controller,
+                    userCity: provider.getRightCity(),
+                  );
           } else if (state is EventError) {
             return const ErrorViewWidget();
           }
@@ -114,16 +120,12 @@ class _EventsBodyWidget extends StatelessWidget {
   }
 }
 
-class _EventCardsWidget extends StatelessWidget {
-  const _EventCardsWidget({
+class _EmptyViewWidget extends StatelessWidget {
+  const _EmptyViewWidget({
     Key? key,
-    required this.events,
-    required this.controller,
     required this.userCity,
   }) : super(key: key);
 
-  final CardSwiperController controller;
-  final List<EventModel> events;
   final String userCity;
 
   void _showCityBottomSheet(BuildContext context) {
@@ -142,6 +144,112 @@ class _EventCardsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(flex: 2, child: Container()),
+        SizedBox(
+          height: 166.0,
+          child: SvgPicture.asset(TodayAssets.empty),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 20.0,
+            left: 32.0,
+            right: 32.0,
+            bottom: 20.0,
+          ),
+          child: Text(
+            S.of(context).empty_hint,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).shadowColor,
+              fontFamily: TodayFonts.medium,
+              fontSize: 16.0,
+            ),
+          ),
+        ),
+        Expanded(flex: 3, child: Container()),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: S.of(context).variants,
+                  style: TextStyle(
+                    color: Theme.of(context).shadowColor,
+                    fontFamily: TodayFonts.regular,
+                    fontSize: 16.0,
+                  ),
+                ),
+                TextSpan(
+                  text: userCity,
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Theme.of(context).shadowColor,
+                    fontFamily: TodayFonts.semiBold,
+                    fontSize: 18.0,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => _showCityBottomSheet(context),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _EventCardsWidget extends StatelessWidget {
+  const _EventCardsWidget({
+    Key? key,
+    required this.events,
+    required this.controller,
+    required this.userCity,
+  }) : super(key: key);
+
+  final CardSwiperController controller;
+  final List<EventModel> events;
+  final String userCity;
+
+  Future<void> _showEndAlert(BuildContext context, String city) async {
+    showDialog<int?>(
+      context: context,
+      builder: (_) => EndAlertWidget(text: S.of(context).end_text),
+    ).then((result) async {
+      switch (result) {
+        case 0:
+          _showCityBottomSheet(context);
+          break;
+        default:
+          BlocProvider.of<EventsBloc>(context).add(
+            GetCityEvents(city),
+          );
+          break;
+      }
+    });
+  }
+
+  void _showCityBottomSheet(BuildContext context) {
+    showModalBottomSheet<String?>(
+      builder: (_) => const CityBottomSheet(),
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+    ).then((city) {
+      if (city == null) return;
+      BlocProvider.of<EventsBloc>(context).add(
+        GetCityEvents(city),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<EventsProvider>(context);
+    final city = provider.getSelectedCity;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
@@ -151,6 +259,8 @@ class _EventCardsWidget extends StatelessWidget {
               isLoop: false,
               controller: controller,
               cardsCount: events.length,
+              onEnd: () => _showEndAlert(context, city),
+              numberOfCardsDisplayed: events.length == 1 ? 1 : 2,
               allowedSwipeDirection: AllowedSwipeDirection.symmetric(
                 horizontal: true,
                 vertical: false,

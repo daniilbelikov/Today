@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/picker.dart';
 
 class TodayAssets {
-  static const success = 'assets/svg/success.svg';
+  static const empty = 'assets/svg/empty_main.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
   static const camera = 'assets/svg/camera.svg';
   static const apple = 'assets/svg/apple.svg';
-  static const error = 'assets/svg/error.svg';
+  static const end = 'assets/svg/end.svg';
 }
 
 class TodayFonts {
@@ -25,6 +25,7 @@ class TodayFonts {
 class TodayColors {
   static const green = Color(0xff5FFBD6);
   static const purple = Color(0xffB063F6);
+  static const text = Color(0xff252525);
 }
 
 class TodayValues {
@@ -38,14 +39,27 @@ class TodayLinks {
 }
 
 class TodayData {
-  static const selectedValue = 'Тольятти';
-  static const values = ['Тольятти', 'Самара'];
-  static const samaraOld = 'Самара';
-  static const samaraNew = 'Самаре';
+  static const selectedCity = 'Нижний Новгород';
+  static const citiesArray = [
+    'Нижний Новгород',
+    'Новосибирск',
+    'Екатеринбург',
+    'Волгоград',
+    'Казань',
+    'Самара',
+    'Пермь',
+    'Уфа',
+  ];
 
   static final cities = [
-    PickerItem(value: 'Тольятти'),
+    PickerItem(value: 'Нижний Новгород'),
+    PickerItem(value: 'Новосибирск'),
+    PickerItem(value: 'Екатеринбург'),
+    PickerItem(value: 'Волгоград'),
+    PickerItem(value: 'Казань'),
     PickerItem(value: 'Самара'),
+    PickerItem(value: 'Пермь'),
+    PickerItem(value: 'Уфа'),
   ];
 
   static final types = [

@@ -58,6 +58,7 @@ class CreateEventProvider with ChangeNotifier {
       builder: (_) => CommonAlertWidget(
         title: S.of(context).success,
         text: S.of(context).create_event_success,
+        buttonTitle: S.of(context).button_super,
       ),
     ).whenComplete(() => RouteWraper().pop(context, result: true));
   }
@@ -68,6 +69,7 @@ class CreateEventProvider with ChangeNotifier {
       builder: (_) => CommonAlertWidget(
         title: S.of(context).error,
         text: S.of(context).error_profile,
+        buttonTitle: S.of(context).close,
       ),
     );
   }
@@ -78,8 +80,7 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.cities,
       title: S.of(context).choose_city,
-      onConfirm: (Picker picker, List value) =>
-          _saveValue(TodayKeys.city, picker),
+      onConfirm: (Picker picker, _) => _saveValue(TodayKeys.city, picker),
     ).showDialog(context);
   }
 
@@ -89,8 +90,7 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.types,
       title: S.of(context).choose_type,
-      onConfirm: (Picker picker, List value) =>
-          _saveValue(TodayKeys.type, picker),
+      onConfirm: (Picker picker, _) => _saveValue(TodayKeys.type, picker),
     ).showDialog(context);
   }
 
@@ -100,8 +100,7 @@ class CreateEventProvider with ChangeNotifier {
       context: context,
       data: TodayData.numbers,
       title: S.of(context).choose_count,
-      onConfirm: (Picker picker, List value) =>
-          _saveValue(TodayKeys.count, picker),
+      onConfirm: (Picker picker, _) => _saveValue(TodayKeys.count, picker),
     ).showDialog(context);
   }
 

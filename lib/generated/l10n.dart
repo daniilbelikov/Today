@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `Создать событие`
+  String get create_new_event {
+    return Intl.message(
+      'Создать событие',
+      name: 'create_new_event',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Редактировать`
   String get edit {
     return Intl.message(
@@ -370,10 +380,10 @@ class S {
     );
   }
 
-  /// `Ошибка`
+  /// `Предупреждение`
   String get error {
     return Intl.message(
-      'Ошибка',
+      'Предупреждение',
       name: 'error',
       desc: '',
       args: [],
@@ -575,6 +585,76 @@ class S {
     return Intl.message(
       'Ваш профиль обновлен.',
       name: 'edit_profile_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выберите ваш возраст`
+  String get choose_age {
+    return Intl.message(
+      'Выберите ваш возраст',
+      name: 'choose_age',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Кажется, в вашем городе пока нет событий. Может создадите собственное?`
+  String get empty_hint {
+    return Intl.message(
+      'Кажется, в вашем городе пока нет событий. Может создадите собственное?',
+      name: 'empty_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вперёд!`
+  String get forward {
+    return Intl.message(
+      'Вперёд!',
+      name: 'forward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Супер!`
+  String get button_super {
+    return Intl.message(
+      'Супер!',
+      name: 'button_super',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Видимо, это все события на сегодня. Что будем делать дальше?`
+  String get end_text {
+    return Intl.message(
+      'Видимо, это все события на сегодня. Что будем делать дальше?',
+      name: 'end_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Начать заново`
+  String get again {
+    return Intl.message(
+      'Начать заново',
+      name: 'again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сменить город`
+  String get change_city {
+    return Intl.message(
+      'Сменить город',
+      name: 'change_city',
       desc: '',
       args: [],
     );

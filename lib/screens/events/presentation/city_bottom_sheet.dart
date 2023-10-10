@@ -72,15 +72,15 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
                   child: _RadioRowsWidget(
                     onChanged: (newValue) =>
                         provider.setSelectedValue(newValue as String),
-                    selectedValue: provider.getSelectedValue,
-                    values: provider.getValues,
+                    selectedValue: provider.getSelectedCity,
+                    values: provider.getCities,
                   ),
                 ),
                 BlackButtonWidget(
                   title: S.of(context).done,
                   onPressed: () => RouteWraper().pop(
                     context,
-                    result: provider.getSelectedValue,
+                    result: provider.getSelectedCity,
                   ),
                 ),
                 SizedBox(
@@ -110,7 +110,7 @@ class _RadioRowsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.0,
+      height: 400.0,
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

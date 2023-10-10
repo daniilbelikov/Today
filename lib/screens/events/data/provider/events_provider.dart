@@ -2,19 +2,37 @@ import 'package:flutter/foundation.dart';
 import '../../../../helpers/constants.dart';
 
 class EventsProvider with ChangeNotifier {
-  String selectedValue = TodayData.selectedValue;
-  List<String> values = TodayData.values;
+  String selectedCity = TodayData.selectedCity;
+  List<String> cities = TodayData.citiesArray;
 
-  List<String> get getValues => values;
-  String get getSelectedValue => selectedValue;
+  String get getSelectedCity => selectedCity;
+  List<String> get getCities => cities;
 
   void setSelectedValue(String value) {
-    selectedValue = value;
+    selectedCity = value;
     notifyListeners();
   }
 
   String getRightCity() {
-    if (selectedValue == TodayData.samaraOld) return TodayData.samaraNew;
-    return selectedValue;
+    switch (selectedCity) {
+      case 'Самара':
+        return 'Самаре';
+      case 'Казань':
+        return 'Казане';
+      case 'Уфа':
+        return 'Уфе';
+      case 'Нижний Новгород':
+        return 'Нижнем Новгороде';
+      case 'Пермь':
+        return 'Перми';
+      case 'Новосибирск':
+        return 'Новосибирске';
+      case 'Екатеринбург':
+        return 'Екатеринбурге';
+      case 'Волгоград':
+        return 'Волгограде';
+      default:
+        return '';
+    }
   }
 }

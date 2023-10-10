@@ -90,6 +90,7 @@ class EditProfileProvider with ChangeNotifier {
       builder: (_) => CommonAlertWidget(
         title: S.of(context).success,
         text: S.of(context).edit_profile_success,
+        buttonTitle: S.of(context).button_super,
       ),
     ).whenComplete(() => RouteWraper().pop(context, result: true));
   }
@@ -141,8 +142,8 @@ class EditProfileProvider with ChangeNotifier {
       height: 200.0,
       context: context,
       data: TodayData.ages,
-      title: S.of(context).choose_count,
-      onConfirm: (Picker picker, List value) => _saveValue(picker),
+      title: S.of(context).choose_age,
+      onConfirm: (Picker picker, _) => _saveValue(picker),
     ).showDialog(context);
   }
 

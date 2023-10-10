@@ -1,17 +1,15 @@
-import '../helpers/constants.dart';
+import 'package:flutter_svg/svg.dart';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:today/widgets/black_button.dart';
+import '../../../helpers/constants.dart';
+import '../../../widgets/black_button.dart';
 
-class CommonAlertWidget extends StatelessWidget {
-  const CommonAlertWidget({
+class EndAlertWidget extends StatelessWidget {
+  const EndAlertWidget({
     Key? key,
-    required this.buttonTitle,
-    required this.title,
     required this.text,
   }) : super(key: key);
 
-  final String buttonTitle;
-  final String title;
   final String text;
 
   @override
@@ -24,17 +22,17 @@ class CommonAlertWidget extends StatelessWidget {
         ),
       ),
       content: SizedBox(
-        height: 168.0,
+        height: 280.0,
+        width: 280.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontFamily: TodayFonts.bold,
-                fontSize: 18.0,
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: SizedBox(
+                height: 90.0,
+                child: SvgPicture.asset(TodayAssets.end),
               ),
             ),
             Expanded(child: Container()),
@@ -48,10 +46,10 @@ class CommonAlertWidget extends StatelessWidget {
             ),
             Expanded(child: Container()),
             Padding(
-              padding: const EdgeInsets.only(bottom: 0.0),
+              padding: const EdgeInsets.only(bottom: 4.0),
               child: BlackButtonWidget(
                 onPressed: () => Navigator.pop(context),
-                title: buttonTitle,
+                title: S.of(context).again,
               ),
             ),
           ],

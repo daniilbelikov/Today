@@ -9,6 +9,8 @@ class BlackButtonWidget extends StatelessWidget {
     required this.title,
     this.isActive = true,
     this.hasIcon = false,
+    this.width = double.infinity,
+    this.height = 48.0,
     this.icon = '',
   }) : super(key: key);
 
@@ -16,13 +18,15 @@ class BlackButtonWidget extends StatelessWidget {
   final bool isActive;
   final bool hasIcon;
   final String title;
+  final double height;
+  final double width;
   final String icon;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48.0,
-      width: double.infinity,
+      height: height,
+      width: width,
       child: ElevatedButton(
         onPressed: isActive ? onPressed : null,
         style: ElevatedButton.styleFrom(
