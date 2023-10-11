@@ -3,6 +3,7 @@ import 'helpers/themes.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
+import 'package:today/utils/no_glow.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
 import 'screens/events/bloc/events_bloc.dart';
 import 'screens/profile/bloc/profile_bloc.dart';
@@ -87,6 +88,7 @@ class TodayApp extends StatelessWidget {
                 ),
               ],
               child: MaterialApp(
+                scrollBehavior: NoGlowScrollBehavior(),
                 localizationsDelegates: const [
                   S.delegate,
                   GlobalMaterialLocalizations.delegate,
