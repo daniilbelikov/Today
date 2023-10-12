@@ -2,6 +2,7 @@ import 'dart:io';
 import 'offer_bottom_sheet.dart';
 import '../bloc/activity_bloc.dart';
 import 'response_bottom_sheet.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,8 @@ class ActivityScreen extends StatefulWidget {
   State<ActivityScreen> createState() => _ActivityScreenState();
 }
 
-class _ActivityScreenState extends State<ActivityScreen> {
+class _ActivityScreenState extends State<ActivityScreen>
+    with AutomaticKeepAliveClientMixin {
   final ScrollController _controller = ScrollController();
 
   void _requestEvents() {
@@ -37,7 +39,11 @@ class _ActivityScreenState extends State<ActivityScreen> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -85,15 +91,19 @@ class _ReactionsBodyWidget extends StatelessWidget {
           BlocBuilder<ActivityBloc, ActivityState>(
             builder: (context, state) {
               if (state is EventsLoaded) {
-                return provider.getIndex == 0
-                    ? _ResponsesWidget(
-                        controller: controller,
-                        events: state.events,
-                      )
-                    : _OffersWidget(
-                        controller: controller,
-                        events: state.events,
-                      );
+                final events = state.events;
+                final index = provider.getIndex;
+                return events.isEmpty
+                    ? _EmptyViewWidget(index: index)
+                    : index == 0
+                        ? _ResponsesWidget(
+                            controller: controller,
+                            events: events,
+                          )
+                        : _OffersWidget(
+                            controller: controller,
+                            events: events,
+                          );
               } else if (state is EventError) {
                 return const ErrorViewWidget();
               }
@@ -186,7 +196,7 @@ class _ResponsesWidget extends StatelessWidget {
             ),
             itemCount: events.length,
             itemBuilder: (context, index) {
-              return const _ResponseCardWidget();
+              return const _ResponsesCardWidget();
             },
           ),
         ),
@@ -231,10 +241,10 @@ class _OffersWidget extends StatelessWidget {
   }
 }
 
-class _ResponseCardWidget extends StatelessWidget {
-  const _ResponseCardWidget({Key? key}) : super(key: key);
+class _ResponsesCardWidget extends StatelessWidget {
+  const _ResponsesCardWidget({Key? key}) : super(key: key);
 
-  void showResponseBottomSheet(BuildContext context) {
+  void _showResponseBottomSheet(BuildContext context) {
     showModalBottomSheet(
       builder: (_) => const ResponseBottomSheet(),
       backgroundColor: Colors.transparent,
@@ -245,7 +255,7 @@ class _ResponseCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showResponseBottomSheet(context),
+      onTap: () => _showResponseBottomSheet(context),
       child: Container(
         height: 200.0,
         margin: const EdgeInsets.only(bottom: 20.0),
@@ -258,7 +268,7 @@ class _ResponseCardWidget extends StatelessWidget {
 class _OffersCardWidget extends StatelessWidget {
   const _OffersCardWidget({Key? key}) : super(key: key);
 
-  void showOfferBottomSheet(BuildContext context) {
+  void _showOfferBottomSheet(BuildContext context) {
     showModalBottomSheet<String?>(
       builder: (_) => const OfferBottomSheet(),
       backgroundColor: Colors.transparent,
@@ -269,11 +279,53 @@ class _OffersCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showOfferBottomSheet(context),
+      onTap: () => _showOfferBottomSheet(context),
       child: Container(
         height: 200.0,
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: TodayDecorations.shadow,
+      ),
+    );
+  }
+}
+
+class _EmptyViewWidget extends StatelessWidget {
+  const _EmptyViewWidget({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Expanded(child: Container()),
+          SizedBox(
+            height: 166.0,
+            child: SvgPicture.asset(TodayAssets.emptyActivity),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32.0,
+              vertical: 20.0,
+            ),
+            child: Text(
+              index == 0
+                  ? S.of(context).responses_empty
+                  : S.of(context).offers_empty,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).shadowColor,
+                fontFamily: TodayFonts.medium,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+          Expanded(child: Container()),
+        ],
       ),
     );
   }

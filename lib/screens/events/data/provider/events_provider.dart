@@ -17,20 +17,14 @@ class EventsProvider with ChangeNotifier {
     switch (selectedCity) {
       case 'Самара':
         return 'Самаре';
-      case 'Казань':
-        return 'Казане';
-      case 'Уфа':
-        return 'Уфе';
-      case 'Нижний Новгород':
-        return 'Нижнем Новгороде';
-      case 'Пермь':
-        return 'Перми';
-      case 'Новосибирск':
-        return 'Новосибирске';
-      case 'Екатеринбург':
-        return 'Екатеринбурге';
-      case 'Волгоград':
-        return 'Волгограде';
+      case 'Тольятти':
+        return 'Тольятти';
+      case 'Сызрань':
+        return 'Сызране';
+      case 'Новокуйбышевск':
+        return 'Новокуйбышевске';
+      case 'Жигулёвск':
+        return 'Жигулёвске';
       default:
         return '';
     }

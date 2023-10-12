@@ -94,9 +94,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         iconTheme: IconThemeData(
           color: Theme.of(context).shadowColor,
         ),
+        elevation: 0.0,
+        centerTitle: true,
         automaticallyImplyLeading: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 0.0,
         title: Text(
           S.of(context).edit_profile,
           style: TextStyle(

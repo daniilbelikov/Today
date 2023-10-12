@@ -51,6 +51,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
           color: Theme.of(context).shadowColor,
         ),
         elevation: 0.0,
+        centerTitle: true,
         automaticallyImplyLeading: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text(

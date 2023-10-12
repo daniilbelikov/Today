@@ -110,7 +110,7 @@ class _RadioRowsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400.0,
+      height: 250.0,
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,

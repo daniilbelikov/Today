@@ -73,9 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_profile_success":
             MessageLookupByLibrary.simpleMessage("Ваш профиль обновлен."),
         "empty_hint": MessageLookupByLibrary.simpleMessage(
-            "Кажется, в вашем городе пока нет событий. Может создадим собственное?"),
+            "Кажется, в вашем городе нет событий. Может создадим собственное?"),
         "end_text": MessageLookupByLibrary.simpleMessage(
-            "Видимо, это все события на сегодня. Предлагаем пройтись по событиям ещё раз или создать собственное."),
+            "Видимо, это все события на сегодня. Что будем делать дальше?"),
         "error": MessageLookupByLibrary.simpleMessage("Предупреждение"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
@@ -87,12 +87,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "name_hint": MessageLookupByLibrary.simpleMessage("Пример: Василий"),
         "name_title": MessageLookupByLibrary.simpleMessage("Имя*"),
         "offers": MessageLookupByLibrary.simpleMessage("Предложения"),
+        "offers_empty":
+            MessageLookupByLibrary.simpleMessage("Вы не создавали события."),
         "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
             "Политикой конфиденциальности"),
         "privacy_title": MessageLookupByLibrary.simpleMessage(
             "Осуществляя вход, вы соглашаетесь с"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "responses": MessageLookupByLibrary.simpleMessage("Отклики"),
+        "responses_empty": MessageLookupByLibrary.simpleMessage(
+            "Вы не откликались на события других пользователей."),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
         "success": MessageLookupByLibrary.simpleMessage("Успешно"),

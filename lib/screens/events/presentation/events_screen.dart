@@ -24,7 +24,8 @@ class EventsScreen extends StatefulWidget {
   State<EventsScreen> createState() => _EventsScreenState();
 }
 
-class _EventsScreenState extends State<EventsScreen> {
+class _EventsScreenState extends State<EventsScreen>
+    with AutomaticKeepAliveClientMixin {
   final CardSwiperController _swiperController = CardSwiperController();
 
   void _requestAllEvents({String city = TodayData.selectedCity}) {
@@ -60,7 +61,11 @@ class _EventsScreenState extends State<EventsScreen> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final provider = Provider.of<EventsProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -146,17 +151,15 @@ class _EmptyViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(flex: 2, child: Container()),
+        Expanded(child: Container()),
         SizedBox(
           height: 166.0,
-          child: SvgPicture.asset(TodayAssets.empty),
+          child: SvgPicture.asset(TodayAssets.emptyMain),
         ),
         Padding(
-          padding: const EdgeInsets.only(
-            top: 20.0,
-            left: 32.0,
-            right: 32.0,
-            bottom: 20.0,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 32.0,
+            vertical: 20.0,
           ),
           child: Text(
             S.of(context).empty_hint,
@@ -168,7 +171,7 @@ class _EmptyViewWidget extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(flex: 3, child: Container()),
+        Expanded(child: Container()),
         Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
           child: RichText(
@@ -188,7 +191,7 @@ class _EmptyViewWidget extends StatelessWidget {
                     decoration: TextDecoration.underline,
                     color: Theme.of(context).shadowColor,
                     fontFamily: TodayFonts.semiBold,
-                    fontSize: 18.0,
+                    fontSize: 16.0,
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () => _showCityBottomSheet(context),
@@ -221,7 +224,10 @@ class _EventCardsWidget extends StatelessWidget {
     ).then((result) async {
       switch (result) {
         case 0:
-          _showCityBottomSheet(context);
+          const duration = Duration(milliseconds: 500);
+          Future.delayed(duration, () {
+            _showCityBottomSheet(context, currentCity: city, isEnd: true);
+          });
           break;
         default:
           BlocProvider.of<EventsBloc>(context).add(
@@ -232,16 +238,21 @@ class _EventCardsWidget extends StatelessWidget {
     });
   }
 
-  void _showCityBottomSheet(BuildContext context) {
+  void _showCityBottomSheet(
+    BuildContext context, {
+    String? currentCity,
+    bool isEnd = false,
+  }) {
     showModalBottomSheet<String?>(
       builder: (_) => const CityBottomSheet(),
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       context: context,
     ).then((city) {
-      if (city == null) return;
+      if (city == null && !isEnd) return;
+      final searchCity = (city ?? currentCity) ?? '';
       BlocProvider.of<EventsBloc>(context).add(
-        GetCityEvents(city),
+        GetCityEvents(searchCity),
       );
     });
   }
@@ -297,7 +308,7 @@ class _EventCardsWidget extends StatelessWidget {
                       decoration: TextDecoration.underline,
                       color: Theme.of(context).shadowColor,
                       fontFamily: TodayFonts.semiBold,
-                      fontSize: 18.0,
+                      fontSize: 16.0,
                     ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () => _showCityBottomSheet(context),
@@ -320,7 +331,7 @@ class _EventCardWidget extends StatelessWidget {
 
   final EventModel event;
 
-  void showResponseBottomSheet(BuildContext context) {
+  void _showResponseBottomSheet(BuildContext context) {
     showModalBottomSheet(
       builder: (_) => const ProfileBottomSheet(),
       backgroundColor: Colors.transparent,
@@ -331,7 +342,7 @@ class _EventCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showResponseBottomSheet(context),
+      onTap: () => _showResponseBottomSheet(context),
       child: Container(
         width: double.infinity,
         decoration: TodayDecorations.shadow,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_picker/picker.dart';
 
 class TodayAssets {
-  static const empty = 'assets/svg/empty_main.svg';
+  static const emptyActivity = 'assets/svg/empty_activity.svg';
+  static const emptyMain = 'assets/svg/empty_main.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
   static const camera = 'assets/svg/camera.svg';
@@ -39,27 +40,21 @@ class TodayLinks {
 }
 
 class TodayData {
-  static const selectedCity = 'Нижний Новгород';
+  static const selectedCity = 'Самара';
   static const citiesArray = [
-    'Нижний Новгород',
-    'Новосибирск',
-    'Екатеринбург',
-    'Волгоград',
-    'Казань',
     'Самара',
-    'Пермь',
-    'Уфа',
+    'Тольятти',
+    'Сызрань',
+    'Новокуйбышевск',
+    'Жигулёвск',
   ];
 
   static final cities = [
-    PickerItem(value: 'Нижний Новгород'),
-    PickerItem(value: 'Новосибирск'),
-    PickerItem(value: 'Екатеринбург'),
-    PickerItem(value: 'Волгоград'),
-    PickerItem(value: 'Казань'),
     PickerItem(value: 'Самара'),
-    PickerItem(value: 'Пермь'),
-    PickerItem(value: 'Уфа'),
+    PickerItem(value: 'Тольятти'),
+    PickerItem(value: 'Сызрань'),
+    PickerItem(value: 'Новокуйбышевск'),
+    PickerItem(value: 'Жигулёвск'),
   ];
 
   static final types = [
