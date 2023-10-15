@@ -88,6 +88,10 @@ class TodayKeys {
   static const type = 'type';
 }
 
+class TodayAnalytics {
+  static const empty = '';
+}
+
 class TodayDecorations {
   static final shadow = BoxDecoration(
     boxShadow: [

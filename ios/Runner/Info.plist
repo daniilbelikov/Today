@@ -22,31 +22,35 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tel</string>
 		<string>https</string>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к камере.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к микрофону.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIStatusBarStyle</key>
 	<string></string>
-    <key>NSCameraUsageDescription</key>
-    <string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к камере.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Чтобы в полной мере использовать функции видеосвязи, разрешите доступ к микрофону.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Чтобы добавить изображение, разрешите доступ к галерее. Разрешив доступ, вы сможете использовать все возможности приложения.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'dart:convert';
-// ignore: depend_on_referenced_packages
 import 'package:crypto/crypto.dart';
 import '../../../helpers/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,12 +20,10 @@ class AuthRepository {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      final userCredential = await _fireAuth.signInWithCredential(
-        credential,
-      );
-      final user = userCredential.user;
 
-      addUserInFirestore(user);
+      final userCredential = await _fireAuth.signInWithCredential(credential);
+      final user = userCredential.user;
+      _userDataManagement(user);
       return user;
     } catch (error) {
       throw Exception(error.toString());
@@ -38,7 +35,7 @@ class AuthRepository {
       final rawNonce = _generateRawNonce();
       final nonce = _sha256ofString(rawNonce);
 
-      final appleCredential = await SignInWithApple.getAppleIDCredential(
+      final credentialAppleID = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
@@ -46,23 +43,34 @@ class AuthRepository {
         nonce: nonce,
       );
 
-      final oauthCredential = OAuthProvider('apple.com').credential(
-        idToken: appleCredential.identityToken,
+      final credential = OAuthProvider('apple.com').credential(
+        idToken: credentialAppleID.identityToken,
         rawNonce: rawNonce,
       );
 
-      final userCredential =
-          await _fireAuth.signInWithCredential(oauthCredential);
+      final userCredential = await _fireAuth.signInWithCredential(credential);
       final user = userCredential.user;
-
-      addUserInFirestore(user);
+      _userDataManagement(user);
       return user;
     } catch (error) {
       throw Exception(error.toString());
     }
   }
 
-  Future<void> addUserInFirestore(User? user) async {
+  Future<void> signOut() async {
+    try {
+      await _fireAuth.signOut();
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  void _userDataManagement(User? user) {
+    final displayName = user?.displayName;
+    displayName == null ? _addUserInFirestore(user) : _updateDisplayName(user);
+  }
+
+  Future<void> _addUserInFirestore(User? user) async {
     final uid = user?.uid ?? '';
 
     try {
@@ -82,12 +90,8 @@ class AuthRepository {
     }
   }
 
-  Future<void> signOut() async {
-    try {
-      await _fireAuth.signOut();
-    } catch (error) {
-      throw Exception(error);
-    }
+  Future<void> _updateDisplayName(User? user) async {
+    await user?.updateDisplayName('User ${user.uid}');
   }
 
   String _generateRawNonce([int length = 32]) {

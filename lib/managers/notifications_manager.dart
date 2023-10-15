@@ -1,15 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationsManager {
-  static FlutterLocalNotificationsPlugin plugin =
-      FlutterLocalNotificationsPlugin();
+  final _plugin = FlutterLocalNotificationsPlugin();
 
-  static AndroidNotificationChannel channel = const AndroidNotificationChannel(
+  final _channel = const AndroidNotificationChannel(
     'android_notifications',
     'Android Notifications',
     importance: Importance.high,
@@ -17,12 +14,15 @@ class NotificationsManager {
   );
 
   Future initFirebaseMessaging() async {
-    await Firebase.initializeApp();
-
-    await plugin
+    await _plugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
+        ?.createNotificationChannel(_channel);
+
+    await _plugin
+        .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+        ?.requestNotificationsPermission();
 
     if (Platform.isAndroid) {
       await FirebaseMessaging.instance
@@ -34,76 +34,46 @@ class NotificationsManager {
     }
   }
 
-  static void initLocalNotifications() {
-    requestPermission();
-    registerSettings();
-    onForegroundMessage();
+  void initLocalNotifications() {
+    _requestPermission();
+    _registerSettings();
+    _onForegroundMessage();
   }
 
-  static void getFCMToken() async {
-    final messaging = FirebaseMessaging.instance;
-    final fcmToken = await messaging.getToken() ?? '';
-    final storage = await SharedPreferences.getInstance();
-    storage.setString('fcm', fcmToken);
-  }
-
-  static registerActionsListener(BuildContext context) {
+  void registerActionsListener(BuildContext context) {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {});
   }
 
-  static requestPermission() {
+  void _requestPermission() {
     FirebaseMessaging.instance.requestPermission();
   }
 
-  static void registerSettings() {
-    const android = AndroidInitializationSettings('@mipmap/ic_launcher');
+  void _registerSettings() {
+    const android =
+        AndroidInitializationSettings('@drawable/notification_icon');
     const iOS = DarwinInitializationSettings(defaultPresentBadge: true);
     const settings = InitializationSettings(android: android, iOS: iOS);
-    plugin.initialize(settings);
+    _plugin.initialize(settings);
   }
 
-  static Future<void> onBackgroundMessage(RemoteMessage message) async {
-    final notification = message.notification;
-
-    if (notification == null) return;
-
-    await plugin.show(
-      notification.hashCode,
-      notification.title,
-      notification.body,
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-          playSound: true,
-        ),
-        iOS: const DarwinNotificationDetails(
-          presentAlert: true,
-          presentSound: true,
-          presentBadge: true,
-        ),
-      ),
-    );
-  }
-
-  static void onForegroundMessage() {
+  void _onForegroundMessage() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) async {
         final notification = message.notification;
 
         if (notification == null) return;
 
-        await plugin.show(
+        await _plugin.show(
           notification.hashCode,
           notification.title,
           notification.body,
           NotificationDetails(
             android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
-              channelDescription: channel.description,
+              _channel.id,
+              _channel.name,
+              channelDescription: _channel.description,
               playSound: true,
+              icon: '@drawable/notification_icon',
             ),
             iOS: const DarwinNotificationDetails(
               presentAlert: true,
@@ -113,6 +83,32 @@ class NotificationsManager {
           ),
         );
       },
+    );
+  }
+
+  Future<void> onBackgroundMessage(RemoteMessage message) async {
+    final notification = message.notification;
+
+    if (notification == null) return;
+
+    await _plugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          _channel.id,
+          _channel.name,
+          channelDescription: _channel.description,
+          playSound: true,
+          icon: '@drawable/notification_icon',
+        ),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentSound: true,
+          presentBadge: true,
+        ),
+      ),
     );
   }
 }
