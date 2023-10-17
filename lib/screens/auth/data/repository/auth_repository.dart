@@ -11,7 +11,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AuthRepository {
   final _usersRef = FirebaseFirestore.instance.collection(TodayKeys.users);
-  final _storage = FirebaseStorage.instance;
+  final _fireStorage = FirebaseStorage.instance;
   final _fireAuth = FirebaseAuth.instance;
 
   Future<User?> signInWithGoogle() async {
@@ -75,7 +75,7 @@ class AuthRepository {
       final data = snapshot.data() ?? {};
       final fileUrl = data['avatar'] as String;
 
-      if (fileUrl.isNotEmpty) await _storage.refFromURL(fileUrl).delete();
+      if (fileUrl.isNotEmpty) await _fireStorage.refFromURL(fileUrl).delete();
 
       await _usersRef.doc(uid).delete();
       await _fireAuth.currentUser?.delete(); // TO-DO

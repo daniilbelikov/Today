@@ -9,7 +9,7 @@ import 'package:today/models/hive/local_user_model.dart';
 class ProfileRepository {
   final _usersRef = FirebaseFirestore.instance.collection(TodayKeys.users);
   final _currentUser = FirebaseAuth.instance.currentUser;
-  final _storage = FirebaseStorage.instance;
+  final _fireStorage = FirebaseStorage.instance;
 
   Future<LocalUserModel> getProfile() async {
     try {
@@ -32,7 +32,7 @@ class ProfileRepository {
   ) async {
     final file = File(path);
     final name = DateTime.now().microsecondsSinceEpoch.toString();
-    final reference = _storage.ref().child(TodayKeys.avatars).child(name);
+    final reference = _fireStorage.ref().child(TodayKeys.avatars).child(name);
     final snapshot = await reference.putFile(file);
 
     await snapshot.ref.getDownloadURL().then((url) async {
@@ -65,7 +65,7 @@ class ProfileRepository {
   }
 
   Future<void> _deleteOldImage(String oldImage) async {
-    await _storage.refFromURL(oldImage).delete();
+    await _fireStorage.refFromURL(oldImage).delete();
   }
 
   void _saveInHive(LocalUserModel user) {
