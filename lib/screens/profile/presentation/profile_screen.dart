@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'warning_alert.dart';
 import '../bloc/profile_bloc.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,12 @@ import '../../auth/bloc/auth_bloc.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/black_button.dart';
 import '../../../widgets/today_app_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:today/helpers/constants.dart';
+import '../data/provider/profile_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
 import '../../../models/hive/local_user_model.dart';
-import '../../edit_profile/data/provider/edit_profile_provider.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -43,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final provider = Provider.of<EditProfileProvider>(context);
+    final provider = Provider.of<ProfileProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -134,12 +136,80 @@ class _UserStackWidget extends StatelessWidget {
 class _UserActionWidget extends StatelessWidget {
   const _UserActionWidget({Key? key}) : super(key: key);
 
+  Future<void> _showWarningAlert(BuildContext context) async {
+    showDialog<int?>(
+      context: context,
+      builder: (_) => const WarningAlertWidget(),
+    ).then((result) async {
+      switch (result) {
+        case 0:
+          BlocProvider.of<AuthBloc>(context).add(DeleteAccountEvent());
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ProfileProvider>(context);
     return Container(
-      height: 240.0,
+      padding: const EdgeInsets.all(8.0),
+      height: 136.0,
       width: double.infinity,
       decoration: TodayDecorations.shadow,
+      child: Column(
+        children: [
+          _ActionRowWidget(
+            icon: TodayAssets.telegram,
+            title: S.of(context).write_support,
+            onTap: () => provider.openTelegram(),
+          ),
+          _ActionRowWidget(
+            icon: TodayAssets.trash,
+            title: S.of(context).delete_account,
+            onTap: () => _showWarningAlert(context),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ActionRowWidget extends StatelessWidget {
+  const _ActionRowWidget({
+    Key? key,
+    required this.title,
+    required this.onTap,
+    required this.icon,
+  }) : super(key: key);
+
+  final void Function()? onTap;
+  final String title;
+  final String icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        height: 60.0,
+        child: Row(
+          children: [
+            SvgPicture.asset(icon),
+            const SizedBox(width: 16.0),
+            Text(
+              title,
+              style: const TextStyle(
+                fontFamily: TodayFonts.semiBold,
+                fontSize: 16.0,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -230,10 +230,10 @@ class S {
     );
   }
 
-  /// `Выйти из аккаунта`
+  /// `Выйти`
   String get exit {
     return Intl.message(
-      'Выйти из аккаунта',
+      'Выйти',
       name: 'exit',
       desc: '',
       args: [],
@@ -675,6 +675,46 @@ class S {
     return Intl.message(
       'Вы не создавали события.',
       name: 'offers_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Написать в поддержку`
+  String get write_support {
+    return Intl.message(
+      'Написать в поддержку',
+      name: 'write_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Удалить аккаунт`
+  String get delete_account {
+    return Intl.message(
+      'Удалить аккаунт',
+      name: 'delete_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Вы уверены, что хотите удалить аккаунт?`
+  String get delete_text {
+    return Intl.message(
+      'Вы уверены, что хотите удалить аккаунт?',
+      name: 'delete_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Удалить`
+  String get delete {
+    return Intl.message(
+      'Удалить',
+      name: 'delete',
       desc: '',
       args: [],
     );

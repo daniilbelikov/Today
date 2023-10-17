@@ -67,6 +67,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_type": MessageLookupByLibrary.simpleMessage("Тип события*"),
         "create_type_hint":
             MessageLookupByLibrary.simpleMessage("Пример: Прогулка"),
+        "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
+        "delete_account":
+            MessageLookupByLibrary.simpleMessage("Удалить аккаунт"),
+        "delete_text": MessageLookupByLibrary.simpleMessage(
+            "Вы уверены, что хотите удалить аккаунт?"),
         "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Редактирование"),
@@ -80,7 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
-        "exit": MessageLookupByLibrary.simpleMessage("Выйти из аккаунта"),
+        "exit": MessageLookupByLibrary.simpleMessage("Выйти"),
         "forward": MessageLookupByLibrary.simpleMessage("Вперёд!"),
         "gallery": MessageLookupByLibrary.simpleMessage("Галерея"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
@@ -111,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_hint":
             MessageLookupByLibrary.simpleMessage("Пример: Фитнес-тренер"),
         "work_title":
-            MessageLookupByLibrary.simpleMessage("Профессия или род занятий*")
+            MessageLookupByLibrary.simpleMessage("Профессия или род занятий*"),
+        "write_support":
+            MessageLookupByLibrary.simpleMessage("Написать в поддержку")
       };
 }

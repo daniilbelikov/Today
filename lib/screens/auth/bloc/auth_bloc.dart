@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-// ignore: depend_on_referenced_packages
 import 'package:meta/meta.dart';
-import '../data/auth_repository.dart';
 import 'package:equatable/equatable.dart';
+import '../data/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 part 'auth_event.dart';
 part 'auth_state.dart';
 
@@ -40,6 +40,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignOutEvent>((event, emit) async {
       emit(LoadingState());
       await _repository.signOut();
+      emit(UnauthenticatedState());
+    });
+
+    on<DeleteAccountEvent>((event, emit) async {
+      emit(LoadingState());
+      await _repository.deleteAccount();
       emit(UnauthenticatedState());
     });
   }

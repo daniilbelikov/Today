@@ -6,13 +6,15 @@ import 'package:provider/provider.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
 import 'screens/events/bloc/events_bloc.dart';
 import 'screens/profile/bloc/profile_bloc.dart';
-import 'screens/auth/data/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'screens/activity/bloc/activity_bloc.dart';
 import 'package:today/utils/no_glow_behavior.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'screens/auth/data/provider/auth_provider.dart';
+import 'screens/auth/data/repository/auth_repository.dart';
 import 'screens/events/data/provider/events_provider.dart';
+import 'screens/profile/data/provider/profile_provider.dart';
 import 'screens/activity/data/provider/activity_provider.dart';
 import 'screens/profile/data/repository/profile_repository.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
@@ -75,6 +77,9 @@ class TodayApp extends StatelessWidget {
             child: MultiProvider(
               providers: [
                 ChangeNotifierProvider(
+                  create: (_) => AuthProvider(),
+                ),
+                ChangeNotifierProvider(
                   create: (_) => CreateEventProvider(),
                 ),
                 ChangeNotifierProvider(
@@ -82,6 +87,9 @@ class TodayApp extends StatelessWidget {
                 ),
                 ChangeNotifierProvider(
                   create: (_) => ActivityProvider(),
+                ),
+                ChangeNotifierProvider(
+                  create: (_) => ProfileProvider(),
                 ),
                 ChangeNotifierProvider(
                   create: (_) => EditProfileProvider(),

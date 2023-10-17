@@ -838,7 +838,7 @@ packages:
     source: hosted
     version: "0.5.0"
   meta:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: meta
       sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"
@@ -1162,6 +1162,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  telegram:
+    dependency: "direct main"
+    description:
+      name: telegram
+      sha256: "8ec2e33e0a47b98132e7d8146f7aa2b03a97716b29f343ac169d27817783bac2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   term_glyph:
     dependency: transitive
     description:

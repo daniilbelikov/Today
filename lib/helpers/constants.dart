@@ -4,9 +4,11 @@ import 'package:flutter_picker/picker.dart';
 class TodayAssets {
   static const emptyActivity = 'assets/svg/empty_activity.svg';
   static const emptyMain = 'assets/svg/empty_main.svg';
+  static const telegram = 'assets/svg/telegram.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
   static const camera = 'assets/svg/camera.svg';
+  static const trash = 'assets/svg/trash.svg';
   static const apple = 'assets/svg/apple.svg';
   static const end = 'assets/svg/end.svg';
 }

@@ -3,10 +3,11 @@ import '../bloc/auth_bloc.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/black_button.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../data/provider/auth_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
 
@@ -146,13 +147,9 @@ class _AuthPrivacyWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  Future _launchInBrowser() async {
-    final uri = Uri.parse(TodayLinks.privacy);
-    await launchUrl(uri);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AuthProvider>(context);
     return Column(
       children: [
         Padding(
@@ -165,7 +162,7 @@ class _AuthPrivacyWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () => _launchInBrowser(),
+          onTap: () => provider.launchInBrowser(),
           child: Text(
             S.of(context).privacy_subtitle,
             style: TextStyle(

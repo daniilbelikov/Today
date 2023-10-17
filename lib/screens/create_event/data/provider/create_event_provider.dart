@@ -39,17 +39,7 @@ class CreateEventProvider with ChangeNotifier {
   LocalUserModel getUserModel() {
     final box = Hive.box(TodayKeys.user);
     final user = box.get(TodayKeys.localUser) as LocalUserModel;
-    return LocalUserModel(
-      about: user.about,
-      age: user.age,
-      avatar: user.avatar,
-      id: user.id,
-      name: user.name,
-      telegram: user.telegram,
-      vk: user.vk,
-      work: user.work,
-      isEmpty: user.isEmpty,
-    );
+    return user;
   }
 
   Future<void> showSuccessAlert(BuildContext context) async {

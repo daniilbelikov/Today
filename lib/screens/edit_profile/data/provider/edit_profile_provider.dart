@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
@@ -8,11 +7,8 @@ import '../../../../widgets/common_alert.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import '../../../../models/hive/local_user_model.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class EditProfileProvider with ChangeNotifier {
-  final storage = FirebaseStorage.instance;
-
   String name = '';
   String age = '';
   String work = '';
@@ -119,22 +115,6 @@ class EditProfileProvider with ChangeNotifier {
     avatar = '';
     image = null;
     notifyListeners();
-  }
-
-  LocalUserModel getUserModel() {
-    final box = Hive.box(TodayKeys.user);
-    final user = box.get(TodayKeys.localUser) as LocalUserModel;
-    return LocalUserModel(
-      about: user.about,
-      age: user.age,
-      avatar: user.avatar,
-      id: user.id,
-      name: user.name,
-      telegram: user.telegram,
-      vk: user.vk,
-      work: user.work,
-      isEmpty: user.isEmpty,
-    );
   }
 
   Future<List<int>?> showAgePicker(BuildContext context) {
