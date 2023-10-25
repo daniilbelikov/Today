@@ -1,5 +1,8 @@
 import 'dart:io';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
+import '../../../utils/route_wrapper.dart';
+import '../../../widgets/black_button.dart';
 
 class OfferBottomSheet extends StatefulWidget {
   const OfferBottomSheet({Key? key}) : super(key: key);
@@ -46,6 +49,10 @@ class _OfferBottomSheetState extends State<OfferBottomSheet> {
                       ),
                     ),
                   ),
+                ),
+                BlackButtonWidget(
+                  title: S.of(context).edit,
+                  onPressed: () => RouteWraper().pop(context),
                 ),
                 SizedBox(
                   height: bottomValue,

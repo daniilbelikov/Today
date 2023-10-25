@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../widgets/error_view.dart';
 import '../../../widgets/black_button.dart';
 import 'package:today/helpers/constants.dart';
+import '../../profile/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
@@ -25,10 +26,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   TextEditingController _countController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
 
-  @override
-  void dispose() {
-    super.dispose();
-    _disposeTextEditingControllers();
+  void _requestProfile() {
+    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
   }
 
   void _disposeTextEditingControllers() {
@@ -36,6 +35,18 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     _typeController.dispose();
     _countController.dispose();
     _descController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _requestProfile();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _disposeTextEditingControllers();
   }
 
   @override

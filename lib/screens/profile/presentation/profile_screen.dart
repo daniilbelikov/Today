@@ -12,6 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:today/helpers/constants.dart';
 import '../data/provider/profile_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../utils/empty_linear_circle.dart';
 import '../../../widgets/activity_indicator.dart';
 import '../../../models/hive/local_user_model.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
@@ -37,6 +38,12 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   void _requestProfile() {
     BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _requestProfile();
   }
 
   @override
@@ -80,7 +87,7 @@ class _ProfileBodyWidget extends StatelessWidget {
           child: const Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 20.0),
+                padding: EdgeInsets.only(top: 50.0),
                 child: _UserDataWidget(),
               ),
               Padding(
@@ -104,32 +111,171 @@ class _UserDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300.0,
-      width: double.infinity,
-      decoration: TodayDecorations.shadow,
-      child: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: (context, state) {
-          if (state is ProfileLoaded) {
-            return const _UserStackWidget();
-          } else if (state is ProfileError) {
-            return const ErrorViewWidget();
-          }
-          return const Center(
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state is ProfileLoaded) {
+          return _UserStackWidget(user: state.user);
+        } else if (state is ProfileError) {
+          return const ErrorViewWidget();
+        }
+        return Container(
+          height: 100.0,
+          decoration: TodayDecorations.shadow,
+          child: const Center(
             child: ActivityIndicatorWidget(),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
 
 class _UserStackWidget extends StatelessWidget {
-  const _UserStackWidget({Key? key}) : super(key: key);
+  const _UserStackWidget({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final LocalUserModel user;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final provider = Provider.of<ProfileProvider>(context);
+    return Container(
+      decoration: TodayDecorations.shadow,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16.0,
+          vertical: 16.0,
+        ),
+        child: Column(
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.center,
+              children: [
+                const SizedBox(height: 50.0),
+                Positioned(
+                  bottom: 0.0,
+                  child: _ProfileAvatarWidget(
+                    avatar: user.avatar,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 0.0),
+              child: Text(
+                '${user.name}, ${user.age}',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).shadowColor,
+                  fontFamily: TodayFonts.bold,
+                  fontSize: 20.0,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: Text(
+                user.work,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Theme.of(context).hintColor,
+                  fontFamily: TodayFonts.semiBold,
+                  fontSize: 14.0,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Text(
+                user.about,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: TodayFonts.regular,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _SocialButton(
+                  logo: TodayAssets.vkLogo,
+                  onTap: () => user.vk.isEmpty
+                      ? provider.showErrorAlert(context)
+                      : provider.openVk(user.vk),
+                ),
+                _SocialButton(
+                  logo: TodayAssets.telegramLogo,
+                  onTap: () => user.vk.isEmpty
+                      ? provider.showErrorAlert(context)
+                      : provider.openTelegram(user.telegram),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SocialButton extends StatelessWidget {
+  const _SocialButton({
+    Key? key,
+    required this.logo,
+    required this.onTap,
+  }) : super(key: key);
+
+  final String logo;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50.0,
+      width: 50.0,
+      child: InkWell(
+        onTap: onTap,
+        child: SvgPicture.asset(logo),
+      ),
+    );
+  }
+}
+
+class _ProfileAvatarWidget extends StatelessWidget {
+  const _ProfileAvatarWidget({
+    Key? key,
+    required this.avatar,
+  }) : super(key: key);
+
+  final String avatar;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 56.0,
+      backgroundColor: Colors.transparent,
+      child: Stack(
+        children: [
+          CircleAvatar(
+            radius: 50.0,
+            backgroundColor: Theme.of(context).cardColor,
+            backgroundImage: NetworkImage(avatar),
+          ),
+          CircleAvatar(
+            radius: 50.0,
+            backgroundColor: Colors.transparent,
+            child: CustomPaint(
+              size: const Size(108.0, 108.0),
+              painter: EmptyLinearCircle(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -162,9 +308,9 @@ class _UserActionWidget extends StatelessWidget {
       child: Column(
         children: [
           _ActionRowWidget(
-            icon: TodayAssets.telegram,
+            icon: TodayAssets.message,
             title: S.of(context).write_support,
-            onTap: () => provider.openTelegram(),
+            onTap: () => provider.writeSupport(),
           ),
           _ActionRowWidget(
             icon: TodayAssets.trash,

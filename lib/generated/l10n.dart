@@ -719,6 +719,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Ошибка`
+  String get error_common {
+    return Intl.message(
+      'Ошибка',
+      name: 'error_common',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `У вас не заполнен профиль.`
+  String get error_social {
+    return Intl.message(
+      'У вас не заполнен профиль.',
+      name: 'error_social',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

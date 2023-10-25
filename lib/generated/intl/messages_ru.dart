@@ -82,8 +82,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "end_text": MessageLookupByLibrary.simpleMessage(
             "Видимо, это все события на сегодня. Что будем делать дальше?"),
         "error": MessageLookupByLibrary.simpleMessage("Предупреждение"),
+        "error_common": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
+        "error_social":
+            MessageLookupByLibrary.simpleMessage("У вас не заполнен профиль."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти"),
         "forward": MessageLookupByLibrary.simpleMessage("Вперёд!"),

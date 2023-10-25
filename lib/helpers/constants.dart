@@ -3,8 +3,10 @@ import 'package:flutter_picker/picker.dart';
 
 class TodayAssets {
   static const emptyActivity = 'assets/svg/empty_activity.svg';
+  static const telegramLogo = 'assets/svg/telegram_logo.svg';
   static const emptyMain = 'assets/svg/empty_main.svg';
-  static const telegram = 'assets/svg/telegram.svg';
+  static const message = 'assets/svg/message.svg';
+  static const vkLogo = 'assets/svg/vk_logo.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
   static const camera = 'assets/svg/camera.svg';
@@ -39,6 +41,8 @@ class TodayValues {
 
 class TodayLinks {
   static const privacy = 'https://belikov.dev';
+  static const path = 'dev.belikov@gmail.com';
+  static const scheme = 'mailto';
 }
 
 class TodayData {

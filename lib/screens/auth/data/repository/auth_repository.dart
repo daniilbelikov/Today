@@ -63,6 +63,7 @@ class AuthRepository {
   Future<void> signOut() async {
     try {
       await _fireAuth.signOut();
+      _clearHive();
     } catch (error) {
       throw Exception(error);
     }

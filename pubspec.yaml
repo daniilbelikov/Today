@@ -28,9 +28,8 @@ dependencies:
   url_launcher: ^6.1.14
   flutter_picker: ^2.1.0
   google_sign_in: ^6.1.5
-  adaptive_theme: ^3.4.1
-  cloud_firestore: ^4.9.3
   cupertino_icons: ^1.0.6
+  flutter_app_badger: ^1.5.0
   shared_preferences: ^2.2.1
   sign_in_with_apple: ^5.0.0
   flutter_card_swiper: ^6.0.0
@@ -42,6 +41,7 @@ dependencies:
   # Firebase Services
   firebase_auth: ^4.10.1
   firebase_core: ^2.17.0
+  cloud_firestore: ^4.11.0
   firebase_storage: ^11.2.8
   firebase_analytics: ^10.5.1
   firebase_messaging: ^14.6.9

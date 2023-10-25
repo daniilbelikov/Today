@@ -2,7 +2,6 @@ import 'dart:io';
 import 'material_bottom_bar.dart';
 import 'cupertino_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import '../../profile/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:today/managers/notifications_manager.dart';
 import 'package:today/screens/bottom_navigation/bloc/bottom_navigation_bloc.dart';
@@ -19,15 +18,10 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
     NotificationsManager().initLocalNotifications();
   }
 
-  void _requestProfile() {
-    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
-  }
-
   @override
   void initState() {
     super.initState();
     _registerNotifications();
-    _requestProfile();
   }
 
   @override

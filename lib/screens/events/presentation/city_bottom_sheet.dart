@@ -1,7 +1,6 @@
 import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 import 'package:today/helpers/constants.dart';
 import '../data/provider/events_provider.dart';
