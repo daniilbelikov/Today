@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../utils/empty_linear_circle.dart';
 import '../../../widgets/activity_indicator.dart';
 import '../../../models/hive/local_user_model.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -79,26 +80,28 @@ class _ProfileBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Platform.isAndroid ? 16.0 : 20.0,
-          ),
-          child: const Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: 50.0),
-                child: _UserDataWidget(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-                child: _UserActionWidget(),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: _UserExitWidget(),
-              ),
-            ],
+      child: Scrollbar(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Platform.isAndroid ? 16.0 : 20.0,
+            ),
+            child: const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0),
+                  child: _UserDataWidget(),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  child: _UserActionWidget(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: _UserExitWidget(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -150,21 +153,21 @@ class _UserStackWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: [
-                const SizedBox(height: 50.0),
-                Positioned(
-                  bottom: 0.0,
-                  child: _ProfileAvatarWidget(
-                    avatar: user.avatar,
-                  ),
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                final imageProvider = Image.network(user.avatar).image;
+                showImageViewer(
+                  context,
+                  imageProvider,
+                  onViewerDismissed: () {},
+                );
+              },
+              child: _ProfileAvatarWidget(
+                avatar: user.avatar,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 0.0),
+              padding: const EdgeInsets.only(top: 4.0),
               child: Text(
                 '${user.name}, ${user.age}',
                 textAlign: TextAlign.center,
@@ -183,7 +186,7 @@ class _UserStackWidget extends StatelessWidget {
                 style: TextStyle(
                   color: Theme.of(context).hintColor,
                   fontFamily: TodayFonts.semiBold,
-                  fontSize: 14.0,
+                  fontSize: 13.0,
                 ),
               ),
             ),
@@ -193,8 +196,8 @@ class _UserStackWidget extends StatelessWidget {
                 user.about,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: 16.0,
                   fontFamily: TodayFonts.regular,
+                  fontSize: 15.0,
                 ),
               ),
             ),
