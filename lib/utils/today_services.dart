@@ -3,7 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import '../models/hive/local_user_model.dart';
 import '../managers/notifications_manager.dart';
 
-class InitServices {
+class TodayServices {
   static Future<void> initMessagingService() async {
     await NotificationsManager().initFirebaseMessaging();
   }
