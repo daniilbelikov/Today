@@ -98,7 +98,6 @@ class AuthRepository {
 
   Future<void> _addUserInFirestore(User? user) async {
     final uid = user?.uid ?? '';
-
     try {
       await _usersRef.doc(uid).set({
         'id': uid,

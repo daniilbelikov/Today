@@ -1,7 +1,6 @@
 import 'end_alert.dart';
 import 'city_bottom_sheet.dart';
 import '../bloc/events_bloc.dart';
-import 'profile_bottom_sheet.dart';
 import '../../../generated/l10n.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -156,7 +155,7 @@ class _EmptyViewWidget extends StatelessWidget {
           child: Container(),
         ),
         SizedBox(
-          height: 166.0,
+          height: 190.0,
           child: SvgPicture.asset(TodayAssets.emptyMain),
         ),
         Padding(
@@ -337,26 +336,15 @@ class _EventCardWidget extends StatelessWidget {
 
   final EventModel event;
 
-  void _showResponseBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      builder: (_) => const ProfileBottomSheet(),
-      backgroundColor: Colors.transparent,
-      context: context,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _showResponseBottomSheet(context),
-      child: Container(
-        width: double.infinity,
-        decoration: TodayDecorations.shadow,
-        child: const Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Column(
-            children: [],
-          ),
+    return Container(
+      width: double.infinity,
+      decoration: TodayDecorations.shadow,
+      child: const Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Column(
+          children: [],
         ),
       ),
     );

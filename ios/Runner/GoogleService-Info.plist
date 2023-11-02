@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>737825645022-hh9kt1f4972f63mqueni5lhnau06poe9.apps.googleusercontent.com</string>
+	<string>720157697533-52apkmb1ig2sue9lvo7h7k0lv45bfl2c.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.737825645022-hh9kt1f4972f63mqueni5lhnau06poe9</string>
+	<string>com.googleusercontent.apps.720157697533-52apkmb1ig2sue9lvo7h7k0lv45bfl2c</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB1pLSx7lDXG_e9LM5Dr4orZT03RfF0Ask</string>
+	<string>AIzaSyBBqitMiwf1ACTNuvAPZerL1L1s9MOlOYo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>737825645022</string>
+	<string>720157697533</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>dev.belikov.today</string>
 	<key>PROJECT_ID</key>
-	<string>today-62290</string>
+	<string>todayapp-3ac47</string>
 	<key>STORAGE_BUCKET</key>
-	<string>today-62290.appspot.com</string>
+	<string>todayapp-3ac47.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:737825645022:ios:23c3334f408b6afad1fd4f</string>
+	<string>1:720157697533:ios:90634eebed2a51eeac2594</string>
 </dict>
 </plist>

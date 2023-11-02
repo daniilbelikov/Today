@@ -739,6 +739,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Не установлено`
+  String get not_set {
+    return Intl.message(
+      'Не установлено',
+      name: 'not_set',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Нажмите кнопку «Редактировать», чтобы заполнить профиль.`
+  String get no_info {
+    return Intl.message(
+      'Нажмите кнопку «Редактировать», чтобы заполнить профиль.',
+      name: 'no_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Информация будет доступна только тем пользователям, с которыми у вас совпадения.`
+  String get social_subtitle {
+    return Intl.message(
+      'Информация будет доступна только тем пользователям, с которыми у вас совпадения.',
+      name: 'social_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

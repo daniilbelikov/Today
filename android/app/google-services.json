@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "737825645022",
-    "project_id": "today-62290",
-    "storage_bucket": "today-62290.appspot.com"
+    "project_number": "720157697533",
+    "project_id": "todayapp-3ac47",
+    "storage_bucket": "todayapp-3ac47.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:737825645022:android:0aa9463aad9d6f73d1fd4f",
+        "mobilesdk_app_id": "1:720157697533:android:153a3af15fbbb59bac2594",
         "android_client_info": {
-          "package_name": "dev.belikov.today"
+          "package_name": "dev.belikov.todayApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "737825645022-isorjkaf2sqv204au7rr5jahm47iuniq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "dev.belikov.today",
-            "certificate_hash": "ef0f2da4e736f2ee9caf59411a1a377593b403d9"
-          }
-        },
-        {
-          "client_id": "737825645022-ra18vu7nm5akbfps902jtqrhrc9b948v.apps.googleusercontent.com",
+          "client_id": "720157697533-bqtl0us3ka6tjraqb874u79stik41o85.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCR9d_J7HkPaxN4hM-anA-kb44R8McHI2I"
+          "current_key": "AIzaSyDsBk60glV-GlITbmRIGDNNh00aCATYS4M"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "737825645022-9an0ub7pa765bvrskabme8ghji64gj5r.apps.googleusercontent.com",
+              "client_id": "720157697533-bqtl0us3ka6tjraqb874u79stik41o85.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "737825645022-hh9kt1f4972f63mqueni5lhnau06poe9.apps.googleusercontent.com",
+              "client_id": "720157697533-52apkmb1ig2sue9lvo7h7k0lv45bfl2c.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "dev.belikov.today"

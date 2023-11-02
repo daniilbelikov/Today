@@ -10,6 +10,7 @@ class TextFieldRowWidget extends StatelessWidget {
     required this.title,
     this.keyboardType = TextInputType.text,
     this.readOnly = false,
+    this.subtitle = '',
     this.maxLines = 1,
     this.maxLength,
     this.validator,
@@ -22,6 +23,7 @@ class TextFieldRowWidget extends StatelessWidget {
   final Function(String)? onChanged;
   final TextInputType keyboardType;
   final void Function()? onTap;
+  final String subtitle;
   final String hintText;
   final int? maxLength;
   final bool readOnly;
@@ -45,6 +47,18 @@ class TextFieldRowWidget extends StatelessWidget {
             ),
           ),
         ),
+        if (subtitle.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, top: 4.0),
+            child: Text(
+              subtitle,
+              style: TextStyle(
+                fontFamily: TodayFonts.regular,
+                color: Theme.of(context).hintColor,
+                fontSize: 12.0,
+              ),
+            ),
+          ),
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: WhiteTextFieldWidget(

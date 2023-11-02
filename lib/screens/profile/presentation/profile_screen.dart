@@ -159,7 +159,8 @@ class _UserStackWidget extends StatelessWidget {
                 showImageViewer(
                   context,
                   imageProvider,
-                  onViewerDismissed: () {},
+                  useSafeArea: false,
+                  closeButtonTooltip: S.of(context).close,
                 );
               },
               child: _ProfileAvatarWidget(
@@ -169,7 +170,9 @@ class _UserStackWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
               child: Text(
-                '${user.name}, ${user.age}',
+                user.name.isNotEmpty
+                    ? '${user.name}, ${user.age}'
+                    : S.of(context).not_set,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Theme.of(context).shadowColor,
@@ -181,7 +184,7 @@ class _UserStackWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
               child: Text(
-                user.work,
+                user.work.isNotEmpty ? user.work : S.of(context).not_set,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Theme.of(context).hintColor,
@@ -193,7 +196,7 @@ class _UserStackWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
-                user.about,
+                user.about.isNotEmpty ? user.about : S.of(context).no_info,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontFamily: TodayFonts.regular,
@@ -201,23 +204,20 @@ class _UserStackWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _SocialButton(
-                  logo: TodayAssets.vkLogo,
-                  onTap: () => user.vk.isEmpty
-                      ? provider.showErrorAlert(context)
-                      : provider.openVk(user.vk),
-                ),
-                _SocialButton(
-                  logo: TodayAssets.telegramLogo,
-                  onTap: () => user.vk.isEmpty
-                      ? provider.showErrorAlert(context)
-                      : provider.openTelegram(user.telegram),
-                ),
-              ],
-            ),
+            if (user.vk.isNotEmpty && user.telegram.isNotEmpty)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _SocialButton(
+                    logo: TodayAssets.vkLogo,
+                    onTap: () => provider.openVk(user.vk),
+                  ),
+                  _SocialButton(
+                    logo: TodayAssets.telegramLogo,
+                    onTap: () => provider.openTelegram(user.telegram),
+                  ),
+                ],
+              ),
           ],
         ),
       ),
@@ -266,16 +266,19 @@ class _ProfileAvatarWidget extends StatelessWidget {
           CircleAvatar(
             radius: 50.0,
             backgroundColor: Theme.of(context).cardColor,
-            backgroundImage: NetworkImage(avatar),
+            backgroundImage: avatar.isNotEmpty
+                ? NetworkImage(avatar)
+                : Image.asset(TodayAssets.logo).image,
           ),
-          CircleAvatar(
-            radius: 50.0,
-            backgroundColor: Colors.transparent,
-            child: CustomPaint(
-              size: const Size(108.0, 108.0),
-              painter: EmptyLinearCircle(),
+          if (avatar.isNotEmpty)
+            CircleAvatar(
+              radius: 50.0,
+              backgroundColor: Colors.transparent,
+              child: CustomPaint(
+                size: const Size(108.0, 108.0),
+                painter: EmptyLinearCircle(),
+              ),
             ),
-          ),
         ],
       ),
     );

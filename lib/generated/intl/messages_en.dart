@@ -94,6 +94,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
         "name_hint": MessageLookupByLibrary.simpleMessage("Пример: Василий"),
         "name_title": MessageLookupByLibrary.simpleMessage("Имя*"),
+        "no_info": MessageLookupByLibrary.simpleMessage(
+            "Нажмите кнопку «Редактировать», чтобы заполнить профиль."),
+        "not_set": MessageLookupByLibrary.simpleMessage("Не установлено"),
         "offers": MessageLookupByLibrary.simpleMessage("Предложения"),
         "offers_empty":
             MessageLookupByLibrary.simpleMessage("Вы не создавали события."),
@@ -107,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы не откликались на события других пользователей."),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
+        "social_subtitle": MessageLookupByLibrary.simpleMessage(
+            "Информация будет доступна только тем пользователям, с которыми у вас совпадения."),
         "success": MessageLookupByLibrary.simpleMessage("Успешно"),
         "telegram_hint": MessageLookupByLibrary.simpleMessage(
             "Пример: https://t.me/daniilbelikov"),

@@ -1,12 +1,21 @@
-import '../../../generated/l10n.dart';
+import '../helpers/constants.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/black_button.dart';
-import '../../../widgets/black_text_button.dart';
+import 'package:today/widgets/black_button.dart';
 
-class WarningAlertWidget extends StatelessWidget {
-  const WarningAlertWidget({Key? key}) : super(key: key);
+class CommonImageAlertWidget extends StatelessWidget {
+  const CommonImageAlertWidget({
+    Key? key,
+    required this.buttonTitle,
+    required this.assetName,
+    required this.title,
+    required this.text,
+  }) : super(key: key);
+
+  final String buttonTitle;
+  final String assetName;
+  final String title;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +27,7 @@ class WarningAlertWidget extends StatelessWidget {
         ),
       ),
       content: SizedBox(
-        height: 380.0,
-        width: 280.0,
+        height: 310.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,16 +35,15 @@ class WarningAlertWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(
                 top: 12.0,
-                left: 30.0,
               ),
               child: SizedBox(
                 height: 150.0,
-                child: SvgPicture.asset(TodayAssets.delete),
+                child: SvgPicture.asset(assetName),
               ),
             ),
             Expanded(child: Container()),
             Text(
-              S.of(context).delete_text,
+              text,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: TodayFonts.regular,
@@ -46,18 +53,9 @@ class WarningAlertWidget extends StatelessWidget {
             Expanded(child: Container()),
             Padding(
               padding: const EdgeInsets.only(bottom: 0.0),
-              child: Column(
-                children: [
-                  BlackButtonWidget(
-                    onPressed: () => Navigator.pop(context),
-                    title: S.of(context).cancel,
-                  ),
-                  const SizedBox(height: 8.0),
-                  BlackTextButtonWidget(
-                    onPressed: () => Navigator.pop(context, 0),
-                    title: S.of(context).delete,
-                  ),
-                ],
+              child: BlackButtonWidget(
+                onPressed: () => Navigator.pop(context),
+                title: buttonTitle,
               ),
             ),
           ],

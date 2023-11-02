@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
 import 'package:today/utils/route_wrapper.dart';
-import 'package:today/widgets/common_alert.dart';
 import 'package:flutter_picker/flutter_picker.dart';
+import 'package:today/widgets/common_image_alert.dart';
 import 'package:today/models/hive/local_user_model.dart';
 
 class CreateEventProvider with ChangeNotifier {
@@ -45,10 +45,11 @@ class CreateEventProvider with ChangeNotifier {
   Future<void> showSuccessAlert(BuildContext context) async {
     showDialog(
       context: context,
-      builder: (_) => CommonAlertWidget(
+      builder: (_) => CommonImageAlertWidget(
         title: S.of(context).success,
-        text: S.of(context).create_event_success,
+        assetName: TodayAssets.success,
         buttonTitle: S.of(context).button_super,
+        text: S.of(context).create_event_success,
       ),
     ).whenComplete(() => RouteWraper().pop(context, result: true));
   }
@@ -56,10 +57,11 @@ class CreateEventProvider with ChangeNotifier {
   void showErrorAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => CommonAlertWidget(
+      builder: (_) => CommonImageAlertWidget(
         title: S.of(context).error,
-        text: S.of(context).error_profile,
+        assetName: TodayAssets.failure,
         buttonTitle: S.of(context).close,
+        text: S.of(context).error_profile,
       ),
     );
   }
