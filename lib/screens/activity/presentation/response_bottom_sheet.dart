@@ -2,7 +2,6 @@ import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../widgets/black_button.dart';
-import 'package:today/utils/route_wrapper.dart';
 
 class ResponseBottomSheet extends StatefulWidget {
   const ResponseBottomSheet({Key? key}) : super(key: key);
@@ -52,7 +51,7 @@ class _ResponseBottomSheetState extends State<ResponseBottomSheet> {
                 ),
                 BlackButtonWidget(
                   title: S.of(context).cancel,
-                  onPressed: () => RouteWraper().pop(context),
+                  onPressed: () => Navigator.pop(context),
                 ),
                 SizedBox(
                   height: bottomValue,

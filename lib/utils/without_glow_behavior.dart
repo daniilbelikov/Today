@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NoGlowScrollBehavior extends MaterialScrollBehavior {
+class WithoutGlowBehavior extends MaterialScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
     BuildContext context,

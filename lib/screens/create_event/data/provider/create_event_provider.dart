@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
-import 'package:today/utils/route_wrapper.dart';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'package:today/widgets/common_image_alert.dart';
 import 'package:today/models/hive/local_user_model.dart';
@@ -51,7 +50,7 @@ class CreateEventProvider with ChangeNotifier {
         buttonTitle: S.of(context).button_super,
         text: S.of(context).create_event_success,
       ),
-    ).whenComplete(() => RouteWraper().pop(context, result: true));
+    ).whenComplete(() => Navigator.pop(context, true));
   }
 
   void showErrorAlert(BuildContext context) {

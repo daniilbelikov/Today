@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
-import '../../../../utils/route_wrapper.dart';
 import '../../../../widgets/common_alert.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_picker/flutter_picker.dart';
@@ -88,7 +87,7 @@ class EditProfileProvider with ChangeNotifier {
         text: S.of(context).edit_profile_success,
         buttonTitle: S.of(context).button_super,
       ),
-    ).whenComplete(() => RouteWraper().pop(context, result: true));
+    ).whenComplete(() => Navigator.pop(context, true));
   }
 
   Future<void> pickingImage(bool camera) async {

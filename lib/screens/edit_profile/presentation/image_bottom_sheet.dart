@@ -2,7 +2,6 @@ import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:today/utils/route_wrapper.dart';
 import 'package:today/widgets/black_button.dart';
 import '../data/provider/edit_profile_provider.dart';
 
@@ -58,7 +57,7 @@ class ImageBottomSheet extends StatelessWidget {
                           title: S.of(context).camera,
                           onPressed: () => provider
                               .pickingImage(true)
-                              .whenComplete(() => RouteWraper().pop(context)),
+                              .whenComplete(() => Navigator.pop(context)),
                         ),
                       ),
                       const SizedBox(width: 12.0),
@@ -67,7 +66,7 @@ class ImageBottomSheet extends StatelessWidget {
                           title: S.of(context).gallery,
                           onPressed: () => provider
                               .pickingImage(false)
-                              .whenComplete(() => RouteWraper().pop(context)),
+                              .whenComplete(() => Navigator.pop(context)),
                         ),
                       ),
                     ],

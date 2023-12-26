@@ -42,9 +42,10 @@ class TodayColors {
 }
 
 class TodayValues {
-  static const dayPattern = 'dd/MM/yyyy';
   static const charset =
       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+  static const icon = '@drawable/notification_icon';
+  static const dayPattern = 'dd/MM/yyyy';
 }
 
 class TodayLinks {

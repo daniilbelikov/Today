@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../utils/tab_icons.dart';
+import 'package:provider/provider.dart';
 import '../../../widgets/active_icon.dart';
-import '../bloc/bottom_navigation_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../events/presentation/events_screen.dart';
 import '../../profile/presentation/profile_screen.dart';
 import '../../activity/presentation/activity_screen.dart';
+import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
 
 class MaterialBottomBar extends StatefulWidget {
   const MaterialBottomBar({Key? key}) : super(key: key);
@@ -17,70 +17,70 @@ class MaterialBottomBar extends StatefulWidget {
 class _MaterialBottomBarState extends State<MaterialBottomBar> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BottomNavigationBloc, BottomNavigationState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: const [
-            EventsScreen(),
-            ActivityScreen(),
-            ProfileScreen(),
-          ].elementAt(state.tabIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            elevation: 0.0,
-            type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Theme.of(context).hintColor.withAlpha(100),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            currentIndex: state.tabIndex,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            onTap: (index) => BlocProvider.of<BottomNavigationBloc>(context)
-                .add(TabChangeEvent(tabIndex: index)),
-            items: const [
-              BottomNavigationBarItem(
-                label: '',
-                activeIcon: ActiveIconWidget(
-                  child: Icon(
-                    TabIcons.flame,
-                    size: 24.0,
-                  ),
-                ),
-                icon: Icon(
-                  TabIcons.flame,
-                  size: 24.0,
-                ),
+    final bottomProvider = Provider.of<BottomProvider>(context);
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: PageView(
+        controller: bottomProvider.pageController,
+        onPageChanged: bottomProvider.onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          EventsScreen(),
+          ActivityScreen(),
+          ProfileScreen(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Theme.of(context).hintColor.withAlpha(100),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        currentIndex: bottomProvider.selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        onTap: bottomProvider.onItemTapped,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        elevation: 0.0,
+        items: const [
+          BottomNavigationBarItem(
+            label: '',
+            activeIcon: ActiveIconWidget(
+              child: Icon(
+                TabIcons.flame,
+                size: 24.0,
               ),
-              BottomNavigationBarItem(
-                label: '',
-                activeIcon: ActiveIconWidget(
-                  child: Icon(
-                    TabIcons.heart,
-                    size: 24.0,
-                  ),
-                ),
-                icon: Icon(
-                  TabIcons.heart,
-                  size: 24.0,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: '',
-                activeIcon: ActiveIconWidget(
-                  child: Icon(
-                    TabIcons.star,
-                    size: 24.0,
-                  ),
-                ),
-                icon: Icon(
-                  TabIcons.star,
-                  size: 24.0,
-                ),
-              ),
-            ],
+            ),
+            icon: Icon(
+              TabIcons.flame,
+              size: 24.0,
+            ),
           ),
-        );
-      },
+          BottomNavigationBarItem(
+            label: '',
+            activeIcon: ActiveIconWidget(
+              child: Icon(
+                TabIcons.heart,
+                size: 24.0,
+              ),
+            ),
+            icon: Icon(
+              TabIcons.heart,
+              size: 24.0,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: '',
+            activeIcon: ActiveIconWidget(
+              child: Icon(
+                TabIcons.star,
+                size: 24.0,
+              ),
+            ),
+            icon: Icon(
+              TabIcons.star,
+              size: 24.0,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
