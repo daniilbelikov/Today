@@ -1,9 +1,9 @@
 import 'generated/l10n.dart';
 import 'helpers/themes.dart';
-import 'package:today/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
+import 'package:today/helpers/router.dart';
 import 'screens/events/bloc/events_bloc.dart';
 import 'screens/profile/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

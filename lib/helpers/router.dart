@@ -1,4 +1,4 @@
-import 'managers/auth_manager.dart';
+import '../managers/auth_manager.dart';
 import 'package:flutter/material.dart';
 
 class TodayRouter {
