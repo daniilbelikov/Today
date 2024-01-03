@@ -8,7 +8,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final options = DefaultFirebaseOptions.currentPlatform;
   await Firebase.initializeApp(options: options);
-  await TodayServices.initMessagingService();
-  await TodayServices.initHiveService();
+  await TodayServices.initServices();
   runApp(const TodayApp());
 }

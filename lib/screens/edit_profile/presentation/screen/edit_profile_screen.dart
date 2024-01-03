@@ -1,17 +1,16 @@
 import 'dart:io';
-import 'image_bottom_sheet.dart';
-import '../../../generated/l10n.dart';
+import '../widgets/image_row.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/image_row.dart';
-import '../../../widgets/error_view.dart';
-import '../../../widgets/black_button.dart';
-import '../../../widgets/textfield_row.dart';
-import '../../profile/bloc/profile_bloc.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/image_bottom_sheet.dart';
+import '../../../../helpers/constants.dart';
+import '../../data/edit_profile_provider.dart';
+import '../../../../widgets/black_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../widgets/activity_indicator.dart';
-import '../data/provider/edit_profile_provider.dart';
+import '../../../../widgets/textfield_row.dart';
+import '../../../profile/bloc/profile_bloc.dart';
+import '../../../../widgets/activity_indicator.dart';
 import 'package:today/models/hive/local_user_model.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -258,8 +257,6 @@ class _EditProfileButtonWidget extends StatelessWidget {
               child: ActivityIndicatorWidget(),
             ),
           );
-        } else if (state is ProfileError) {
-          return const ErrorViewWidget();
         }
         return BlackButtonWidget(
           isActive: isActive && (avatar.isNotEmpty || image != null),

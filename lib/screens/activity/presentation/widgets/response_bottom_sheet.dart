@@ -1,14 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../widgets/black_button.dart';
 
-class ProfileBottomSheet extends StatefulWidget {
-  const ProfileBottomSheet({Key? key}) : super(key: key);
+class ResponseBottomSheet extends StatefulWidget {
+  const ResponseBottomSheet({Key? key}) : super(key: key);
 
   @override
-  State<ProfileBottomSheet> createState() => _ProfileBottomSheetState();
+  State<ResponseBottomSheet> createState() => _ResponseBottomSheetState();
 }
 
-class _ProfileBottomSheetState extends State<ProfileBottomSheet> {
+class _ResponseBottomSheetState extends State<ResponseBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final mediaQueryData = MediaQuery.of(context);
@@ -46,6 +48,10 @@ class _ProfileBottomSheetState extends State<ProfileBottomSheet> {
                       ),
                     ),
                   ),
+                ),
+                BlackButtonWidget(
+                  title: S.of(context).close,
+                  onPressed: () => Navigator.pop(context),
                 ),
                 SizedBox(
                   height: bottomValue,

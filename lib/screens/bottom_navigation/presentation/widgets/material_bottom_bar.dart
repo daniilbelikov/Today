@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../utils/tab_icons.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/active_icon.dart';
-import '../../events/presentation/events_screen.dart';
-import '../../profile/presentation/profile_screen.dart';
-import '../../activity/presentation/activity_screen.dart';
+import '../../../../utils/tab_icons.dart';
+import '../../../../widgets/active_icon.dart';
+import '../../../events/presentation/screen/events_screen.dart';
+import '../../../profile/presentation/screen/profile_screen.dart';
+import '../../../activity/presentation/screen/activity_screen.dart';
 import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
 
 class MaterialBottomBar extends StatefulWidget {
@@ -17,12 +17,12 @@ class MaterialBottomBar extends StatefulWidget {
 class _MaterialBottomBarState extends State<MaterialBottomBar> {
   @override
   Widget build(BuildContext context) {
-    final bottomProvider = Provider.of<BottomProvider>(context);
+    final provider = Provider.of<BottomProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: PageView(
-        controller: bottomProvider.pageController,
-        onPageChanged: bottomProvider.onPageChanged,
+        controller: provider.pageController,
+        onPageChanged: provider.onPageChanged,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           EventsScreen(),
@@ -31,11 +31,11 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         unselectedItemColor: Theme.of(context).hintColor.withAlpha(100),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        currentIndex: bottomProvider.selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        onTap: bottomProvider.onItemTapped,
+        currentIndex: provider.selectedIndex,
+        onTap: provider.onItemTapped,
         showUnselectedLabels: false,
         showSelectedLabels: false,
         elevation: 0.0,

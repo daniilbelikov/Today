@@ -1,10 +1,10 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../helpers/constants.dart';
+import '../../../helpers/constants.dart';
+import '../../../widgets/common_alert.dart';
 import 'package:flutter_picker/flutter_picker.dart';
-import 'package:today/widgets/common_image_alert.dart';
 import 'package:today/models/hive/local_user_model.dart';
 
 class CreateEventProvider with ChangeNotifier {
@@ -44,10 +44,9 @@ class CreateEventProvider with ChangeNotifier {
   Future<void> showSuccessAlert(BuildContext context) async {
     showDialog(
       context: context,
-      builder: (_) => CommonImageAlertWidget(
+      builder: (_) => CommonAlertWidget(
         title: S.of(context).success,
-        assetName: TodayAssets.success,
-        buttonTitle: S.of(context).button_super,
+        buttonTitle: S.of(context).close,
         text: S.of(context).create_event_success,
       ),
     ).whenComplete(() => Navigator.pop(context, true));
@@ -56,9 +55,8 @@ class CreateEventProvider with ChangeNotifier {
   void showErrorAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => CommonImageAlertWidget(
+      builder: (_) => CommonAlertWidget(
         title: S.of(context).error,
-        assetName: TodayAssets.failure,
         buttonTitle: S.of(context).close,
         text: S.of(context).error_profile,
       ),

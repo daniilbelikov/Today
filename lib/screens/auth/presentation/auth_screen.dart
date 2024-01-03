@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../helpers/constants.dart';
-import '../../../widgets/error_view.dart';
 import '../../../widgets/black_button.dart';
 import '../data/provider/auth_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,8 +91,6 @@ class _AuthButtonStackWidget extends StatelessWidget {
               child: ActivityIndicatorWidget(),
             ),
           );
-        } else if (state is AuthErrorState) {
-          return const ErrorViewWidget();
         }
         return _AuthButtonWidget(
           iOSAction: () => BlocProvider.of<AuthBloc>(context).add(

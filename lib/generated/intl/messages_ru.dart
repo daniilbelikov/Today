@@ -34,7 +34,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
         "avatar_title":
             MessageLookupByLibrary.simpleMessage("Ваша фотография*"),
-        "button_super": MessageLookupByLibrary.simpleMessage("Супер!"),
         "camera": MessageLookupByLibrary.simpleMessage("Камера"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "change_city": MessageLookupByLibrary.simpleMessage("Сменить город"),
@@ -81,7 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Кажется, в вашем городе нет событий. Может создадим собственное?"),
         "end_text": MessageLookupByLibrary.simpleMessage(
             "Видимо, это все события на сегодня. Что будем делать дальше?"),
-        "error": MessageLookupByLibrary.simpleMessage("Предупреждение"),
+        "attention": MessageLookupByLibrary.simpleMessage("Внимание"),
         "error_common": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
@@ -100,10 +99,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "offers": MessageLookupByLibrary.simpleMessage("Предложения"),
         "offers_empty":
             MessageLookupByLibrary.simpleMessage("Вы не создавали события."),
-        "privacy_subtitle": MessageLookupByLibrary.simpleMessage(
-            "Политикой конфиденциальности"),
+        "privacy_subtitle":
+            MessageLookupByLibrary.simpleMessage("Политику конфиденциальности"),
         "privacy_title": MessageLookupByLibrary.simpleMessage(
-            "Осуществляя вход, вы соглашаетесь с"),
+            "Осуществляя вход, вы принимаете"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "responses": MessageLookupByLibrary.simpleMessage("Отклики"),
         "responses_empty": MessageLookupByLibrary.simpleMessage(
@@ -126,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_title":
             MessageLookupByLibrary.simpleMessage("Профессия или род занятий*"),
         "write_support":
-            MessageLookupByLibrary.simpleMessage("Написать в поддержку")
+            MessageLookupByLibrary.simpleMessage("Написать в поддержку"),
+        "error_view_text": MessageLookupByLibrary.simpleMessage(
+            "Что-то пошло не так.\nПерезапустите приложение.")
       };
 }

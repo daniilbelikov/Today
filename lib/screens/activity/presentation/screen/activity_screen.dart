@@ -1,18 +1,17 @@
 import 'dart:io';
-import 'offer_bottom_sheet.dart';
-import '../bloc/activity_bloc.dart';
-import 'response_bottom_sheet.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../generated/l10n.dart';
+import '../../bloc/activity_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/error_view.dart';
-import '../../../widgets/today_app_bar.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/offer_bottom_sheet.dart';
+import '../../../../helpers/constants.dart';
+import '../widgets/response_bottom_sheet.dart';
+import '../../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/provider/activity_provider.dart';
-import '../../../models/common/event_model.dart';
-import '../../../widgets/activity_indicator.dart';
+import '../../data/provider/activity_provider.dart';
+import '../../../../models/common/event_model.dart';
+import '../../../../widgets/activity_indicator.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class ActivityScreen extends StatefulWidget {
@@ -104,8 +103,6 @@ class _ReactionsBodyWidget extends StatelessWidget {
                             controller: controller,
                             events: events,
                           );
-              } else if (state is EventError) {
-                return const ErrorViewWidget();
               }
               return const Expanded(
                 child: Center(

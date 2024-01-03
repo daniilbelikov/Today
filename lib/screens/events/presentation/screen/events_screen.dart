@@ -1,18 +1,17 @@
-import 'end_alert.dart';
-import 'city_bottom_sheet.dart';
-import '../bloc/events_bloc.dart';
-import '../../../generated/l10n.dart';
+import '../widgets/end_alert.dart';
+import '../../bloc/events_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/error_view.dart';
-import '../../../widgets/today_app_bar.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/city_bottom_sheet.dart';
+import '../../../../helpers/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../data/provider/events_provider.dart';
+import '../../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../models/common/event_model.dart';
-import '../../../widgets/activity_indicator.dart';
+import '../../data/provider/events_provider.dart';
+import '../../../../models/common/event_model.dart';
+import '../../../../widgets/activity_indicator.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:today/screens/create_event/presentation/create_event_screen.dart';
 
@@ -112,8 +111,6 @@ class _EventsBodyWidget extends StatelessWidget {
                     controller: controller,
                     userCity: provider.getRightCity(),
                   );
-          } else if (state is EventError) {
-            return const ErrorViewWidget();
           }
           return const Center(
             child: ActivityIndicatorWidget(),

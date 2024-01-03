@@ -80,20 +80,20 @@ class S {
     );
   }
 
-  /// `Осуществляя вход, вы соглашаетесь с`
+  /// `Осуществляя вход, вы принимаете`
   String get privacy_title {
     return Intl.message(
-      'Осуществляя вход, вы соглашаетесь с',
+      'Осуществляя вход, вы принимаете',
       name: 'privacy_title',
       desc: '',
       args: [],
     );
   }
 
-  /// `Политикой конфиденциальности`
+  /// `Политику конфиденциальности`
   String get privacy_subtitle {
     return Intl.message(
-      'Политикой конфиденциальности',
+      'Политику конфиденциальности',
       name: 'privacy_subtitle',
       desc: '',
       args: [],
@@ -380,10 +380,10 @@ class S {
     );
   }
 
-  /// `Предупреждение`
+  /// `Внимание`
   String get error {
     return Intl.message(
-      'Предупреждение',
+      'Внимание',
       name: 'error',
       desc: '',
       args: [],
@@ -620,16 +620,6 @@ class S {
     );
   }
 
-  /// `Супер!`
-  String get button_super {
-    return Intl.message(
-      'Супер!',
-      name: 'button_super',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Видимо, это все события на сегодня. Что будем делать дальше?`
   String get end_text {
     return Intl.message(
@@ -685,6 +675,16 @@ class S {
     return Intl.message(
       'Написать в поддержку',
       name: 'write_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Что-то пошло не так.\nПерезапустите приложение.`
+  String get error_view_text {
+    return Intl.message(
+      'Что-то пошло не так.\nПерезапустите приложение.',
+      name: 'error_view_text',
       desc: '',
       args: [],
     );

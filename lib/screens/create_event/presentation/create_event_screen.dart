@@ -2,7 +2,7 @@ import 'dart:io';
 import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../widgets/error_view.dart';
+import '../data/create_event_provider.dart';
 import '../../../widgets/black_button.dart';
 import 'package:today/helpers/constants.dart';
 import '../../profile/bloc/profile_bloc.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../models/common/event_model.dart';
 import '../../../widgets/activity_indicator.dart';
 import 'package:today/widgets/textfield_row.dart';
-import '../data/provider/create_event_provider.dart';
 import 'package:today/screens/events/bloc/events_bloc.dart';
 
 class CreateEventScreen extends StatefulWidget {
@@ -203,8 +202,6 @@ class _SaveButtonWidget extends StatelessWidget {
               child: ActivityIndicatorWidget(),
             ),
           );
-        } else if (state is EventError) {
-          return const ErrorViewWidget();
         }
         return BlackButtonWidget(
           isActive: provider.getActiveStatus(),

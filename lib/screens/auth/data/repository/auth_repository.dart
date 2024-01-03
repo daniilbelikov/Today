@@ -79,7 +79,7 @@ class AuthRepository {
       if (fileUrl.isNotEmpty) await _fireStorage.refFromURL(fileUrl).delete();
 
       await _usersRef.doc(uid).delete();
-      await _fireAuth.currentUser?.delete(); // TO-DO
+      await _fireAuth.signOut();
       _clearHive();
     } catch (error) {
       throw Exception(error);

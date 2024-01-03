@@ -1,11 +1,11 @@
 import 'dart:io';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../helpers/constants.dart';
-import '../../../../widgets/common_alert.dart';
+import '../../../helpers/constants.dart';
+import '../../../widgets/common_alert.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_picker/flutter_picker.dart';
-import '../../../../models/hive/local_user_model.dart';
+import '../../../models/hive/local_user_model.dart';
 
 class EditProfileProvider with ChangeNotifier {
   String name = '';
@@ -85,7 +85,7 @@ class EditProfileProvider with ChangeNotifier {
       builder: (_) => CommonAlertWidget(
         title: S.of(context).success,
         text: S.of(context).edit_profile_success,
-        buttonTitle: S.of(context).button_super,
+        buttonTitle: S.of(context).close,
       ),
     ).whenComplete(() => Navigator.pop(context, true));
   }

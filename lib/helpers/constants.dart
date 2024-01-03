@@ -6,8 +6,6 @@ class TodayAssets {
   static const telegramLogo = 'assets/svg/telegram_logo.svg';
   static const emptyMain = 'assets/svg/empty_main.svg';
   static const message = 'assets/svg/message.svg';
-  static const failure = 'assets/svg/failure.svg';
-  static const success = 'assets/svg/success.svg';
   static const vkLogo = 'assets/svg/vk_logo.svg';
   static const authImage = 'assets/svg/auth.svg';
   static const google = 'assets/svg/google.svg';
@@ -49,7 +47,7 @@ class TodayValues {
 }
 
 class TodayLinks {
-  static const privacy = 'https://belikov.dev';
+  static const privacy = 'https://belikov.dev/today_privacy';
   static const path = 'dev.belikov@gmail.com';
   static const scheme = 'mailto';
 }
@@ -78,6 +76,7 @@ class TodayData {
     PickerItem(value: 'Прогулка'),
     PickerItem(value: 'Занятие спортом'),
     PickerItem(value: 'Поход в кино'),
+    PickerItem(value: 'Другое'),
   ];
 
   static final numbers = List.generate(
@@ -104,7 +103,7 @@ class TodayKeys {
 }
 
 class TodayAnalytics {
-  static const empty = '';
+  static const auth = 'auth_action';
 }
 
 class TodayDecorations {

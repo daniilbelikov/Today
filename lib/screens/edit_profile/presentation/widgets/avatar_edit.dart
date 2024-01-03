@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:today/helpers/constants.dart';
-
-import 'activity_indicator.dart';
+import '../../../../widgets/activity_indicator.dart';
 
 class AvatarEditWidget extends StatelessWidget {
   const AvatarEditWidget({

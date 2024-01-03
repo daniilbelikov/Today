@@ -1,17 +1,12 @@
 import 'package:flutter_svg/svg.dart';
-import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/black_button.dart';
-import 'package:today/widgets/black_text_button.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../helpers/constants.dart';
+import '../../../../widgets/black_button.dart';
+import '../../../../widgets/black_text_button.dart';
 
-class EndAlertWidget extends StatelessWidget {
-  const EndAlertWidget({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  final String text;
+class WarningAlertWidget extends StatelessWidget {
+  const WarningAlertWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +27,16 @@ class EndAlertWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(
                 top: 12.0,
-                right: 24.0,
+                left: 30.0,
               ),
               child: SizedBox(
                 height: 150.0,
-                child: SvgPicture.asset(TodayAssets.end),
+                child: SvgPicture.asset(TodayAssets.delete),
               ),
             ),
             Expanded(child: Container()),
             Text(
-              text,
+              S.of(context).delete_text,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: TodayFonts.regular,
@@ -55,12 +50,12 @@ class EndAlertWidget extends StatelessWidget {
                 children: [
                   BlackButtonWidget(
                     onPressed: () => Navigator.pop(context),
-                    title: S.of(context).again,
+                    title: S.of(context).cancel,
                   ),
                   const SizedBox(height: 8.0),
                   BlackTextButtonWidget(
                     onPressed: () => Navigator.pop(context, 0),
-                    title: S.of(context).change_city,
+                    title: S.of(context).delete,
                   ),
                 ],
               ),

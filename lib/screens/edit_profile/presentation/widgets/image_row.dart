@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'avatar_edit.dart';
-import '../helpers/constants.dart';
 import 'package:flutter/material.dart';
+import '../../../../helpers/constants.dart';
 
 class ImageRowWidget extends StatelessWidget {
   const ImageRowWidget({

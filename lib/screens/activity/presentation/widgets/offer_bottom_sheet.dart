@@ -1,16 +1,18 @@
 import 'dart:io';
-import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:today/widgets/black_button.dart';
-import '../data/provider/edit_profile_provider.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../widgets/black_button.dart';
 
-class ImageBottomSheet extends StatelessWidget {
-  const ImageBottomSheet({Key? key}) : super(key: key);
+class OfferBottomSheet extends StatefulWidget {
+  const OfferBottomSheet({Key? key}) : super(key: key);
 
   @override
+  State<OfferBottomSheet> createState() => _OfferBottomSheetState();
+}
+
+class _OfferBottomSheetState extends State<OfferBottomSheet> {
+  @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EditProfileProvider>(context);
     final mediaQueryData = MediaQuery.of(context);
     final bottom = mediaQueryData.padding.bottom;
     final bottomValue = bottom + 20.0;
@@ -47,30 +49,9 @@ class ImageBottomSheet extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 48.0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: BlackButtonWidget(
-                          title: S.of(context).camera,
-                          onPressed: () => provider
-                              .pickingImage(true)
-                              .whenComplete(() => Navigator.pop(context)),
-                        ),
-                      ),
-                      const SizedBox(width: 12.0),
-                      Expanded(
-                        child: BlackButtonWidget(
-                          title: S.of(context).gallery,
-                          onPressed: () => provider
-                              .pickingImage(false)
-                              .whenComplete(() => Navigator.pop(context)),
-                        ),
-                      ),
-                    ],
-                  ),
+                BlackButtonWidget(
+                  title: S.of(context).close,
+                  onPressed: () => Navigator.pop(context),
                 ),
                 SizedBox(
                   height: bottomValue,

@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:today/helpers/constants.dart';
 import '../data/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:today/managers/analytics_manager.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -16,6 +18,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<GoogleSignInEvent>((event, emit) async {
       emit(LoadingState());
 
+      AnalyticsManager.shared.logEvent(TodayAnalytics.auth, {});
+
       try {
         final user = await _repository.signInWithGoogle();
         if (user != null) emit(AuthenticatedState(user));
@@ -27,6 +31,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AppleSignInEvent>((event, emit) async {
       emit(LoadingState());
+
+      AnalyticsManager.shared.logEvent(TodayAnalytics.auth, {});
 
       try {
         final user = await _repository.signInWithApple();

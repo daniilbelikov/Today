@@ -1,22 +1,21 @@
 import 'dart:io';
-import 'warning_alert.dart';
-import '../bloc/profile_bloc.dart';
-import '../../../generated/l10n.dart';
+import '../../bloc/profile_bloc.dart';
+import '../widgets/warning_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../auth/bloc/auth_bloc.dart';
-import '../../../widgets/error_view.dart';
-import '../../../widgets/black_button.dart';
-import '../../../widgets/today_app_bar.dart';
+import '../../../../generated/l10n.dart';
+import '../../../auth/bloc/auth_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:today/helpers/constants.dart';
-import '../data/provider/profile_provider.dart';
+import '../../../../widgets/black_button.dart';
+import '../../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../utils/empty_linear_circle.dart';
-import '../../../widgets/activity_indicator.dart';
-import '../../../models/hive/local_user_model.dart';
+import '../../data/provider/profile_provider.dart';
+import '../../../../utils/empty_linear_circle.dart';
+import '../../../../widgets/activity_indicator.dart';
+import '../../../../models/hive/local_user_model.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
-import 'package:today/screens/edit_profile/presentation/edit_profile_screen.dart';
+import 'package:today/screens/edit_profile/presentation/screen/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -118,8 +117,6 @@ class _UserDataWidget extends StatelessWidget {
       builder: (context, state) {
         if (state is ProfileLoaded) {
           return _UserStackWidget(user: state.user);
-        } else if (state is ProfileError) {
-          return const ErrorViewWidget();
         }
         return Container(
           height: 100.0,
@@ -155,13 +152,15 @@ class _UserStackWidget extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                final imageProvider = Image.network(user.avatar).image;
-                showImageViewer(
-                  context,
-                  imageProvider,
-                  useSafeArea: false,
-                  closeButtonTooltip: S.of(context).close,
-                );
+                if (user.avatar.isNotEmpty) {
+                  final imageProvider = Image.network(user.avatar).image;
+                  showImageViewer(
+                    context,
+                    imageProvider,
+                    useSafeArea: false,
+                    closeButtonTooltip: S.of(context).close,
+                  );
+                }
               },
               child: _ProfileAvatarWidget(
                 avatar: user.avatar,
