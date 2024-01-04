@@ -4,7 +4,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../widgets/black_button.dart';
 
 class OfferBottomSheet extends StatefulWidget {
-  const OfferBottomSheet({Key? key}) : super(key: key);
+  const OfferBottomSheet({super.key});
 
   @override
   State<OfferBottomSheet> createState() => _OfferBottomSheetState();

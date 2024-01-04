@@ -3,7 +3,7 @@ import 'package:today/helpers/constants.dart';
 
 class TextFieldRowWidget extends StatelessWidget {
   const TextFieldRowWidget({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.title,
@@ -15,7 +15,7 @@ class TextFieldRowWidget extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String? Function(String?)? validator;
   final TextEditingController? controller;
@@ -80,7 +80,6 @@ class TextFieldRowWidget extends StatelessWidget {
 
 class _WhiteTextFieldWidget extends StatelessWidget {
   const _WhiteTextFieldWidget({
-    Key? key,
     required this.keyboardType,
     required this.controller,
     required this.validator,
@@ -91,7 +90,7 @@ class _WhiteTextFieldWidget extends StatelessWidget {
     required this.readOnly,
     required this.onTap,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   final String? Function(String?)? validator;
   final TextEditingController? controller;

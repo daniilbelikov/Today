@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class BlackTextButtonWidget extends StatelessWidget {
   const BlackTextButtonWidget({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.title,
     this.width = double.infinity,
     this.height = 48.0,
-  }) : super(key: key);
+  });
 
   final Function()? onPressed;
   final String title;

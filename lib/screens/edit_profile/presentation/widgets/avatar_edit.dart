@@ -6,12 +6,12 @@ import '../../../../widgets/activity_indicator.dart';
 
 class AvatarEditWidget extends StatelessWidget {
   const AvatarEditWidget({
-    Key? key,
+    super.key,
     required this.deleteAction,
     required this.imageLink,
     required this.imageFile,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final void Function()? deleteAction;
   final void Function()? onTap;
@@ -44,7 +44,7 @@ class AvatarEditWidget extends StatelessWidget {
 }
 
 class _DefaultImageContainer extends StatelessWidget {
-  const _DefaultImageContainer({Key? key}) : super(key: key);
+  const _DefaultImageContainer();
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +60,9 @@ class _DefaultImageContainer extends StatelessWidget {
 
 class _DowloadedImageContainer extends StatelessWidget {
   const _DowloadedImageContainer({
-    Key? key,
     required this.imageLink,
     required this.deleteAction,
-  }) : super(key: key);
+  });
 
   final void Function()? deleteAction;
   final String? imageLink;
@@ -106,10 +105,9 @@ class _DowloadedImageContainer extends StatelessWidget {
 
 class _PickingImageContainer extends StatelessWidget {
   const _PickingImageContainer({
-    Key? key,
     required this.deleteAction,
     required this.imageFile,
-  }) : super(key: key);
+  });
 
   final void Function()? deleteAction;
   final File? imageFile;

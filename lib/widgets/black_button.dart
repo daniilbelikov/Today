@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class BlackButtonWidget extends StatelessWidget {
   const BlackButtonWidget({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.title,
     this.isActive = true,
@@ -12,7 +12,7 @@ class BlackButtonWidget extends StatelessWidget {
     this.width = double.infinity,
     this.height = 48.0,
     this.icon = '',
-  }) : super(key: key);
+  });
 
   final Function()? onPressed;
   final bool isActive;

@@ -15,9 +15,9 @@ import 'package:today/models/hive/local_user_model.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({
-    Key? key,
+    super.key,
     required this.user,
-  }) : super(key: key);
+  });
 
   final LocalUserModel user;
 
@@ -236,9 +236,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
 class _EditProfileButtonWidget extends StatelessWidget {
   const _EditProfileButtonWidget({
-    Key? key,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
 

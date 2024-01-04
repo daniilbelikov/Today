@@ -4,7 +4,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../widgets/black_button.dart';
 
 class ResponseBottomSheet extends StatefulWidget {
-  const ResponseBottomSheet({Key? key}) : super(key: key);
+  const ResponseBottomSheet({super.key});
 
   @override
   State<ResponseBottomSheet> createState() => _ResponseBottomSheetState();

@@ -18,7 +18,7 @@ import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:today/screens/edit_profile/presentation/screen/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -74,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 }
 
 class _ProfileBodyWidget extends StatelessWidget {
-  const _ProfileBodyWidget({Key? key}) : super(key: key);
+  const _ProfileBodyWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +109,7 @@ class _ProfileBodyWidget extends StatelessWidget {
 }
 
 class _UserDataWidget extends StatelessWidget {
-  const _UserDataWidget({Key? key}) : super(key: key);
+  const _UserDataWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -132,9 +132,8 @@ class _UserDataWidget extends StatelessWidget {
 
 class _UserStackWidget extends StatelessWidget {
   const _UserStackWidget({
-    Key? key,
     required this.user,
-  }) : super(key: key);
+  });
 
   final LocalUserModel user;
 
@@ -226,10 +225,9 @@ class _UserStackWidget extends StatelessWidget {
 
 class _SocialButton extends StatelessWidget {
   const _SocialButton({
-    Key? key,
     required this.logo,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final String logo;
   final void Function()? onTap;
@@ -249,9 +247,8 @@ class _SocialButton extends StatelessWidget {
 
 class _ProfileAvatarWidget extends StatelessWidget {
   const _ProfileAvatarWidget({
-    Key? key,
     required this.avatar,
-  }) : super(key: key);
+  });
 
   final String avatar;
 
@@ -285,7 +282,7 @@ class _ProfileAvatarWidget extends StatelessWidget {
 }
 
 class _UserActionWidget extends StatelessWidget {
-  const _UserActionWidget({Key? key}) : super(key: key);
+  const _UserActionWidget();
 
   Future<void> _showWarningAlert(BuildContext context) async {
     showDialog<int?>(
@@ -330,11 +327,10 @@ class _UserActionWidget extends StatelessWidget {
 
 class _ActionRowWidget extends StatelessWidget {
   const _ActionRowWidget({
-    Key? key,
     required this.title,
     required this.onTap,
     required this.icon,
-  }) : super(key: key);
+  });
 
   final void Function()? onTap;
   final String title;
@@ -366,7 +362,7 @@ class _ActionRowWidget extends StatelessWidget {
 }
 
 class _UserExitWidget extends StatelessWidget {
-  const _UserExitWidget({Key? key}) : super(key: key);
+  const _UserExitWidget();
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ import '../../../activity/presentation/screen/activity_screen.dart';
 import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
 
 class MaterialBottomBar extends StatefulWidget {
-  const MaterialBottomBar({Key? key}) : super(key: key);
+  const MaterialBottomBar({super.key});
 
   @override
   State<MaterialBottomBar> createState() => _MaterialBottomBarState();

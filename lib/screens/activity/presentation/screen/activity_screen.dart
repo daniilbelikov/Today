@@ -15,7 +15,7 @@ import '../../../../widgets/activity_indicator.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 
 class ActivityScreen extends StatefulWidget {
-  const ActivityScreen({Key? key}) : super(key: key);
+  const ActivityScreen({super.key});
 
   @override
   State<ActivityScreen> createState() => _ActivityScreenState();
@@ -65,10 +65,7 @@ class _ActivityScreenState extends State<ActivityScreen>
 }
 
 class _ReactionsBodyWidget extends StatelessWidget {
-  const _ReactionsBodyWidget({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
+  const _ReactionsBodyWidget({required this.controller});
 
   final ScrollController controller;
 
@@ -118,7 +115,7 @@ class _ReactionsBodyWidget extends StatelessWidget {
 }
 
 class _SliderWidget extends StatelessWidget {
-  const _SliderWidget({Key? key}) : super(key: key);
+  const _SliderWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -168,10 +165,9 @@ class _SliderWidget extends StatelessWidget {
 
 class _ResponsesWidget extends StatelessWidget {
   const _ResponsesWidget({
-    Key? key,
     required this.controller,
     required this.events,
-  }) : super(key: key);
+  });
 
   final ScrollController controller;
   final List<EventModel> events;
@@ -204,10 +200,9 @@ class _ResponsesWidget extends StatelessWidget {
 
 class _OffersWidget extends StatelessWidget {
   const _OffersWidget({
-    Key? key,
     required this.controller,
     required this.events,
-  }) : super(key: key);
+  });
 
   final ScrollController controller;
   final List<EventModel> events;
@@ -239,7 +234,7 @@ class _OffersWidget extends StatelessWidget {
 }
 
 class _ResponsesCardWidget extends StatelessWidget {
-  const _ResponsesCardWidget({Key? key}) : super(key: key);
+  const _ResponsesCardWidget();
 
   void _showResponseBottomSheet(BuildContext context) {
     showModalBottomSheet(
@@ -263,7 +258,7 @@ class _ResponsesCardWidget extends StatelessWidget {
 }
 
 class _OffersCardWidget extends StatelessWidget {
-  const _OffersCardWidget({Key? key}) : super(key: key);
+  const _OffersCardWidget();
 
   void _showOfferBottomSheet(BuildContext context) {
     showModalBottomSheet<String?>(
@@ -288,9 +283,8 @@ class _OffersCardWidget extends StatelessWidget {
 
 class _EmptyViewWidget extends StatelessWidget {
   const _EmptyViewWidget({
-    Key? key,
     required this.index,
-  }) : super(key: key);
+  });
 
   final int index;
 

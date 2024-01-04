@@ -7,9 +7,9 @@ import 'package:today/widgets/black_text_button.dart';
 
 class EndAlertWidget extends StatelessWidget {
   const EndAlertWidget({
-    Key? key,
+    super.key,
     required this.text,
-  }) : super(key: key);
+  });
 
   final String text;
 

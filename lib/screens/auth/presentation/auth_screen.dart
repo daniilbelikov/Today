@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../widgets/activity_indicator.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -42,9 +42,7 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 class _AuthHeaderWidget extends StatelessWidget {
-  const _AuthHeaderWidget({
-    Key? key,
-  }) : super(key: key);
+  const _AuthHeaderWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +60,7 @@ class _AuthHeaderWidget extends StatelessWidget {
 }
 
 class _AuthImageWidget extends StatelessWidget {
-  const _AuthImageWidget({
-    Key? key,
-  }) : super(key: key);
+  const _AuthImageWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +72,7 @@ class _AuthImageWidget extends StatelessWidget {
 }
 
 class _AuthButtonStackWidget extends StatelessWidget {
-  const _AuthButtonStackWidget({
-    Key? key,
-  }) : super(key: key);
+  const _AuthButtonStackWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +101,9 @@ class _AuthButtonStackWidget extends StatelessWidget {
 
 class _AuthButtonWidget extends StatelessWidget {
   const _AuthButtonWidget({
-    Key? key,
     required this.androidAction,
     required this.iOSAction,
-  }) : super(key: key);
+  });
 
   final void Function()? androidAction;
   final void Function()? iOSAction;
@@ -140,9 +133,7 @@ class _AuthButtonWidget extends StatelessWidget {
 }
 
 class _AuthPrivacyWidget extends StatelessWidget {
-  const _AuthPrivacyWidget({
-    Key? key,
-  }) : super(key: key);
+  const _AuthPrivacyWidget();
 
   @override
   Widget build(BuildContext context) {

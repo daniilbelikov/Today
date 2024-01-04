@@ -7,7 +7,7 @@ import 'package:today/screens/profile/presentation/screen/profile_screen.dart';
 import 'package:today/screens/activity/presentation/screen/activity_screen.dart';
 
 class CupertinoBottomBar extends StatefulWidget {
-  const CupertinoBottomBar({Key? key}) : super(key: key);
+  const CupertinoBottomBar({super.key});
 
   @override
   CupertinoPageState createState() => CupertinoPageState();

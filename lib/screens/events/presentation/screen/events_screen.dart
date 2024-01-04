@@ -16,7 +16,7 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:today/screens/create_event/presentation/create_event_screen.dart';
 
 class EventsScreen extends StatefulWidget {
-  const EventsScreen({Key? key}) : super(key: key);
+  const EventsScreen({super.key});
 
   @override
   State<EventsScreen> createState() => _EventsScreenState();
@@ -89,9 +89,8 @@ class _EventsScreenState extends State<EventsScreen>
 
 class _EventsBodyWidget extends StatelessWidget {
   const _EventsBodyWidget({
-    Key? key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final CardSwiperController controller;
 
@@ -123,9 +122,8 @@ class _EventsBodyWidget extends StatelessWidget {
 
 class _EmptyViewWidget extends StatelessWidget {
   const _EmptyViewWidget({
-    Key? key,
     required this.userCity,
-  }) : super(key: key);
+  });
 
   final String userCity;
 
@@ -209,11 +207,10 @@ class _EmptyViewWidget extends StatelessWidget {
 
 class _EventCardsWidget extends StatelessWidget {
   const _EventCardsWidget({
-    Key? key,
     required this.events,
     required this.controller,
     required this.userCity,
-  }) : super(key: key);
+  });
 
   final CardSwiperController controller;
   final List<EventModel> events;
@@ -326,10 +323,7 @@ class _EventCardsWidget extends StatelessWidget {
 }
 
 class _EventCardWidget extends StatelessWidget {
-  const _EventCardWidget({
-    Key? key,
-    required this.event,
-  }) : super(key: key);
+  const _EventCardWidget({required this.event});
 
   final EventModel event;
 

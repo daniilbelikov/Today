@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:today/managers/notifications_manager.dart';
 
 class BottomNavigationView extends StatefulWidget {
-  const BottomNavigationView({Key? key}) : super(key: key);
+  const BottomNavigationView({super.key});
 
   @override
   State<BottomNavigationView> createState() => _BottomNavigationViewState();

@@ -25,7 +25,7 @@ import 'package:today/screens/edit_profile/data/edit_profile_provider.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
 
 class TodayApp extends StatefulWidget {
-  const TodayApp({Key? key}) : super(key: key);
+  const TodayApp({super.key});
 
   @override
   State<TodayApp> createState() => _TodayAppState();

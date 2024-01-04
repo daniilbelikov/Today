@@ -6,7 +6,7 @@ import '../../../../widgets/black_button.dart';
 import '../../../../widgets/black_text_button.dart';
 
 class WarningAlertWidget extends StatelessWidget {
-  const WarningAlertWidget({Key? key}) : super(key: key);
+  const WarningAlertWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

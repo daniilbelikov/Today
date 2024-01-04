@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ActivityIndicatorWidget extends StatelessWidget {
-  const ActivityIndicatorWidget({Key? key}) : super(key: key);
+  const ActivityIndicatorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

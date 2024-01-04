@@ -13,7 +13,7 @@ import 'package:today/widgets/textfield_row.dart';
 import 'package:today/screens/events/bloc/events_bloc.dart';
 
 class CreateEventScreen extends StatefulWidget {
-  const CreateEventScreen({Key? key}) : super(key: key);
+  const CreateEventScreen({super.key});
 
   @override
   State<CreateEventScreen> createState() => _CreateEventScreenState();
@@ -184,9 +184,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
 class _SaveButtonWidget extends StatelessWidget {
   const _SaveButtonWidget({
-    Key? key,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
 

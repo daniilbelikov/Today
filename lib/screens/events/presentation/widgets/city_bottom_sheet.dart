@@ -7,7 +7,7 @@ import 'package:today/widgets/black_button.dart';
 import '../../data/provider/events_provider.dart';
 
 class CityBottomSheet extends StatefulWidget {
-  const CityBottomSheet({Key? key}) : super(key: key);
+  const CityBottomSheet({super.key});
 
   @override
   State<CityBottomSheet> createState() => _CityBottomSheetState();
@@ -95,11 +95,10 @@ class _CityBottomSheetState extends State<CityBottomSheet> {
 
 class _RadioRowsWidget extends StatelessWidget {
   const _RadioRowsWidget({
-    Key? key,
     required this.values,
     required this.selectedValue,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   final List<String> values;
   final String selectedValue;

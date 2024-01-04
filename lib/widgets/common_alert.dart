@@ -4,11 +4,11 @@ import 'package:today/widgets/black_button.dart';
 
 class CommonAlertWidget extends StatelessWidget {
   const CommonAlertWidget({
-    Key? key,
+    super.key,
     required this.buttonTitle,
     required this.title,
     required this.text,
-  }) : super(key: key);
+  });
 
   final String buttonTitle;
   final String title;

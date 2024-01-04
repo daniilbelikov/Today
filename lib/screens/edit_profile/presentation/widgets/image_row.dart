@@ -5,13 +5,13 @@ import '../../../../helpers/constants.dart';
 
 class ImageRowWidget extends StatelessWidget {
   const ImageRowWidget({
-    Key? key,
+    super.key,
     required this.deleteAction,
     required this.imageLink,
     required this.imageFile,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final void Function()? deleteAction;
   final void Function()? onTap;

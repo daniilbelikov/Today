@@ -4,7 +4,7 @@ import '../screens/auth/presentation/auth_screen.dart';
 import '../screens/bottom_navigation/presentation/widgets/bottom_navigation_widget.dart';
 
 class AuthManager extends StatelessWidget {
-  const AuthManager({Key? key}) : super(key: key);
+  const AuthManager({super.key});
 
   @override
   Widget build(BuildContext context) {

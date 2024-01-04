@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 class TodayAppBarWidget extends StatelessWidget {
   const TodayAppBarWidget({
-    Key? key,
+    super.key,
     required this.buttonTitle,
     required this.hasAction,
     required this.title,
     this.buttonWidth = 0.0,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
   final String buttonTitle;
@@ -21,7 +21,7 @@ class TodayAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90.0,
+      height: 92.0,
       width: double.infinity,
       color: Theme.of(context).scaffoldBackgroundColor,
       child: Padding(
@@ -73,11 +73,10 @@ class TodayAppBarWidget extends StatelessWidget {
 
 class _ToolbarButtonWidget extends StatelessWidget {
   const _ToolbarButtonWidget({
-    Key? key,
     required this.onPressed,
     required this.width,
     required this.title,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
   final double width;

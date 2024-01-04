@@ -6,7 +6,7 @@ import '../../data/edit_profile_provider.dart';
 import 'package:today/widgets/black_button.dart';
 
 class ImageBottomSheet extends StatelessWidget {
-  const ImageBottomSheet({Key? key}) : super(key: key);
+  const ImageBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

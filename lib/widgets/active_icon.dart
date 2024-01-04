@@ -3,9 +3,9 @@ import 'package:today/helpers/constants.dart';
 
 class ActiveIconWidget extends StatelessWidget {
   const ActiveIconWidget({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget? child;
 
