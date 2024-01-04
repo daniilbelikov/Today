@@ -80,7 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Кажется, в вашем городе нет событий. Может создадим собственное?"),
         "end_text": MessageLookupByLibrary.simpleMessage(
             "Видимо, это все события на сегодня. Что будем делать дальше?"),
-        "attention": MessageLookupByLibrary.simpleMessage("Внимание"),
+        "attention": MessageLookupByLibrary.simpleMessage("Внимание!"),
         "error_common": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
@@ -111,7 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
         "social_subtitle": MessageLookupByLibrary.simpleMessage(
             "Информация будет доступна только тем пользователям, с которыми у вас совпадения."),
-        "success": MessageLookupByLibrary.simpleMessage("Успешно"),
+        "success": MessageLookupByLibrary.simpleMessage("Успешно!"),
         "telegram_hint": MessageLookupByLibrary.simpleMessage(
             "Пример: https://t.me/daniilbelikov"),
         "telegram_title":

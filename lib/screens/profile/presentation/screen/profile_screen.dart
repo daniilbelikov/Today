@@ -157,6 +157,7 @@ class _UserStackWidget extends StatelessWidget {
                     context,
                     imageProvider,
                     useSafeArea: false,
+                    doubleTapZoomable: true,
                     closeButtonTooltip: S.of(context).close,
                   );
                 }

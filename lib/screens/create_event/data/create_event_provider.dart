@@ -56,7 +56,7 @@ class CreateEventProvider with ChangeNotifier {
     showDialog(
       context: context,
       builder: (_) => CommonAlertWidget(
-        title: S.of(context).error,
+        title: S.of(context).error_common,
         buttonTitle: S.of(context).close,
         text: S.of(context).error_profile,
       ),

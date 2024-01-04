@@ -24,7 +24,7 @@ class CommonAlertWidget extends StatelessWidget {
         ),
       ),
       content: SizedBox(
-        height: 168.0,
+        height: 158.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

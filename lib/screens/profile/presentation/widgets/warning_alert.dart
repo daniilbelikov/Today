@@ -1,4 +1,3 @@
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../helpers/constants.dart';
@@ -18,20 +17,18 @@ class WarningAlertWidget extends StatelessWidget {
         ),
       ),
       content: SizedBox(
-        height: 380.0,
+        height: 220.0,
         width: 280.0,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 12.0,
-                left: 30.0,
-              ),
-              child: SizedBox(
-                height: 150.0,
-                child: SvgPicture.asset(TodayAssets.delete),
+            Text(
+              S.of(context).attention,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: TodayFonts.bold,
+                fontSize: 18.0,
               ),
             ),
             Expanded(child: Container()),

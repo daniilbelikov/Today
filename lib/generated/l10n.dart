@@ -380,20 +380,20 @@ class S {
     );
   }
 
-  /// `Внимание`
-  String get error {
+  /// `Внимание!`
+  String get attention {
     return Intl.message(
-      'Внимание',
-      name: 'error',
+      'Внимание!',
+      name: 'attention',
       desc: '',
       args: [],
     );
   }
 
-  /// `Успешно`
+  /// `Успешно!`
   String get success {
     return Intl.message(
-      'Успешно',
+      'Успешно!',
       name: 'success',
       desc: '',
       args: [],

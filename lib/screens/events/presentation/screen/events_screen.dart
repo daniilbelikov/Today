@@ -145,10 +145,7 @@ class _EmptyViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          flex: 2,
-          child: Container(),
-        ),
+        Expanded(flex: 2, child: Container()),
         SizedBox(
           height: 190.0,
           child: SvgPicture.asset(TodayAssets.emptyMain),
@@ -168,10 +165,7 @@ class _EmptyViewWidget extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          flex: 3,
-          child: Container(),
-        ),
+        Expanded(flex: 3, child: Container()),
         Padding(
           padding: const EdgeInsets.only(bottom: 20.0),
           child: RichText(
