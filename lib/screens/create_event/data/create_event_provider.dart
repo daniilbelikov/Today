@@ -30,6 +30,10 @@ class CreateEventProvider with ChangeNotifier {
         desc.isNotEmpty;
   }
 
+  int getEType(String text) {
+    return TodayData.typesMap[text] ?? 0;
+  }
+
   String getCurrentDate() {
     final date = DateTime.now();
     return DateFormat(TodayValues.dayPattern).format(date);

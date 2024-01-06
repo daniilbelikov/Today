@@ -42,7 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Выберите ваш возраст"),
         "choose_city": MessageLookupByLibrary.simpleMessage("Выберите город"),
         "choose_count": MessageLookupByLibrary.simpleMessage(
-            "Выберите количество участников"),
+            "Выберите количество участников (включая вас)"),
         "choose_type":
             MessageLookupByLibrary.simpleMessage("Выберите тип события"),
         "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
@@ -127,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_support":
             MessageLookupByLibrary.simpleMessage("Написать в поддержку"),
         "error_view_text": MessageLookupByLibrary.simpleMessage(
-            "Что-то пошло не так.\nПерезапустите приложение.")
+            "Что-то пошло не так.\nПерезапустите приложение."),
+        "interesting": MessageLookupByLibrary.simpleMessage("Интересно")
       };
 }

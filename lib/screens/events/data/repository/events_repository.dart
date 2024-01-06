@@ -14,6 +14,7 @@ class EventsRepository {
         'event_type': model.eventType,
         'max_count': model.maxCount,
         'creator_id': model.user.id,
+        'applications': [],
         'user': {
           'isEmpty': model.user.isEmpty,
           'about': model.user.about,

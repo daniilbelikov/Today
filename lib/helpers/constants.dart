@@ -74,20 +74,27 @@ class TodayData {
     PickerItem(value: 'Свидание'),
     PickerItem(value: 'Вечеринка'),
     PickerItem(value: 'Прогулка'),
-    PickerItem(value: 'Занятие спортом'),
+    PickerItem(value: 'Пробежка'),
     PickerItem(value: 'Поход в кино'),
-    PickerItem(value: 'Другое'),
   ];
 
   static final numbers = List.generate(
-    10,
-    (index) => PickerItem(value: (1 + index).toString()),
+    9,
+    (index) => PickerItem(value: (2 + index).toString()),
   );
 
   static final ages = List.generate(
     52,
     (index) => PickerItem(value: (14 + index).toString()),
   );
+
+  static final typesMap = {
+    'Свидание': 0,
+    'Вечеринка': 1,
+    'Прогулка': 2,
+    'Пробежка': 3,
+    'Поход в кино': 4,
+  };
 }
 
 class TodayKeys {

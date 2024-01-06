@@ -8,6 +8,7 @@ class EventModel {
   final int eventType;
   final int maxCount;
   final LocalUserModel user;
+  final List<String> applications;
 
   EventModel({
     required this.description,
@@ -17,9 +18,11 @@ class EventModel {
     required this.eventType,
     required this.maxCount,
     required this.user,
+    required this.applications,
   });
 
   factory EventModel.fromJson(Map<String, dynamic> json) {
+    final applications = json['applications'] as List;
     return EventModel(
       description: json['description'],
       city: json['city'],
@@ -28,6 +31,7 @@ class EventModel {
       eventType: json['event_type'],
       maxCount: json['max_count'],
       user: LocalUserModel.fromJson(json['user']),
+      applications: applications.isEmpty ? [] : applications as List<String>,
     );
   }
 }

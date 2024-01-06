@@ -1,5 +1,6 @@
 import 'generated/l10n.dart';
 import 'helpers/themes.dart';
+import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/auth/bloc/auth_bloc.dart';
@@ -92,20 +93,22 @@ class _TodayAppState extends State<TodayApp> with WidgetsBindingObserver {
             ),
           ),
         ],
-        child: MaterialApp(
-          theme: Themes().light,
-          darkTheme: Themes().dark,
-          scrollBehavior: WithoutGlowBehavior(),
-          supportedLocales: S.delegate.supportedLocales,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          onGenerateRoute: (settings) => TodayRouter.generateRoute(settings),
-          builder: (context, child) => child ?? const AuthScreen(),
-          initialRoute: TodayRouter.init,
+        child: Sizer(
+          builder: (_, __, ___) => MaterialApp(
+            theme: Themes().light,
+            darkTheme: Themes().dark,
+            scrollBehavior: WithoutGlowBehavior(),
+            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            onGenerateRoute: (settings) => TodayRouter.generateRoute(settings),
+            builder: (_, child) => child ?? const AuthScreen(),
+            initialRoute: TodayRouter.init,
+          ),
         ),
       ),
     );

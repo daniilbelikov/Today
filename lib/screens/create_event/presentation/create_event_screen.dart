@@ -159,9 +159,10 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                             city: _cityController.text,
                             created: provider.getCurrentDate(),
                             creatorId: user.id,
-                            eventType: int.tryParse(_typeController.text) ?? 0,
+                            eventType: provider.getEType(_typeController.text),
                             maxCount: int.tryParse(_countController.text) ?? 0,
                             user: user,
+                            applications: [],
                           );
 
                           user.isEmpty

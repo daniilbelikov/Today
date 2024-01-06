@@ -1,5 +1,7 @@
+import 'package:sizer/sizer.dart';
 import '../widgets/end_alert.dart';
 import '../../bloc/events_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,12 +9,15 @@ import '../../../../generated/l10n.dart';
 import '../widgets/city_bottom_sheet.dart';
 import '../../../../helpers/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../widgets/black_button.dart';
 import '../../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/provider/events_provider.dart';
 import '../../../../models/common/event_model.dart';
 import '../../../../widgets/activity_indicator.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:today/screens/create_event/presentation/create_event_screen.dart';
 
 class EventsScreen extends StatefulWidget {
@@ -323,14 +328,132 @@ class _EventCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<EventsProvider>(context);
+    final height = MediaQuery.of(context).size.height;
+    final eventType = event.eventType;
+    final avatar = event.user.avatar;
+    final maxCount = event.maxCount;
     return Container(
-      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: TodayDecorations.shadow,
-      child: const Padding(
-        padding: EdgeInsets.all(12.0),
-        child: Column(
-          children: [],
-        ),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    if (avatar.isNotEmpty) {
+                      final imageProvider = Image.network(avatar).image;
+                      showImageViewer(
+                        context,
+                        imageProvider,
+                        useSafeArea: false,
+                        doubleTapZoomable: true,
+                        closeButtonTooltip: S.of(context).close,
+                      );
+                    }
+                  },
+                  child: Container(
+                    width: 15.h,
+                    height: 15.h,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      shape: BoxShape.circle,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(100.0),
+                      ),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: event.user.avatar,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey.shade200,
+                          highlightColor: Colors.grey.shade300,
+                          child: Container(
+                            width: 15.h,
+                            height: 15.h,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: Text(
+                    '${event.user.name}, ${event.user.age}',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Theme.of(context).shadowColor,
+                      fontFamily: TodayFonts.bold,
+                      fontSize: 2.1.h,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: Text(
+                    event.user.work,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Theme.of(context).hintColor,
+                      fontFamily: TodayFonts.semiBold,
+                      fontSize: 1.5.h,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(child: Container()),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  provider.getTitle(eventType, maxCount),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).shadowColor,
+                    fontFamily: TodayFonts.semiBold,
+                    fontSize: 2.2.h,
+                  ),
+                ),
+              ),
+              Text(
+                event.description,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: TodayFonts.regular,
+                  fontSize: 1.8.h,
+                ),
+              ),
+            ],
+          ),
+          if (height > 732.0) Expanded(child: Container()),
+          if (height > 732.0)
+            Text(
+              provider.getEmojies(eventType),
+              style: const TextStyle(fontSize: 24.0),
+            ),
+          Expanded(child: Container()),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: BlackButtonWidget(
+              isActive: provider.determineActive(event),
+              title: S.of(context).interesting,
+              onPressed: () {},
+              width: 180.0,
+            ),
+          ),
+        ],
       ),
     );
   }

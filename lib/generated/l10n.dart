@@ -360,10 +360,10 @@ class S {
     );
   }
 
-  /// `Выберите количество участников`
+  /// `Выберите количество участников (включая вас)`
   String get choose_count {
     return Intl.message(
-      'Выберите количество участников',
+      'Выберите количество участников (включая вас)',
       name: 'choose_count',
       desc: '',
       args: [],
@@ -675,6 +675,16 @@ class S {
     return Intl.message(
       'Написать в поддержку',
       name: 'write_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Интересно`
+  String get interesting {
+    return Intl.message(
+      'Интересно',
+      name: 'interesting',
       desc: '',
       args: [],
     );
