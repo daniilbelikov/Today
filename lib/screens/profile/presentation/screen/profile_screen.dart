@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:shimmer/shimmer.dart';
 import '../../bloc/profile_bloc.dart';
 import '../widgets/warning_alert.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import '../../../../utils/empty_linear_circle.dart';
 import '../../../../widgets/activity_indicator.dart';
 import '../../../../models/hive/local_user_model.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:today/screens/edit_profile/presentation/screen/edit_profile_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -255,28 +257,46 @@ class _ProfileAvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 56.0,
-      backgroundColor: Colors.transparent,
-      child: Stack(
-        children: [
-          CircleAvatar(
-            radius: 50.0,
-            backgroundColor: Theme.of(context).cardColor,
-            backgroundImage: avatar.isNotEmpty
-                ? NetworkImage(avatar)
-                : Image.asset(TodayAssets.logo).image,
-          ),
-          if (avatar.isNotEmpty)
-            CircleAvatar(
-              radius: 50.0,
-              backgroundColor: Colors.transparent,
-              child: CustomPaint(
-                size: const Size(108.0, 108.0),
-                painter: EmptyLinearCircle(),
+    return Container(
+      width: 110.0,
+      height: 110.0,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade300,
+        shape: BoxShape.circle,
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(100.0),
+        ),
+        child: Stack(
+          alignment: AlignmentDirectional.center,
+          fit: StackFit.expand,
+          children: [
+            avatar.isNotEmpty
+                ? CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    imageUrl: avatar,
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: Colors.grey.shade200,
+                      highlightColor: Colors.grey.shade300,
+                      child: Container(
+                        width: 110.0,
+                        height: 110.0,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ),
+                  )
+                : Image.asset(TodayAssets.logo),
+            if (avatar.isNotEmpty)
+              CustomPaint(
+                size: const Size(105.0, 105.0),
+                painter: EmptyLinearCircle(width: 8.0),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

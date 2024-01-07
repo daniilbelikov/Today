@@ -3,10 +3,14 @@ import '../helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class EmptyLinearCircle extends CustomPainter {
+  EmptyLinearCircle({required this.width});
+
+  final double width;
+
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..strokeWidth = 5.0
+      ..strokeWidth = width
       ..style = PaintingStyle.stroke
       ..shader = const LinearGradient(
         begin: Alignment.topCenter,

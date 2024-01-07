@@ -13,6 +13,7 @@ import '../../../../widgets/black_button.dart';
 import '../../../../widgets/today_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/provider/events_provider.dart';
+import '../../../../utils/empty_linear_circle.dart';
 import '../../../../models/common/event_model.dart';
 import '../../../../widgets/activity_indicator.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
@@ -373,21 +374,31 @@ class _EventCardWidget extends StatelessWidget {
                       borderRadius: const BorderRadius.all(
                         Radius.circular(100.0),
                       ),
-                      child: CachedNetworkImage(
-                        fit: BoxFit.cover,
-                        imageUrl: event.user.avatar,
-                        placeholder: (context, url) => Shimmer.fromColors(
-                          baseColor: Colors.grey.shade200,
-                          highlightColor: Colors.grey.shade300,
-                          child: Container(
-                            width: 15.h,
-                            height: 15.h,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
-                              shape: BoxShape.circle,
+                      child: Stack(
+                        alignment: AlignmentDirectional.center,
+                        fit: StackFit.expand,
+                        children: [
+                          CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            imageUrl: event.user.avatar,
+                            placeholder: (context, url) => Shimmer.fromColors(
+                              baseColor: Colors.grey.shade200,
+                              highlightColor: Colors.grey.shade300,
+                              child: Container(
+                                width: 15.h,
+                                height: 15.h,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          CustomPaint(
+                            size: Size(15.h, 15.h),
+                            painter: EmptyLinearCircle(width: 10.0),
+                          ),
+                        ],
                       ),
                     ),
                   ),
