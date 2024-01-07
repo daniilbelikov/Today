@@ -690,6 +690,26 @@ class S {
     );
   }
 
+  /// `Отправлено`
+  String get sended {
+    return Intl.message(
+      'Отправлено',
+      name: 'sended',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваше`
+  String get your {
+    return Intl.message(
+      'Ваше',
+      name: 'your',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Что-то пошло не так.\nПерезапустите приложение.`
   String get error_view_text {
     return Intl.message(

@@ -22,3 +22,13 @@ class GetCityEvents extends EventsEvent {
   @override
   List<Object> get props => [city];
 }
+
+class AddLikeEvent extends EventsEvent {
+  final String city;
+  final EventModel model;
+
+  AddLikeEvent(this.city, this.model);
+
+  @override
+  List<Object> get props => [city];
+}

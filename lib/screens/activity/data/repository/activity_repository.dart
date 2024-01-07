@@ -18,7 +18,7 @@ class ActivityRepository {
 
       for (var doc in snapshot.docs) {
         final data = doc.data();
-        final event = EventModel.fromJson(data);
+        final event = EventModel.fromJson(data, doc.id);
         events.add(event);
       }
       return events;

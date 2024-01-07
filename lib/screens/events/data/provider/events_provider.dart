@@ -1,8 +1,12 @@
+import '../model/active_model.dart';
 import 'package:flutter/foundation.dart';
 import '../../../../helpers/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:today/models/common/event_model.dart';
 
 class EventsProvider with ChangeNotifier {
+  final _currentUser = FirebaseAuth.instance.currentUser;
+
   String selectedCity = TodayData.selectedCity;
   List<String> cities = TodayData.citiesArray;
 
@@ -14,12 +18,18 @@ class EventsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool determineActive(EventModel event) {
+  ActiveModel determineActive(EventModel event) {
     final applications = event.applications;
-    final id = event.user.id;
+    final creatorID = event.creatorId;
+    final id = _currentUser?.uid ?? '';
 
-    if (applications.contains(id)) false;
-    return true;
+    if (creatorID == id) {
+      return ActiveModel(false, false);
+    } else if (applications.contains(id)) {
+      return ActiveModel(false, true);
+    } else {
+      return ActiveModel(true, true);
+    }
   }
 
   String getRightCity() {

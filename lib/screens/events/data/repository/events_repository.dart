@@ -1,9 +1,11 @@
 import 'package:today/helpers/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../models/common/event_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventsRepository {
   final _eventsRef = FirebaseFirestore.instance.collection(TodayKeys.events);
+  final _currentUser = FirebaseAuth.instance.currentUser;
 
   Future<void> createEvent(EventModel model) async {
     try {
@@ -39,10 +41,23 @@ class EventsRepository {
       final snapshot = await _eventsRef.where('city', isEqualTo: city).get();
       for (var doc in snapshot.docs) {
         final data = doc.data();
-        final event = EventModel.fromJson(data);
+        final event = EventModel.fromJson(data, doc.id);
         events.add(event);
       }
       return events;
+    } catch (error) {
+      throw Exception(error.toString());
+    }
+  }
+
+  Future<void> addLikeEvent(EventModel model) async {
+    try {
+      final userUID = _currentUser?.uid ?? '';
+      final apps = model.applications;
+      final docID = model.docID;
+      apps.add(userUID);
+
+      _eventsRef.doc(docID).update({'applications': apps});
     } catch (error) {
       throw Exception(error.toString());
     }

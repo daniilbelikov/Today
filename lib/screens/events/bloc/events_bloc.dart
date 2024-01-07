@@ -34,5 +34,18 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         emit(EventError(error.toString()));
       }
     });
+
+    on<AddLikeEvent>((event, emit) async {
+      emit(EventsLoading());
+
+      try {
+        await _repository.addLikeEvent(event.model).whenComplete(() async {
+          final events = await _repository.getCityEvents(event.city);
+          emit(EventsLoaded(events));
+        });
+      } catch (error) {
+        emit(EventError(error.toString()));
+      }
+    });
   }
 }

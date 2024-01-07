@@ -128,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Написать в поддержку"),
         "error_view_text": MessageLookupByLibrary.simpleMessage(
             "Что-то пошло не так.\nПерезапустите приложение."),
-        "interesting": MessageLookupByLibrary.simpleMessage("Интересно")
+        "interesting": MessageLookupByLibrary.simpleMessage("Интересно"),
+        "sended": MessageLookupByLibrary.simpleMessage("Отправлено"),
+        "your": MessageLookupByLibrary.simpleMessage("Ваше")
       };
 }

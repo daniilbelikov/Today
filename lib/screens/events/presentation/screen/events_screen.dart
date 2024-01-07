@@ -326,10 +326,17 @@ class _EventCardWidget extends StatelessWidget {
 
   final EventModel event;
 
+  void _addLikeEvent(BuildContext context, String city, EventModel model) {
+    BlocProvider.of<EventsBloc>(context).add(
+      AddLikeEvent(city, model),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<EventsProvider>(context);
     final height = MediaQuery.of(context).size.height;
+    final model = provider.determineActive(event);
     final eventType = event.eventType;
     final avatar = event.user.avatar;
     final maxCount = event.maxCount;
@@ -437,8 +444,8 @@ class _EventCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          if (height > 732.0) Expanded(child: Container()),
-          if (height > 732.0)
+          if (height > 800.0) Expanded(child: Container()),
+          if (height > 800.0)
             Text(
               provider.getEmojies(eventType),
               style: const TextStyle(fontSize: 24.0),
@@ -447,10 +454,17 @@ class _EventCardWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: BlackButtonWidget(
-              isActive: provider.determineActive(event),
-              title: S.of(context).interesting,
-              onPressed: () {},
               width: 180.0,
+              title: model.isActive
+                  ? S.of(context).interesting
+                  : model.isNotMine
+                      ? S.of(context).sended
+                      : S.of(context).your,
+              isActive: model.isActive,
+              onPressed: () {
+                final city = provider.getSelectedCity;
+                _addLikeEvent(context, city, event);
+              },
             ),
           ),
         ],
