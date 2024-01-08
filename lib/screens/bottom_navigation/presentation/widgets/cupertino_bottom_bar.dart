@@ -4,7 +4,6 @@ import '../../../../utils/tab_icons.dart';
 import '../../../../widgets/active_icon.dart';
 import 'package:today/screens/events/presentation/screen/events_screen.dart';
 import 'package:today/screens/profile/presentation/screen/profile_screen.dart';
-import 'package:today/screens/activity/presentation/screen/activity_screen.dart';
 
 class CupertinoBottomBar extends StatefulWidget {
   const CupertinoBottomBar({super.key});
@@ -40,18 +39,6 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
             BottomNavigationBarItem(
               activeIcon: ActiveIconWidget(
                 child: Icon(
-                  TabIcons.heart,
-                  size: 27.0,
-                ),
-              ),
-              icon: Icon(
-                TabIcons.heart,
-                size: 27.0,
-              ),
-            ),
-            BottomNavigationBarItem(
-              activeIcon: ActiveIconWidget(
-                child: Icon(
                   TabIcons.star,
                   size: 27.0,
                 ),
@@ -66,7 +53,6 @@ class CupertinoPageState extends State<CupertinoBottomBar> {
         tabBuilder: (_, index) {
           return const [
             EventsScreen(),
-            ActivityScreen(),
             ProfileScreen(),
           ][index];
         },

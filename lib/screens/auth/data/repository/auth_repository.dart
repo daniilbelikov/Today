@@ -91,9 +91,10 @@ class AuthRepository {
     box.clear();
   }
 
-  void _userDataManagement(User? user) {
-    final displayName = user?.displayName;
-    if (displayName == null) _addUserInFirestore(user);
+  void _userDataManagement(User? user) async {
+    final uid = user?.uid ?? '';
+    final snapshot = await _usersRef.doc(uid).get();
+    if (!snapshot.exists) _addUserInFirestore(user);
   }
 
   Future<void> _addUserInFirestore(User? user) async {

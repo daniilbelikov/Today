@@ -4,7 +4,6 @@ import '../../../../utils/tab_icons.dart';
 import '../../../../widgets/active_icon.dart';
 import '../../../events/presentation/screen/events_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
-import '../../../activity/presentation/screen/activity_screen.dart';
 import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
 
 class MaterialBottomBar extends StatefulWidget {
@@ -26,7 +25,6 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           EventsScreen(),
-          ActivityScreen(),
           ProfileScreen(),
         ],
       ),
@@ -50,19 +48,6 @@ class _MaterialBottomBarState extends State<MaterialBottomBar> {
             ),
             icon: Icon(
               TabIcons.flame,
-              size: 24.0,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            activeIcon: ActiveIconWidget(
-              child: Icon(
-                TabIcons.heart,
-                size: 24.0,
-              ),
-            ),
-            icon: Icon(
-              TabIcons.heart,
               size: 24.0,
             ),
           ),

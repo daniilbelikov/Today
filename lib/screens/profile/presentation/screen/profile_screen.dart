@@ -16,6 +16,7 @@ import '../../../../utils/empty_linear_circle.dart';
 import '../../../../widgets/activity_indicator.dart';
 import '../../../../models/hive/local_user_model.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
+import '../../../bottom_navigation/data/bottom_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:today/screens/edit_profile/presentation/screen/edit_profile_screen.dart';
 
@@ -39,7 +40,9 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   void _requestProfile() {
-    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
+    BlocProvider.of<ProfileBloc>(context).add(
+      GetProfileEvent(),
+    );
   }
 
   @override
@@ -312,7 +315,9 @@ class _UserActionWidget extends StatelessWidget {
     ).then((result) async {
       switch (result) {
         case 0:
-          BlocProvider.of<AuthBloc>(context).add(DeleteAccountEvent());
+          BlocProvider.of<AuthBloc>(context).add(
+            DeleteAccountEvent(),
+          );
           break;
         default:
           break;
@@ -387,9 +392,15 @@ class _UserExitWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<BottomProvider>(context);
     return BlackButtonWidget(
       title: S.of(context).exit,
-      onPressed: () => BlocProvider.of<AuthBloc>(context).add(SignOutEvent()),
+      onPressed: () {
+        provider.onPageChanged(0);
+        BlocProvider.of<AuthBloc>(context).add(
+          SignOutEvent(),
+        );
+      },
     );
   }
 }

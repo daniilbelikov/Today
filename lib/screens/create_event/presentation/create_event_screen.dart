@@ -26,7 +26,9 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   final TextEditingController _descController = TextEditingController();
 
   void _requestProfile() {
-    BlocProvider.of<ProfileBloc>(context).add(GetProfileEvent());
+    BlocProvider.of<ProfileBloc>(context).add(
+      GetProfileEvent(),
+    );
   }
 
   void _disposeTextEditingControllers() {
