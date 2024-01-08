@@ -1,5 +1,5 @@
 # Today App (Flutter code example)
-Today is a mobile dating app based on user activity. This project was created to demonstrate the current level of programming skills in the Flutter framework.
+Today is a mobile dating app based on user activity. This project was created to demonstrate the current level of programming skills in the Flutter.
 
 Technology Stack: VSCode, Flutter SDK, Firebase Services (Firestore, Storage, Messaging, Analytics), Bloc, Provider, Hive and Sizer.
 
