@@ -1,4 +1,4 @@
-package com.example.today
+package dev.belikov.todayApp
 
 import io.flutter.embedding.android.FlutterActivity
 

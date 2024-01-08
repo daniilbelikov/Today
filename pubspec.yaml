@@ -1,23 +1,119 @@
 name: today
-description: A new Flutter project.
+description: Today app.
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  sdk: '>=3.2.3 <4.0.0'
 
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
+  
+  bloc: ^8.1.2
+  hive: ^2.2.3
+  meta: ^1.10.0
+  intl: ^0.18.1
+  sizer: ^2.0.15
+  crypto: ^3.0.3
+  shimmer: ^3.0.0
+  telegram: ^0.0.3
+  provider: ^6.1.1
+  equatable: ^2.0.5
+  flutter_svg: ^2.0.9
+  image_picker: ^1.0.6
+  hive_flutter: ^1.1.0
+  flutter_bloc: ^8.1.3
+  url_launcher: ^6.2.2
+  path_provider: ^2.1.1
+  flutter_picker: ^2.1.0
+  google_sign_in: ^6.2.1
+  cupertino_icons: ^1.0.6
+  easy_image_viewer: ^1.3.2
+  flutter_app_badger: ^1.5.0
+  shared_preferences: ^2.2.2
+  sign_in_with_apple: ^5.0.0
+  flutter_card_swiper: ^6.0.0
+  cached_network_image: ^3.3.1
+  flutter_native_splash: ^2.3.9
+  flutter_launcher_icons: ^0.13.1
+  flutter_local_notifications: ^16.3.0
+  custom_sliding_segmented_control: ^1.8.1
 
-  cupertino_icons: ^1.0.2
+  # Firebase Services
+  firebase_auth: ^4.15.3
+  firebase_core: ^2.24.2
+  cloud_firestore: ^4.13.6
+  firebase_storage: ^11.5.6
+  firebase_analytics: ^10.7.4
+  firebase_messaging: ^14.7.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  hive_generator: ^2.0.1
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+
+flutter_icons:
+  android: 'launcher_icon'
+  ios: false
+  image_path: 'assets/png/logo.png'
 
 flutter:
   uses-material-design: true
+
+  assets:
+     - assets/png/
+     - assets/svg/
+     - fonts/
+
+  fonts:
+    - family: MontserratBlack
+      fonts:
+        - asset: fonts/Montserrat-Black.ttf
+    - family: MontserratBold
+      fonts:
+        - asset: fonts/Montserrat-Bold.ttf
+    - family: MontserratExtraBold
+      fonts:
+        - asset: fonts/Montserrat-ExtraBold.ttf
+    - family: MontserratExtraLight
+      fonts:
+        - asset: fonts/Montserrat-ExtraLight.ttf
+    - family: MontserratLight
+      fonts:
+        - asset: fonts/Montserrat-Light.ttf
+    - family: MontserratMedium
+      fonts:
+        - asset: fonts/Montserrat-Medium.ttf
+    - family: MontserratRegular
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
+    - family: MontserratSemiBold
+      fonts:
+        - asset: fonts/Montserrat-SemiBold.ttf
+    - family: MontserratThin
+      fonts:
+        - asset: fonts/Montserrat-Thin.ttf
+    - family: TabIcons
+      fonts:
+        - asset: fonts/icons/TabIcons.ttf
+
+flutter_native_splash:
+  background_image: "assets/png/background.png"
+  image: assets/png/brand.png
+  background_image_dark: "assets/png/background.png"
+  image_dark: assets/png/brand.png
+
+  android_12:
+    image: assets/png/brand_android12.png
+
+  ios: false
+  web: false
+
+flutter_intl:
+  enabled: true
