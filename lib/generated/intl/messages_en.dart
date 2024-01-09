@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "age_hint": MessageLookupByLibrary.simpleMessage("Пример: 23"),
         "age_title": MessageLookupByLibrary.simpleMessage("Возраст*"),
         "apple": MessageLookupByLibrary.simpleMessage("Войти через Apple"),
+        "attention": MessageLookupByLibrary.simpleMessage("Внимание!"),
         "auth_title":
             MessageLookupByLibrary.simpleMessage("Всё случится\nСЕГОДНЯ"),
         "avatar_title":
@@ -80,17 +81,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "Кажется, в вашем городе нет событий. Может создадим собственное?"),
         "end_text": MessageLookupByLibrary.simpleMessage(
             "Видимо, это все события на сегодня. Что будем делать дальше?"),
-        "attention": MessageLookupByLibrary.simpleMessage("Внимание!"),
         "error_common": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "error_profile": MessageLookupByLibrary.simpleMessage(
             "Заполните профиль, прежде чем создавать события."),
         "error_social":
             MessageLookupByLibrary.simpleMessage("У вас не заполнен профиль."),
+        "error_view_text": MessageLookupByLibrary.simpleMessage(
+            "Что-то пошло не так.\nПерезапустите приложение."),
         "events": MessageLookupByLibrary.simpleMessage("События"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти"),
         "forward": MessageLookupByLibrary.simpleMessage("Вперёд!"),
         "gallery": MessageLookupByLibrary.simpleMessage("Галерея"),
         "google": MessageLookupByLibrary.simpleMessage("Войти через Google"),
+        "interesting": MessageLookupByLibrary.simpleMessage("Интересно"),
         "name_hint": MessageLookupByLibrary.simpleMessage("Пример: Василий"),
         "name_title": MessageLookupByLibrary.simpleMessage("Имя*"),
         "no_info": MessageLookupByLibrary.simpleMessage(
@@ -109,6 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вы не откликались на события других пользователей."),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "send": MessageLookupByLibrary.simpleMessage("Отправить"),
+        "sended": MessageLookupByLibrary.simpleMessage("Отправлено"),
         "social_subtitle": MessageLookupByLibrary.simpleMessage(
             "Информация будет доступна только тем пользователям, с которыми у вас совпадения."),
         "success": MessageLookupByLibrary.simpleMessage("Успешно!"),
@@ -126,10 +130,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Профессия или род занятий*"),
         "write_support":
             MessageLookupByLibrary.simpleMessage("Написать в поддержку"),
-        "error_view_text": MessageLookupByLibrary.simpleMessage(
-            "Что-то пошло не так.\nПерезапустите приложение."),
-        "interesting": MessageLookupByLibrary.simpleMessage("Интересно"),
-        "sended": MessageLookupByLibrary.simpleMessage("Отправлено"),
         "your": MessageLookupByLibrary.simpleMessage("Ваше")
       };
 }
