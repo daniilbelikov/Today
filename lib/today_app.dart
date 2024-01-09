@@ -8,7 +8,6 @@ import 'package:today/helpers/router.dart';
 import 'screens/events/bloc/events_bloc.dart';
 import 'screens/profile/bloc/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'screens/activity/bloc/activity_bloc.dart';
 import 'screens/auth/presentation/auth_screen.dart';
 import 'screens/auth/data/provider/auth_provider.dart';
 import 'package:today/utils/without_glow_behavior.dart';
@@ -18,10 +17,8 @@ import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'screens/bottom_navigation/data/bottom_provider.dart';
 import 'screens/profile/data/provider/profile_provider.dart';
 import 'screens/create_event/data/create_event_provider.dart';
-import 'screens/activity/data/provider/activity_provider.dart';
 import 'screens/profile/data/repository/profile_repository.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'screens/activity/data/repository/activity_repository.dart';
 import 'package:today/screens/edit_profile/data/edit_profile_provider.dart';
 import 'package:today/screens/events/data/repository/events_repository.dart';
 
@@ -61,12 +58,10 @@ class _TodayAppState extends State<TodayApp> with WidgetsBindingObserver {
         RepositoryProvider(create: (_) => AuthRepository()),
         RepositoryProvider(create: (_) => EventsRepository()),
         RepositoryProvider(create: (_) => ProfileRepository()),
-        RepositoryProvider(create: (_) => ActivityRepository()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => EventsProvider()),
         ChangeNotifierProvider(create: (_) => BottomProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
-        ChangeNotifierProvider(create: (_) => ActivityProvider()),
         ChangeNotifierProvider(create: (_) => CreateEventProvider()),
         ChangeNotifierProvider(create: (_) => EditProfileProvider()),
       ],
@@ -80,11 +75,6 @@ class _TodayAppState extends State<TodayApp> with WidgetsBindingObserver {
           BlocProvider(
             create: (context) => EventsBloc(
               repository: RepositoryProvider.of<EventsRepository>(context),
-            ),
-          ),
-          BlocProvider(
-            create: (context) => ActivityBloc(
-              repository: RepositoryProvider.of<ActivityRepository>(context),
             ),
           ),
           BlocProvider(
