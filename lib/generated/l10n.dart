@@ -680,46 +680,6 @@ class S {
     );
   }
 
-  /// `Интересно`
-  String get interesting {
-    return Intl.message(
-      'Интересно',
-      name: 'interesting',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Отправлено`
-  String get sended {
-    return Intl.message(
-      'Отправлено',
-      name: 'sended',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Ваше`
-  String get your {
-    return Intl.message(
-      'Ваше',
-      name: 'your',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Что-то пошло не так.\nПерезапустите приложение.`
-  String get error_view_text {
-    return Intl.message(
-      'Что-то пошло не так.\nПерезапустите приложение.',
-      name: 'error_view_text',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Удалить аккаунт`
   String get delete_account {
     return Intl.message(
@@ -795,6 +755,46 @@ class S {
     return Intl.message(
       'Информация будет доступна только тем пользователям, с которыми у вас совпадения.',
       name: 'social_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Что-то пошло не так.\nПерезапустите приложение.`
+  String get error_view_text {
+    return Intl.message(
+      'Что-то пошло не так.\nПерезапустите приложение.',
+      name: 'error_view_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Интересно`
+  String get interesting {
+    return Intl.message(
+      'Интересно',
+      name: 'interesting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Отправлено`
+  String get sended {
+    return Intl.message(
+      'Отправлено',
+      name: 'sended',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ваше`
+  String get your {
+    return Intl.message(
+      'Ваше',
+      name: 'your',
       desc: '',
       args: [],
     );
