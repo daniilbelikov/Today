@@ -46,8 +46,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     _disposeTextEditingControllers();
+    super.dispose();
   }
 
   @override

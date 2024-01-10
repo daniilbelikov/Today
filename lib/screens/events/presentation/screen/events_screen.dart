@@ -60,8 +60,8 @@ class _EventsScreenState extends State<EventsScreen>
 
   @override
   void dispose() {
-    super.dispose();
     _disposeSwiperController();
+    super.dispose();
   }
 
   @override
