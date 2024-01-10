@@ -35,19 +35,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   LocalUserModel get _userModel => widget.user;
 
-  @override
-  void initState() {
-    super.initState();
-    _setTextEditingControllers();
-    _setInitialValues();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _disposeTextEditingControllers();
-  }
-
   void _setTextEditingControllers() {
     _ageController = TextEditingController(text: _userModel.age);
     _nameController = TextEditingController(text: _userModel.name);
@@ -79,6 +66,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       backgroundColor: Colors.transparent,
       context: context,
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _setTextEditingControllers();
+    _setInitialValues();
+  }
+
+  @override
+  void dispose() {
+    _disposeTextEditingControllers();
+    super.dispose();
   }
 
   @override
