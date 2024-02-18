@@ -1,8 +1,8 @@
-import '../model/active_model.dart';
 import 'package:flutter/foundation.dart';
-import '../../../../helpers/constants.dart';
+import 'package:today/helpers/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:today/models/common/event_model.dart';
+import 'package:today/screens/events/data/model/active_model.dart';
 
 class EventsProvider with ChangeNotifier {
   final _currentUser = FirebaseAuth.instance.currentUser;

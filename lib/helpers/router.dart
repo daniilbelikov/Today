@@ -1,5 +1,5 @@
-import '../managers/auth_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:today/managers/auth_wrapper_widget.dart';
 
 class TodayRouter {
   static const String init = '/';
@@ -8,7 +8,7 @@ class TodayRouter {
     switch (settings.name) {
       case init:
         return MaterialPageRoute(
-          builder: (_) => const AuthManager(),
+          builder: (_) => const AuthWrapperWidget(),
         );
       default:
         return MaterialPageRoute(

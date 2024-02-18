@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
-import '../../../models/common/event_model.dart';
-import '../data/repository/events_repository.dart';
+import 'package:today/models/common/event_model.dart';
+import 'package:today/screens/events/data/repository/events_repository.dart';
 
 part 'events_event.dart';
 part 'events_state.dart';

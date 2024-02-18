@@ -1,7 +1,7 @@
-import '../helpers/constants.dart';
 import 'package:hive_flutter/adapters.dart';
-import '../models/hive/local_user_model.dart';
-import '../managers/notifications_manager.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/models/hive/local_user_model.dart';
+import 'package:today/managers/notifications_manager.dart';
 
 class TodayServices {
   static Future<void> initServices() async {

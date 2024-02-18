@@ -1,11 +1,11 @@
 import 'dart:io';
-import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../helpers/constants.dart';
-import '../../../widgets/common_alert.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/helpers/constants.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:today/widgets/common_alert.dart';
 import 'package:flutter_picker/flutter_picker.dart';
-import '../../../models/hive/local_user_model.dart';
+import 'package:today/models/hive/local_user_model.dart';
 
 class EditProfileProvider with ChangeNotifier {
   String name = '';

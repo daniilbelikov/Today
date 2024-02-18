@@ -1,25 +1,25 @@
 import 'package:sizer/sizer.dart';
-import '../widgets/end_alert.dart';
-import '../../bloc/events_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../generated/l10n.dart';
-import '../widgets/city_bottom_sheet.dart';
-import '../../../../helpers/constants.dart';
+import 'package:today/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../widgets/black_button.dart';
-import '../../../../widgets/today_app_bar.dart';
+import 'package:today/helpers/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/provider/events_provider.dart';
-import '../../../../utils/empty_linear_circle.dart';
-import '../../../../models/common/event_model.dart';
-import '../../../../widgets/activity_indicator.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/widgets/today_app_bar.dart';
+import 'package:today/models/common/event_model.dart';
+import 'package:today/utils/empty_linear_circle.dart';
+import 'package:today/widgets/activity_indicator.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:today/screens/events/bloc/events_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:today/screens/events/data/provider/events_provider.dart';
+import 'package:today/screens/events/presentation/widgets/end_alert.dart';
 import 'package:today/screens/create_event/presentation/create_event_screen.dart';
+import 'package:today/screens/events/presentation/widgets/city_bottom_sheet.dart';
 
 class EventsScreen extends StatefulWidget {
   const EventsScreen({super.key});

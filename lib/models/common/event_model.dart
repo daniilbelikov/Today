@@ -1,4 +1,4 @@
-import '../hive/local_user_model.dart';
+import 'package:today/models/hive/local_user_model.dart';
 
 class EventModel {
   final String? docID;

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../generated/l10n.dart';
-import '../../data/edit_profile_provider.dart';
+import 'package:today/generated/l10n.dart';
 import 'package:today/widgets/black_button.dart';
+import 'package:today/screens/edit_profile/data/edit_profile_provider.dart';
 
 class ImageBottomSheet extends StatelessWidget {
   const ImageBottomSheet({super.key});

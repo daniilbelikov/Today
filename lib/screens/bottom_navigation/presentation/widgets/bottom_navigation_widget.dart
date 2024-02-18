@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'material_bottom_bar.dart';
-import 'cupertino_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:today/managers/notifications_manager.dart';
+import 'package:today/screens/bottom_navigation/presentation/widgets/material_bottom_bar.dart';
+import 'package:today/screens/bottom_navigation/presentation/widgets/cupertino_bottom_bar.dart';
 
 class BottomNavigationView extends StatefulWidget {
   const BottomNavigationView({super.key});
