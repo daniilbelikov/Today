@@ -1,24 +1,24 @@
 import 'dart:io';
-import 'package:shimmer/shimmer.dart';
-import '../../bloc/profile_bloc.dart';
-import '../widgets/warning_alert.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../generated/l10n.dart';
-import '../../../auth/bloc/auth_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:today/helpers/constants.dart';
-import '../../../../widgets/black_button.dart';
-import '../../../../widgets/today_app_bar.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/provider/profile_provider.dart';
-import '../../../../utils/empty_linear_circle.dart';
-import '../../../../widgets/activity_indicator.dart';
-import '../../../../models/hive/local_user_model.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
-import '../../../bottom_navigation/data/bottom_provider.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/models/hive/local_user_model.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
+import 'package:today/widgets/today_app_bar.dart';
+import 'package:today/screens/auth/bloc/auth_bloc.dart';
+import 'package:today/utils/empty_linear_circle.dart';
+import 'package:today/screens/profile/presentation/widgets/warning_alert.dart';
 import 'package:today/screens/edit_profile/presentation/screen/edit_profile_screen.dart';
+import 'package:today/widgets/activity_indicator.dart';
+import 'package:today/screens/profile/bloc/profile_bloc.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/screens/profile/data/provider/profile_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final provider = Provider.of<ProfileProvider>(context);
+    final provider = ProfileProvider();
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -125,7 +125,18 @@ class _UserDataWidget extends StatelessWidget {
         }
         return Container(
           height: 100.0,
-          decoration: TodayDecorations.shadow,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xffE0E0E0).withAlpha(150),
+                offset: const Offset(0.0, 0.0),
+                spreadRadius: 2.0,
+                blurRadius: 6.0,
+              ),
+            ],
+            borderRadius: BorderRadius.circular(20.0),
+            color: Colors.white,
+          ),
           child: const Center(
             child: ActivityIndicatorWidget(),
           ),
@@ -144,9 +155,20 @@ class _UserStackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProfileProvider>(context);
+    final provider = ProfileProvider();
     return Container(
-      decoration: TodayDecorations.shadow,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xffE0E0E0).withAlpha(150),
+            offset: const Offset(0.0, 0.0),
+            spreadRadius: 2.0,
+            blurRadius: 6.0,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,
@@ -315,9 +337,7 @@ class _UserActionWidget extends StatelessWidget {
     ).then((result) async {
       switch (result) {
         case 0:
-          BlocProvider.of<AuthBloc>(context).add(
-            DeleteAccountEvent(),
-          );
+          BlocProvider.of<AuthBloc>(context).add(DeleteAccountEvent());
           break;
         default:
           break;
@@ -327,12 +347,23 @@ class _UserActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProfileProvider>(context);
+    final provider = ProfileProvider();
     return Container(
       padding: const EdgeInsets.all(8.0),
       height: 136.0,
       width: double.infinity,
-      decoration: TodayDecorations.shadow,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xffE0E0E0).withAlpha(150),
+            offset: const Offset(0.0, 0.0),
+            spreadRadius: 2.0,
+            blurRadius: 6.0,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white,
+      ),
       child: Column(
         children: [
           _ActionRowWidget(

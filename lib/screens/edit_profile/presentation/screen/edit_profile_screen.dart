@@ -1,17 +1,17 @@
 import 'dart:io';
-import '../widgets/image_row.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../generated/l10n.dart';
-import '../widgets/image_bottom_sheet.dart';
-import '../../../../helpers/constants.dart';
-import '../../data/edit_profile_provider.dart';
-import '../../../../widgets/black_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../widgets/textfield_row.dart';
-import '../../../profile/bloc/profile_bloc.dart';
-import '../../../../widgets/activity_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:today/widgets/activity_indicator.dart';
 import 'package:today/models/hive/local_user_model.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/screens/edit_profile/presentation/widgets/image_row.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/widgets/textfield_row.dart';
+import 'package:today/screens/profile/bloc/profile_bloc.dart';
+import 'package:today/screens/edit_profile/data/edit_profile_provider.dart';
+import 'package:today/screens/edit_profile/presentation/widgets/image_bottom_sheet.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({
@@ -26,12 +26,12 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _ageController = TextEditingController();
-  TextEditingController _workController = TextEditingController();
-  TextEditingController _aboutController = TextEditingController();
-  TextEditingController _vkController = TextEditingController();
-  TextEditingController _telegramController = TextEditingController();
+  late TextEditingController _nameController;
+  late TextEditingController _ageController;
+  late TextEditingController _workController;
+  late TextEditingController _aboutController;
+  late TextEditingController _vkController;
+  late TextEditingController _telegramController;
 
   LocalUserModel get _userModel => widget.user;
 

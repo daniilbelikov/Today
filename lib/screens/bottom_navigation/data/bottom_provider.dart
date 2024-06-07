@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class BottomProvider with ChangeNotifier {
   PageController controller = PageController();
-  int currentIndex = 0;
+  int _currentIndex = 0;
 
   PageController get pageController => controller;
-  int get selectedIndex => currentIndex;
+  int get selectedIndex => _currentIndex;
 
   void onPageChanged(int index) {
-    currentIndex = index;
+    _currentIndex = index;
     notifyListeners();
   }
 

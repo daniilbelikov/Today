@@ -1,11 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 class TabIcons {
-  TabIcons._();
-
   static const _kFontFam = 'TabIcons';
   static const String? _kFontPkg = null;
-
   static const IconData flame = IconData(
     0xe800,
     fontFamily: _kFontFam,

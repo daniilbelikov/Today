@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import '../../../helpers/constants.dart';
 import 'package:equatable/equatable.dart';
-import '../../../models/hive/local_user_model.dart';
-import '../data/repository/profile_repository.dart';
+import 'package:bloc/bloc.dart';
+import 'package:today/screens/profile/data/repository/profile_repository.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/models/hive/local_user_model.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

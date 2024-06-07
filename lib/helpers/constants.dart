@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_picker/picker.dart';
+import 'package:flutter_picker_plus/flutter_picker_plus.dart';
 
 class TodayAssets {
   static const emptyActivity = 'assets/svg/empty_activity.svg';
@@ -111,19 +111,4 @@ class TodayKeys {
 
 class TodayAnalytics {
   static const auth = 'auth_action';
-}
-
-class TodayDecorations {
-  static final shadow = BoxDecoration(
-    boxShadow: [
-      BoxShadow(
-        color: const Color(0xffE0E0E0).withAlpha(150),
-        offset: const Offset(0.0, 0.0),
-        spreadRadius: 2.0,
-        blurRadius: 6.0,
-      ),
-    ],
-    borderRadius: BorderRadius.circular(20.0),
-    color: Colors.white,
-  );
 }

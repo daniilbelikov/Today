@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../../utils/tab_icons.dart';
-import '../../../../widgets/active_icon.dart';
-import 'package:today/screens/events/presentation/screen/events_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:today/utils/tab_icons.dart';
 import 'package:today/screens/profile/presentation/screen/profile_screen.dart';
+import 'package:today/widgets/active_icon.dart';
+import 'package:today/screens/events/presentation/screen/events_screen.dart';
 
 class CupertinoBottomBar extends StatefulWidget {
   const CupertinoBottomBar({super.key});

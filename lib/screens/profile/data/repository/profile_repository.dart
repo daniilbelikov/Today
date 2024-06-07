@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:hive/hive.dart';
-import 'package:today/helpers/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:today/models/hive/local_user_model.dart';
+import 'package:today/helpers/constants.dart';
 
 class ProfileRepository {
   final _usersRef = FirebaseFirestore.instance.collection(TodayKeys.users);

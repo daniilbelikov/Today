@@ -1,16 +1,16 @@
 import 'dart:io';
-import '../../../generated/l10n.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../data/create_event_provider.dart';
-import '../../../widgets/black_button.dart';
-import 'package:today/helpers/constants.dart';
-import '../../profile/bloc/profile_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../models/common/event_model.dart';
-import '../../../widgets/activity_indicator.dart';
-import 'package:today/widgets/textfield_row.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/models/common/event_model.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/widgets/activity_indicator.dart';
+import 'package:today/screens/create_event/data/create_event_provider.dart';
 import 'package:today/screens/events/bloc/events_bloc.dart';
+import 'package:today/widgets/textfield_row.dart';
+import 'package:today/screens/profile/bloc/profile_bloc.dart';
 
 class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});

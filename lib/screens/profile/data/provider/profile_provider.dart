@@ -1,11 +1,10 @@
-import 'package:hive/hive.dart';
-import 'package:flutter/material.dart';
 import 'package:telegram/telegram.dart';
-import '../../../../helpers/constants.dart';
+import 'package:hive/hive.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../models/hive/local_user_model.dart';
+import 'package:today/models/hive/local_user_model.dart';
+import 'package:today/helpers/constants.dart';
 
-class ProfileProvider with ChangeNotifier {
+class ProfileProvider {
   LocalUserModel getUserModel() {
     final box = Hive.box(TodayKeys.user);
     final user = box.get(TodayKeys.localUser) as LocalUserModel;

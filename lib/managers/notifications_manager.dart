@@ -1,8 +1,8 @@
 import 'dart:io';
-import '../helpers/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:today/helpers/constants.dart';
 
 class NotificationsManager {
   final _plugin = FlutterLocalNotificationsPlugin();
