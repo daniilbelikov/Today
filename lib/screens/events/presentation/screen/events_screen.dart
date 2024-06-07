@@ -1,25 +1,25 @@
-import 'package:sizer/sizer.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sizer/sizer.dart';
+import 'package:provider/provider.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:today/generated/l10n.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:today/helpers/constants.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:today/widgets/black_button.dart';
+import 'package:today/screens/create_event/presentation/create_event_screen.dart';
+import 'package:today/screens/events/data/provider/events_provider.dart';
 import 'package:today/widgets/today_app_bar.dart';
 import 'package:today/models/common/event_model.dart';
-import 'package:today/utils/empty_linear_circle.dart';
-import 'package:today/widgets/activity_indicator.dart';
-import 'package:easy_image_viewer/easy_image_viewer.dart';
-import 'package:today/screens/events/bloc/events_bloc.dart';
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:today/screens/events/data/provider/events_provider.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/widgets/black_button.dart';
 import 'package:today/screens/events/presentation/widgets/end_alert.dart';
-import 'package:today/screens/create_event/presentation/create_event_screen.dart';
 import 'package:today/screens/events/presentation/widgets/city_bottom_sheet.dart';
+import 'package:today/utils/empty_linear_circle.dart';
+import 'package:today/helpers/constants.dart';
+import 'package:today/screens/events/bloc/events_bloc.dart';
+import 'package:today/widgets/activity_indicator.dart';
 
 class EventsScreen extends StatefulWidget {
   const EventsScreen({super.key});
@@ -271,7 +271,7 @@ class _EventCardsWidget extends StatelessWidget {
               cardsCount: events.length,
               onEnd: () => _showEndAlert(context, city),
               numberOfCardsDisplayed: events.length == 1 ? 1 : 2,
-              allowedSwipeDirection: AllowedSwipeDirection.symmetric(
+              allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
                 horizontal: true,
                 vertical: false,
               ),
@@ -343,7 +343,18 @@ class _EventCardWidget extends StatelessWidget {
     final maxCount = event.maxCount;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: TodayDecorations.shadow,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xffE0E0E0).withAlpha(150),
+            offset: const Offset(0.0, 0.0),
+            spreadRadius: 2.0,
+            blurRadius: 6.0,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white,
+      ),
       child: Column(
         children: [
           Padding(

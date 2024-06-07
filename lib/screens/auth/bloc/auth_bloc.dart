@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
-import 'package:today/helpers/constants.dart';
+import 'package:meta/meta.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:today/managers/analytics_manager.dart';
+import 'package:today/helpers/constants.dart';
 import 'package:today/screens/auth/data/repository/auth_repository.dart';
 
 part 'auth_event.dart';

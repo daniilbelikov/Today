@@ -1,11 +1,14 @@
-# Today
-In July 2022, I came up with the idea of a mobile dating app that would work on activity mechanics. That is, the user creates an event (jogging, going to the cinema, apartment building, etc.), and then selects from those who are interested in this event.
+# Today (Flutter Example App)
 
-A year later, I finally sat down to work on the project, but after a while it became clear that the app might be interesting to someone, but its economics are so-so. In order to somehow justify the time and effort spent, I decided to publish my work for those who were planning something similar.
+A mobile dating app that works on the principle of creating events. This project was created to demonstrate the current level of programming skills in the Flutter SDK.
 
-Technology Stack: VSCode, Flutter SDK, Firebase Services (Firestore, Storage, Messaging, Analytics), Bloc, Provider, Hive and Sizer.
+The project uses Bloc and Provider to demonstrate the ability to use these state managers individually and together.
 
-Runs on Flutter version 3.16.5.
+Technology Stack: Flutter, Dart, bloc, provider, firebase, hive, intl, sizer, google_sign_in, sign_in_with_apple,  image_picker, flutter_picker, easy_image_viewer, cached_network_image, shimmer, flutter_card_swiper, flutter_native_splash, custom_sliding_segmented_control, flutter_local_notifications and flutter_app_badger.
+
+Created by [@daniilbelikov](https://github.com/daniilbelikov).
+
+Runs on Flutter 3.22.1.
 
 ## Preview:
 <img src="./preview/preview.png"/>

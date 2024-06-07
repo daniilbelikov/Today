@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:today/widgets/black_button.dart';
 import 'package:provider/provider.dart';
 import 'package:today/generated/l10n.dart';
-import 'package:today/helpers/constants.dart';
-import 'package:today/widgets/black_button.dart';
 import 'package:today/screens/events/data/provider/events_provider.dart';
+import 'package:today/helpers/constants.dart';
 
 class CityBottomSheet extends StatefulWidget {
   const CityBottomSheet({super.key});

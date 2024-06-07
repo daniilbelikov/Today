@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:today/helpers/constants.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:today/widgets/activity_indicator.dart';
+import 'package:today/helpers/constants.dart';
 
 class AvatarEditWidget extends StatelessWidget {
   const AvatarEditWidget({
@@ -26,7 +26,18 @@ class AvatarEditWidget extends StatelessWidget {
         height: 140.0,
         width: 140.0,
         clipBehavior: Clip.hardEdge,
-        decoration: TodayDecorations.shadow,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xffE0E0E0).withAlpha(150),
+              offset: const Offset(0.0, 0.0),
+              spreadRadius: 2.0,
+              blurRadius: 6.0,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(20.0),
+          color: Colors.white,
+        ),
         child: imageFile == null && imageLink.isEmpty
             ? const _DefaultImageContainer()
             : imageFile == null

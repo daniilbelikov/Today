@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:today/utils/tab_icons.dart';
+import 'package:flutter/material.dart';
 import 'package:today/widgets/active_icon.dart';
-import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
-import 'package:today/screens/events/presentation/screen/events_screen.dart';
 import 'package:today/screens/profile/presentation/screen/profile_screen.dart';
+import 'package:today/screens/bottom_navigation/data/bottom_provider.dart';
+import 'package:today/utils/tab_icons.dart';
+import 'package:today/screens/events/presentation/screen/events_screen.dart';
 
 class MaterialBottomBar extends StatefulWidget {
   const MaterialBottomBar({super.key});

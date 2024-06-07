@@ -1,20 +1,18 @@
-import 'package:flutter/foundation.dart';
 import 'package:today/helpers/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:today/models/common/event_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:today/screens/events/data/model/active_model.dart';
+import 'package:today/models/common/event_model.dart';
 
 class EventsProvider with ChangeNotifier {
   final _currentUser = FirebaseAuth.instance.currentUser;
+  String _selectedCity = TodayData.selectedCity;
 
-  String selectedCity = TodayData.selectedCity;
-  List<String> cities = TodayData.citiesArray;
-
-  String get getSelectedCity => selectedCity;
-  List<String> get getCities => cities;
+  String get getSelectedCity => _selectedCity;
+  List<String> get getCities => TodayData.citiesArray;
 
   void setSelectedValue(String value) {
-    selectedCity = value;
+    _selectedCity = value;
     notifyListeners();
   }
 
@@ -33,7 +31,7 @@ class EventsProvider with ChangeNotifier {
   }
 
   String getRightCity() {
-    switch (selectedCity) {
+    switch (_selectedCity) {
       case 'Самара':
         return 'Самаре';
       case 'Тольятти':

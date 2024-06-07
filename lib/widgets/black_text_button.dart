@@ -14,6 +14,7 @@ class BlackTextButtonWidget extends StatelessWidget {
   final String title;
   final double height;
   final double width;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,10 +23,10 @@ class BlackTextButtonWidget extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all<Color>(
+          overlayColor: WidgetStateProperty.all<Color>(
             Theme.of(context).splashColor,
           ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),

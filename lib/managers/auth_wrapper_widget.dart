@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:today/screens/auth/presentation/auth_screen.dart';
 import 'package:today/screens/bottom_navigation/presentation/widgets/bottom_navigation_widget.dart';
 

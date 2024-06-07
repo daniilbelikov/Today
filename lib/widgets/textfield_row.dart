@@ -107,7 +107,18 @@ class _WhiteTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
-      decoration: TodayDecorations.shadow,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xffE0E0E0).withAlpha(150),
+            offset: const Offset(0.0, 0.0),
+            spreadRadius: 2.0,
+            blurRadius: 6.0,
+          ),
+        ],
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white,
+      ),
       child: TextFormField(
         onChanged: onChanged,
         controller: controller,

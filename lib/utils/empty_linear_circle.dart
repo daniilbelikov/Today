@@ -1,6 +1,6 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
 import 'package:today/helpers/constants.dart';
+import 'package:flutter/material.dart';
 
 class EmptyLinearCircle extends CustomPainter {
   EmptyLinearCircle({required this.width});

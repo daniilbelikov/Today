@@ -1,9 +1,9 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
-import 'package:today/generated/l10n.dart';
-import 'package:today/helpers/constants.dart';
-import 'package:today/widgets/black_button.dart';
 import 'package:today/widgets/black_text_button.dart';
+import 'package:today/generated/l10n.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/helpers/constants.dart';
 
 class EndAlertWidget extends StatelessWidget {
   const EndAlertWidget({

@@ -1,14 +1,14 @@
 import 'dart:io';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:today/widgets/black_button.dart';
+import 'package:today/screens/auth/data/provider/auth_provider.dart';
 import 'package:today/generated/l10n.dart';
 import 'package:today/helpers/constants.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:today/widgets/black_button.dart';
 import 'package:today/widgets/activity_indicator.dart';
 import 'package:today/screens/auth/bloc/auth_bloc.dart';
-import 'package:today/screens/auth/data/provider/auth_provider.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

@@ -1,33 +1,34 @@
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_picker_plus/flutter_picker_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:today/utils/picker_helper.dart';
+import 'package:today/widgets/common_alert.dart';
+import 'package:today/models/hive/local_user_model.dart';
 import 'package:today/generated/l10n.dart';
 import 'package:today/helpers/constants.dart';
-import 'package:today/widgets/common_alert.dart';
-import 'package:flutter_picker/flutter_picker.dart';
-import 'package:today/models/hive/local_user_model.dart';
 
 class CreateEventProvider with ChangeNotifier {
-  String city = '';
-  String type = '';
-  String count = '';
-  String desc = '';
+  String _city = '';
+  String _type = '';
+  String _count = '';
+  String _desc = '';
 
-  String get getCity => city;
-  String get getType => type;
-  String get getCount => count;
-  String get getDesc => desc;
+  String get getCity => _city;
+  String get getType => _type;
+  String get getCount => _count;
+  String get getDesc => _desc;
 
   void updateDescText(String text) {
-    desc = text;
+    _desc = text;
     notifyListeners();
   }
 
   bool getActiveStatus() {
-    return city.isNotEmpty &&
-        type.isNotEmpty &&
-        count.isNotEmpty &&
-        desc.isNotEmpty;
+    return _city.isNotEmpty &&
+        _type.isNotEmpty &&
+        _count.isNotEmpty &&
+        _desc.isNotEmpty;
   }
 
   int getEType(String text) {
@@ -68,7 +69,7 @@ class CreateEventProvider with ChangeNotifier {
   }
 
   Future<List<int>?> showCityPicker(BuildContext context) {
-    return _generatePicker(
+    return PickerHelper.generatePicker(
       height: 150.0,
       context: context,
       data: TodayData.cities,
@@ -78,7 +79,7 @@ class CreateEventProvider with ChangeNotifier {
   }
 
   Future<List<int>?> showTypePicker(BuildContext context) {
-    return _generatePicker(
+    return PickerHelper.generatePicker(
       height: 180.0,
       context: context,
       data: TodayData.types,
@@ -88,7 +89,7 @@ class CreateEventProvider with ChangeNotifier {
   }
 
   Future<List<int>?> showCountPicker(BuildContext context) {
-    return _generatePicker(
+    return PickerHelper.generatePicker(
       height: 200.0,
       context: context,
       data: TodayData.numbers,
@@ -100,65 +101,17 @@ class CreateEventProvider with ChangeNotifier {
   void _saveValue(String value, Picker picker) {
     switch (value) {
       case TodayKeys.city:
-        city = picker.getSelectedValues().first;
+        _city = picker.getSelectedValues().first;
         break;
       case TodayKeys.type:
-        type = picker.getSelectedValues().first;
+        _type = picker.getSelectedValues().first;
         break;
       case TodayKeys.count:
-        count = picker.getSelectedValues().first;
+        _count = picker.getSelectedValues().first;
         break;
       default:
         break;
     }
     notifyListeners();
-  }
-
-  Picker _generatePicker({
-    required String title,
-    required double height,
-    required BuildContext context,
-    required List<PickerItem<String>>? data,
-    required Function(Picker, List<int>)? onConfirm,
-  }) {
-    return Picker(
-      height: height,
-      looping: false,
-      itemExtent: 38.0,
-      hideHeader: true,
-      onConfirm: onConfirm,
-      textAlign: TextAlign.center,
-      confirmText: S.of(context).done,
-      cancelText: S.of(context).cancel,
-      adapter: PickerDataAdapter<String>(data: data),
-      cancelTextStyle: TextStyle(
-        color: Theme.of(context).shadowColor,
-        fontFamily: TodayFonts.medium,
-        fontSize: 16.0,
-      ),
-      confirmTextStyle: TextStyle(
-        color: Theme.of(context).shadowColor,
-        fontFamily: TodayFonts.medium,
-        fontSize: 16.0,
-      ),
-      textStyle: TextStyle(
-        color: Theme.of(context).shadowColor,
-        fontFamily: TodayFonts.medium,
-        fontSize: 18.0,
-      ),
-      selectedTextStyle: TextStyle(
-        color: Theme.of(context).shadowColor,
-        fontFamily: TodayFonts.medium,
-        fontSize: 20.0,
-      ),
-      title: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontFamily: TodayFonts.semiBold,
-          fontSize: 20.0,
-        ),
-      ),
-    );
   }
 }
